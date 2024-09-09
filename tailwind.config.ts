@@ -20,6 +20,8 @@ const config: Config = {
         bg: 'var(--bg)',
         border: 'var(--border)',
         'text-primary': 'var(--text-primary)',
+        accent: 'var(--accent)',
+        hoverShadow: 'var(--hoverShadow)',
       },
     },
   },
