@@ -1,5 +1,5 @@
-import GithubIcon from '@/app/ui/icons/GithubIcon'
-import LinkIcon from '@/app/ui/icons/LinkIcon'
+import GithubIcon from '@/ui/icons/GithubIcon'
+import LinkIcon from '@/ui/icons/LinkIcon'
 
 const styles = {
   project: 'project',
@@ -17,7 +17,7 @@ const styles = {
 const Project = ({ project }) => {
   const { title, description, image, tags, liveUrl, githubUrl } = project
 
-  const iconStyles = { color: 'var(--text)', width: '27' }
+  const iconStyles = { color: 'var(--text-primary)', width: '27' }
 
   return (
     <div className='px-10 py-8 grid grid-cols-[1fr] lg:grid-cols-[2fr_3fr] items-center gap-8 lg:gap-12'>
@@ -31,7 +31,9 @@ const Project = ({ project }) => {
         </a>
       </div>
       <div className='flex flex-col justify-between gap-4 text-right'>
-        <h3 className='project-title ml-16 text-3xl border-b-8 border-text-primary'>{title}</h3>
+        <h3 className='project-title ml-16 text-3xl leading-10 border-b-8 border-text-primary'>
+          {title}
+        </h3>
         <p className='project-description text-sm font-light'>{description}</p>
         <div className='tags'>
           <ul className='flex justify-end gap-4 flex-wrap'>
@@ -53,7 +55,13 @@ const Project = ({ project }) => {
           >
             <LinkIcon styles={iconStyles} />
           </a>
-          <a href={githubUrl} target='_blank' rel='noreferrer' aria-label='Github Repo'>
+          <a
+            href={githubUrl}
+            target='_blank'
+            rel='noreferrer'
+            aria-label='Github Repo'
+            className='hover:scale-105'
+          >
             <GithubIcon styles={iconStyles} />
           </a>
         </div>

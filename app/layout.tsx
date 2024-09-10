@@ -1,8 +1,8 @@
 import '@/globals.css'
 import type { ReactNode } from 'react'
-import ThemeSelector from '@/app/ui/ThemeSelector'
-import Footer from '@/app/ui/Footer'
-import Header from '@/app/ui/Header'
+import ThemeSelector from '@/ui/ThemeSelector'
+import Footer from '@/ui/Footer'
+import Header from '@/ui/Header'
 import { IBM_Plex_Mono, Montserrat, Work_Sans, Roboto } from 'next/font/google'
 
 const ibmPlexMono = IBM_Plex_Mono({

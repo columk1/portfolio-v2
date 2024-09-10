@@ -1,9 +1,9 @@
-import GlobeIcon from '@/app/ui/icons/GlobeIcon'
-import SquaresIcon from '@/app/ui/icons/SquaresIcon'
-import AsteriskIcon from '@/app/ui/icons/AsteriskIcon'
-import CirclesIcon from '@/app/ui/icons/CirclesIcon'
-import ArrowIcon from '@/app/ui/icons/ArrowIcon'
-import PointerIcon from '@/app/ui/icons/PointerIcon'
+import GlobeIcon from '@/ui/icons/GlobeIcon'
+import SquaresIcon from '@/ui/icons/SquaresIcon'
+import AsteriskIcon from '@/ui/icons/AsteriskIcon'
+import CirclesIcon from '@/ui/icons/CirclesIcon'
+import ArrowIcon from '@/ui/icons/ArrowIcon'
+import PointerIcon from '@/ui/icons/PointerIcon'
 
 const iconStyles = { width: '2.25rem', color: 'var(--text-primary)' }
 const svgContainerClasses =

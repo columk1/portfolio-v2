@@ -1,5 +1,5 @@
-import Project from '@/app/ui/project'
-import projects from '@/app/lib/data/projects'
+import Project from '@/ui/Project'
+import projects from '@/lib/data/projects'
 
 const Projects = () => {
   return (

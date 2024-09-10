@@ -1,4 +1,4 @@
-import type { IconProps } from '@/app/lib/types'
+import type { IconProps } from '@/lib/types'
 
 const LinkIcon = ({ styles }: IconProps) => {
   return (

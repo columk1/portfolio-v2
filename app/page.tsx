@@ -1,4 +1,4 @@
-import Hero from '@/app/ui/Hero'
+import Hero from '@/ui/Hero'
 
 export default function Page() {
   return <Hero />

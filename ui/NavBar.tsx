@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { NavItem } from '@/app/lib/types'
+import type { NavItem } from '@/lib/types'
 import { usePathname } from 'next/navigation'
 
 const NavBar = ({ links }: { links: NavItem[] }) => {

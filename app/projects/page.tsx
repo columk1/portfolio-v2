@@ -1,4 +1,4 @@
-import Projects from '@/app/ui/Projects'
+import Projects from '@/ui/Projects'
 
 export default function Page() {
   return <Projects />
