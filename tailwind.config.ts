@@ -23,6 +23,9 @@ const config: Config = {
         accent: 'var(--accent)',
         hoverShadow: 'var(--hoverShadow)',
       },
+      animation: {
+        spin: 'spin 2s linear infinite',
+      },
     },
   },
   plugins: [],

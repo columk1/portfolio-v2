@@ -6,4 +6,5 @@ export type IconProps = {
     color?: string
     additionalStyles?: React.CSSProperties
   }
+  className?: string
 }
