@@ -1,18 +1,6 @@
 import GithubIcon from '@/ui/icons/GithubIcon'
 import LinkIcon from '@/ui/icons/LinkIcon'
-
-const styles = {
-  project: 'project',
-  projectContainer: 'project__container',
-  imgContainer: 'project__img__container',
-  projectDetails: 'project__details',
-  projectTitle: 'project__title',
-  projectDescription: 'project__description',
-  tags: 'project__tags',
-  tag: 'project__tag',
-  links: 'project__links',
-  link: 'project__link',
-}
+import Image from 'next/image'
 
 const Project = ({ project }) => {
   const { title, description, image, tags, liveUrl, githubUrl } = project
@@ -23,10 +11,12 @@ const Project = ({ project }) => {
     <div className='px-10 py-8 grid grid-cols-[1fr] lg:grid-cols-[2fr_3fr] items-center gap-8 lg:gap-12'>
       <div className='img-container w-full motion-safe:animate-from-left'>
         <a href={liveUrl} target='_blank' rel='noreferrer'>
-          <img
+          <Image
             src={image}
+            width={800}
+            height={600}
             alt={title}
-            className='block outline outline-1 outline-transparent hover:outline-accent hover:shadow-[0_0_6px_1px_var(--hoverShadow)]'
+            className='block outline outline-1 outline-transparent hover:outline-accent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:transition-all hover:duration-200 hover:ease-in'
           />
         </a>
       </div>
