@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
   },
+  devIndicators: {
+    appIsrStatus: false,
+  },
 }
 
 const withMDX = createMDX({})
