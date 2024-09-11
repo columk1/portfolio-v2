@@ -22,7 +22,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang='en'
-      className={`${montserrat.variable}${workSans.variable}${roboto.variable}${ibmPlexMono.variable} text-base`}
+      // biome-ignore lint/nursery/useSortedClasses: Bug in Biome
+      className={`text-base ${montserrat.variable} ${workSans.variable} ${roboto.variable} ${ibmPlexMono.variable}`}
     >
       <body className='mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary'>
         <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border'>
