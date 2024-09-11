@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 export type NavItem = { title: string; route: string }
 export type IconProps = {
   styles?: {
@@ -7,4 +9,16 @@ export type IconProps = {
     additionalStyles?: React.CSSProperties
   }
   className?: string
+}
+
+export type PostMetadata = Metadata & {
+  title: string
+  description: string
+  date?: string
+  tags?: string[]
+}
+
+export type BlogPostData = {
+  slug: string
+  metadata: PostMetadata
 }
