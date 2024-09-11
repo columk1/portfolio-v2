@@ -12,6 +12,17 @@
     --accent: #834bdb;
     --hoverShadow: rgba(131, 75, 219, 0.75);
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
+
+    /* Syntax Highlighting */
+    --sh-class: #7aa2f7;
+    --sh-identifier: rgb(199, 146, 234);
+    --sh-sign: #89ddff;
+    --sh-property: #73daca;
+    --sh-entity: #e0af68;
+    --sh-string: #6ab3ce;
+    --sh-jsxliterals: #7aa2f7;
+    --sh-keyword: #bb9af7;
+    --sh-comment: #565f89;
   }
 }
 
@@ -27,6 +38,56 @@
 
 a {
   color: inherit;
+}
+
+pre {
+  @apply bg-transparent rounded-lg border border-border overflow-x-auto py-2 px-3 text-sm;
+  scrollbar-color: var(--border) transparent;
+}
+
+pre::-webkit-scrollbar {
+  background-color: #333;
+  border-radius: 0.5rem;
+}
+
+code {
+  @apply px-1 py-0.5 rounded-lg;
+}
+
+pre code {
+  @apply p-0;
+  border: initial;
+  line-height: 1.5;
+}
+
+code span {
+  @apply font-medium;
+}
+
+.img-container {
+  animation: from-left var(--easeOut) both;
+  animation-timeline: view();
+  animation-range: 5vh 25vh;
+}
+.project-title {
+  animation: from-right var(--easeOut) both;
+  animation-timeline: view();
+  animation-range: 0vh 15vh;
+}
+.project-description {
+  animation: from-bottom var(--easeOut) both;
+  animation-timeline: view();
+  animation-range: 0vh 10vh;
+}
+.tags {
+  animation: from-bottom var(--easeOut) both;
+  animation-timeline: view();
+  animation-range: 0vh 6vh;
+}
+.links {
+  animation: from-bottom var(--easeOut) both;
+  animation-timeline: view();
+  animation-range: 0vh 10vh;
 }
 
 @keyframes from-left {
@@ -59,30 +120,4 @@ a {
     scale: 0;
     filter: blur(75px);
   }
-}
-
-.img-container {
-  animation: from-left var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 5vh 25vh;
-}
-.project-title {
-  animation: from-right var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 15vh;
-}
-.project-description {
-  animation: from-bottom var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 10vh;
-}
-.tags {
-  animation: from-bottom var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 6vh;
-}
-.links {
-  animation: from-bottom var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 10vh;
 }
