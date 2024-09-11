@@ -12,14 +12,14 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>
 
 const components: MDXComponents = {
   h1: (props: HeadingProps) => (
-    <h1 className='mb-0 pt-12 text-4xl font-sans font-light fade-in' {...props} />
+    <h1 className='fade-in mb-0 pt-12 font-light font-sans text-4xl' {...props} />
   ),
-  h2: (props: HeadingProps) => <h2 className='mt-8 mb-3 text-2xl font-medium' {...props} />,
-  h3: (props: HeadingProps) => <h3 className='mt-8 mb-3 text-xl font-medium' {...props} />,
+  h2: (props: HeadingProps) => <h2 className='mt-8 mb-3 font-medium text-2xl' {...props} />,
+  h3: (props: HeadingProps) => <h3 className='mt-8 mb-3 font-medium text-xl' {...props} />,
   h4: (props: HeadingProps) => <h4 className='font-normal' {...props} />,
   p: (props: ParagraphProps) => <p className='mb-6' {...props} />,
-  ol: (props: ListProps) => <ol className='pl-5 space-y-1 list-decimal' {...props} />,
-  ul: (props: ListProps) => <ul className='pl-5 space-y-0 list-disc' {...props} />,
+  ol: (props: ListProps) => <ol className='list-decimal space-y-1 pl-5' {...props} />,
+  ul: (props: ListProps) => <ul className='list-disc space-y-0 pl-5' {...props} />,
   li: (props: ListItemProps) => <li className='pl-1' {...props} />,
   // Use this as the image caption until an image component is created
   em: (props: ComponentPropsWithoutRef<'em'>) => (
@@ -79,7 +79,7 @@ const components: MDXComponents = {
     </table>
   ),
   blockquote: (props: BlockquoteProps) => (
-    <blockquote className='ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700' {...props} />
+    <blockquote className='ml-[0.075em] border-gray-300 border-l-3 pl-4 text-gray-700' {...props} />
   ),
 }
 

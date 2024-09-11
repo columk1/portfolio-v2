@@ -8,7 +8,7 @@ const Project = ({ project }) => {
   const iconStyles = { color: 'var(--text-primary)', width: '27' }
 
   return (
-    <div className='px-10 py-8 grid grid-cols-[1fr] lg:grid-cols-[2fr_3fr] items-center gap-8 lg:gap-12'>
+    <div className='grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12'>
       <div className='img-container w-full motion-safe:animate-from-left'>
         <a href={liveUrl} target='_blank' rel='noreferrer'>
           <Image
@@ -16,26 +16,26 @@ const Project = ({ project }) => {
             width={800}
             height={600}
             alt={title}
-            className='block outline outline-1 outline-transparent hover:outline-accent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:transition-all hover:duration-200 hover:ease-in'
+            className='block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in'
           />
         </a>
       </div>
       <div className='flex flex-col justify-between gap-4 text-right'>
-        <h3 className='project-title ml-16 text-3xl leading-10 border-b-8 border-text-primary'>
+        <h3 className='project-title ml-16 border-text-primary border-b-8 text-3xl leading-10'>
           {title}
         </h3>
-        <p className='project-description text-sm font-light'>{description}</p>
+        <p className='project-description font-light text-sm'>{description}</p>
         <div className='tags'>
-          <ul className='flex justify-end gap-4 flex-wrap'>
+          <ul className='flex flex-wrap justify-end gap-4'>
             {tags.map((tag) => (
-              <li key={tag} className='px-2 py-0.5 text-sm font-bold text-[#eee] bg-accent'>
+              <li key={tag} className='bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm'>
                 {tag}
               </li>
               // <Tag key={tag} name={tag}/>
             ))}
           </ul>
         </div>
-        <div className='links flex justify-end items-center gap-2'>
+        <div className='links flex items-center justify-end gap-2'>
           <a
             href={liveUrl}
             target='_blank'

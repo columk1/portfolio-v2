@@ -13,8 +13,8 @@ const svgContainerXLClasses =
 
 const Hero = () => {
   return (
-    <section className='min-h[calc(100svh-8rem-2px)] mt-0 xl:mt-20 flex justify-center align-center font-sans font-light bg-bg'>
-      <div className='max-w-[970px] p-8 grid grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] flex-1 text-text-primary'>
+    <section className='min-h[calc(100svh-8rem-2px)] mt-0 flex justify-center bg-bg align-center font-light font-sans xl:mt-20'>
+      <div className='grid max-w-[970px] flex-1 grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-8 text-text-primary'>
         <div className='col-start-1 row-span-full'>
           <div className={svgContainerClasses}>
             <GlobeIcon styles={iconStyles} />
@@ -40,10 +40,10 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className='col-start-2 row-start-1 row-end-6 height-full p-[min(6rem,6vw)] grid place-content-center text-3xl border-t border-r border-purple-400'>
+        <div className='height-full col-start-2 row-start-1 row-end-6 grid place-content-center border-purple-400 border-t border-r p-[min(6rem,6vw)] text-3xl'>
           <p>Hi, I&apos;m a full stack developer based in Squamish, British Columbia.</p>
         </div>
-        <div className='relative col-start-2 row-start-6 height-full border-t border-r border-b border-purple-400'>
+        <div className='height-full relative col-start-2 row-start-6 border-purple-400 border-t border-r border-b'>
           <PointerIcon
             styles={{
               width: '2.75rem',
@@ -52,7 +52,7 @@ const Hero = () => {
             }}
           />
         </div>
-        <div className='col-span-2 flex justify-end gap-3 mt-1 font-mono font-light'>
+        <div className='col-span-2 mt-1 flex justify-end gap-3 font-light font-mono'>
           <a
             href='https://github.com/columk1'
             target='_blank'

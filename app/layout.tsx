@@ -22,17 +22,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang='en'
-      className={`${montserrat.variable} ${workSans.variable} ${roboto.variable} ${ibmPlexMono.variable} text-base`}
+      className={`${montserrat.variable}${workSans.variable}${roboto.variable}${ibmPlexMono.variable} text-base`}
     >
-      <body className='min-w-full mx-auto p-[1px] font-mono text-text-primary bg-bg'>
-        <div className='h-[calc(100svh-calc(var(--frame)*2)-2px)] m-frame flex flex-col justify-between items-center overflow-hidden border-[1px] border-border'>
+      <body className='mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary'>
+        <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border'>
           <Header
             links={[
               { title: 'Projects', route: '/projects' },
               { title: 'Articles', route: '/articles' },
             ]}
           />
-          <main className='max-h-screen max-w-[100vw] overflow-y-scroll scrollbar'>{children}</main>
+          <main className='scrollbar max-h-screen max-w-[100vw] overflow-y-scroll'>{children}</main>
           <Footer />
           <ThemeSelector />
         </div>

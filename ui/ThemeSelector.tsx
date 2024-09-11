@@ -23,10 +23,10 @@ const ThemeSelector = () => {
   }, [])
 
   return (
-    <div className='absolute bottom-[--frame] left-10 text-xs origin-bottom-left -rotate-90'>
+    <div className='-rotate-90 absolute bottom-[--frame] left-10 origin-bottom-left text-xs'>
       <ul className='flex gap-3'>
         <button type='button' onClick={() => setIsDark(false)}>
-          <li className='flex items-center gap-1 font-sans font-light hover:[-webkit-text-stroke:0.5px]'>
+          <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
             {!isDark ? (
               <span className='pb-1 text-lg'>■</span>
             ) : (
@@ -36,7 +36,7 @@ const ThemeSelector = () => {
           </li>
         </button>
         <button type='button' onClick={() => setIsDark(true)}>
-          <li className='flex items-center gap-1 font-sans font-light hover:[-webkit-text-stroke:0.5px]'>
+          <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
             {isDark ? (
               <span className='pb-1 text-lg'>■</span>
             ) : (
