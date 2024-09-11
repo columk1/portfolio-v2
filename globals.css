@@ -41,7 +41,7 @@ a {
 }
 
 pre {
-  @apply bg-transparent rounded-lg border border-border overflow-x-auto py-2 px-3 text-sm;
+  @apply mb-6 bg-transparent rounded-lg border border-border overflow-x-auto py-2 px-3 text-sm;
   scrollbar-color: var(--border) transparent;
 }
 
@@ -61,7 +61,7 @@ pre code {
 }
 
 code span {
-  @apply font-medium;
+  @apply font-medium text-sm;
 }
 
 .img-container {
