@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               { title: 'Articles', route: '/articles' },
             ]}
           />
-          <main className='max-h-screen overflow-y-scroll scrollbar'>{children}</main>
+          <main className='max-h-screen max-w-[100vw] overflow-y-scroll scrollbar'>{children}</main>
           <Footer />
           <ThemeSelector />
         </div>

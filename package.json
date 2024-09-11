@@ -14,10 +14,13 @@
     "@next/mdx": "^14.2.9",
     "@types/react": "^18.3.5",
     "next": "15.0.0-canary.143",
+    "next-view-transitions": "^0.3.0",
     "react": "^19.0.0-rc-4c58fce7-20240904",
-    "react-dom": "^19.0.0-rc-4c58fce7-20240904"
+    "react-dom": "^19.0.0-rc-4c58fce7-20240904",
+    "sugar-high": "^0.7.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
     "@types/bun": "latest",
     "@types/mdx": "^2.0.13",
     "autoprefixer": "^10.4.20",

@@ -1,14 +1,18 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}', './ui/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './ui/**/*.{js,ts,jsx,tsx,mdx}',
+    'mdx-components.tsx',
+  ],
   theme: {
     extend: {
       fontFamily: {
         mono: 'var(--font-mono)',
         sans: 'var(--font-sans)',
         montserrat: 'var(--font-detail)',
-        roboto: 'var(--font-body)',
+        body: 'var(--font-body)',
       },
       fontSize: {
         base: 'var(--base-font)',
