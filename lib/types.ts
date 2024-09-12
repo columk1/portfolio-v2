@@ -23,3 +23,8 @@ export type BlogPostData = {
   slug: string
   metadata: PostMetadata
 }
+
+export type BlogPostContent = {
+  BlogMarkdown: () => JSX.Element
+  metadata: PostMetadata
+}

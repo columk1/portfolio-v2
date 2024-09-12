@@ -1,13 +1,13 @@
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { getAllBlogPostsData } from '@/lib/getAllBlogPostsData'
-import { getBlogPostMetadata } from '@/lib/getBlogPostMetadata'
 import SquaresIcon from '@/ui/icons/SquaresIcon'
+import { getBlogPostContent } from '@/lib/getBlogPostContent'
 
 type BlogPageProps = { params: { slug: string } }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { metadata } = await getBlogPostMetadata(params.slug)
-  const BlogMarkdown = dynamic(() => import(`@/content/${params.slug}.mdx`))
+  const { metadata, BlogMarkdown } = await getBlogPostContent(params.slug)
+  // const BlogMarkdown = dynamic(() => import(`@/content/${params.slug}.mdx`))
 
   return (
     <>
