@@ -14,8 +14,9 @@ export type IconProps = {
 export type PostMetadata = Metadata & {
   title: string
   description: string
-  date?: string
+  date: string
   tags?: string[]
+  readingLength?: string
 }
 
 export type BlogPostData = {

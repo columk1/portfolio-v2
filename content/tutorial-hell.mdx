@@ -1,0 +1,182 @@
+export const metadata = {
+  title: 'Tutorial Hell',
+  description: 'a',
+  date: '2024-05-25',
+  tags: ['React', 'Typescript', 'Next.js'],
+  readingLength: 13,
+}
+
+## Introduction
+
+By late February, I was almost finished with The Odin Project. Having completed 27 projects since starting the course in June, there were only two left: a real-time chat app and a social media content-sharing app similar to Facebook. A lesson near the end of the course suggested that I would be job-ready upon completing these two projects.
+
+Yet, a sense of weariness was creeping in. I had spent months developing apps that had no users. I received a handful of nice messages whenever I shared my work, and a few of my games' leaderboards had filled up, but I still didn't feel like I was making anything useful.
+
+![Leaderboard](https://res.cloudinary.com/dsrekt1mo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1711483533/Screenshot_2024-03-26_at_1.00.24_PM_f5704e_cccqmg.jpg?_s=public-apps)
+*The current leaderboard of my "Where's Alex Honnold" photo tagging app...*
+
+The one exception was this blog. It was immensely satisfying to make something that I would actually be using. Yet, here I was again, faced with the prospect of spending the next couple of months making clones of social apps with no users. Furthermore, I found myself craving exposure to more opinionated code, having had limited exposure to other developers' processes beyond reading documentation.
+
+I decided to change things up. The Odin community is adamant that students build their own projects by referencing the relevant docs, not tutorials or repos of similar applications. I would break this rule and follow a tutorial for my chat app. Afterwards, I would solve issues, add features and develop it into a more fully-fledged social media app. I figured this would simulate real work - implementing new features, updating libraries and fixing bugs when presented with an unfamiliar codebase. It would also give me a chance to explore some new tools from outside of the curriculum.
+
+The course also encourages the use of Node, Express, and MongoDB for back-end development, paired with plain JavaScript or JSX on the front-end. No typescript, no meta-frameworks. Nevertheless, since I was breaking the rules anyway, I decided to follow a tutorial that used Next.js, Typescript and Prisma. It would be a departure from the course material but I felt like it was time to pursue some of the tools that I felt motivated to learn. I would use this project as my introduction to Typescript and server-side rendered React.
+
+### The Tutorial
+
+The tutorial I chose was called **Real-Time Messenger Clone: Next.js 13, React, Tailwind, Prisma, MongoDB, NextAuth, Pusher (2023)** by [AntonioErdeljac](https://github.com/AntonioErdeljac). You can view his original repo [here](https://github.com/AntonioErdeljac/next13-messenger). It's a fairly simple application that allows anyone who signs up to message anyone else with an account. Conversations are updated in realtime for all users.
+
+![Full Stack Messenger Clone](https://www.codewithantonio.com/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2Fe263eba0-1fd5-411d-b407-fc73e1d1be5a-jrwdgh.jpg&w=3840&q=75)
+*The tutorial I chose to follow*
+
+Before starting, I spent a few days going through the Next.js docs and working through some of their example projects. Once I was familiar with the folder structure and patterns, I began coding along with the tutorial. In the spirit of changing things up, I made a few design choices along the way, opting to use a serverless Postgres database instead of the MongoDb instance used in the tutorial. I also chose to create some of my own custom solutions where libraries had been used. Furthermore, I updated Next.js to version 14, and most of the libraries to their latest versions, making changes where needed. When I finished the tutorial I had a working real-time chat app and a list of issues to fix and features to implement. I began to work through them one by one.
+
+### Issues
+
+This project had a lot of issues. For starters the author placed his Pusher cluster in Europe and his MongoDB cluster in North America! It was easy to spot and correct errors like this one as I coded along. However, there were many others that I had to take note of for later review and correction. I had logged a total of 60 issues when I reached the end of the tutorial. These ranged from accessibility issues and problems with the UI/UX to issues of security and privacy. In terms of performance, there were too many round-trips to the db, lots of unnecessary re-renders and the same data was being repeatedly fetched by several components.
+
+![Pusher Cluster Location](https://res.cloudinary.com/dsrekt1mo/image/upload/v1711485331/Pusher_Screenshot_xmp8ub.png)
+*A far cry from Virginia*
+
+## The Fun Begins... with Security
+
+My first priority was to clean up the server actions and API routes and to improve the security and performance of the application. I managed to greatly reduce the amount of data being sent to the client and to improve the data privacy of each user. Originally, the full user record was being fetched from the database every time some data about the current user was needed. I optimized these queries to ensure that only the required data was fetched from the database, thus preventing sensitive data from being sent to the client unnecessarily.
+
+On top of that, users' email addresses were exposed to other members and were being used as a public identifier. To improve privacy, I substituted them with a public username field. I also integrated the validation library Zod and used it to validate and sanitize all data payloads transmitted from the client before processing them on the back-end.
+
+Here's an example of validation from my `api/register` route using Zod
+
+```ts
+const SignUpSchema = z.object({
+  name: z.string().trim().min(1, { message: 'Name is required' }),
+  email: z.string().email({ message: 'Invalid email' }),
+  username: z
+    .string()
+    .trim()
+    .min(1, { message: 'Username is required' })
+    .max(30, { message: 'Username can be a maximum of 30 characters' }),
+  password: z.string().min(8, { message: 'Password must be at least 8 characters' }),
+})
+
+export async function POST(req: Request) {
+    ...
+    const validatedFields = SignUpSchema.safeParse({
+      name: body.name,
+      email: body.email,
+      username: body.username,
+      password: body.password,
+    })
+
+    if (!validatedFields.success) {
+      const responseData = {
+        error: validatedFields.error.flatten().fieldErrors,
+        message: 'Invalid fields. Failed to register',
+      }
+      return new Response(JSON.stringify(responseData), {
+        status: 400,
+      })
+    }
+
+    const { name, email, username, password } = validatedFields.data
+    ...
+```
+
+I also made sure to protect all routes except for `/login` and `/register`. The author had chosen to protect his API routes using a database call from within each route handler instead of using middleware to check for a valid session. I used a negative lookahead in my path matcher to allow my `api/register` route to be accessed without a session token:
+
+```js
+export const config = {
+  matcher: [
+    '/contacts/:path*', 
+    '/conversations/:path*', 
+    '/settings/:path*',
+    '/api/!(register)/:path*' // This line excludes /api/register
+  ],
+}
+```
+In this path matcher, `!(register)` inside the parentheses is a negative lookahead, meaning it matches any string that is not "register". `So, /api/!(register)/:path*` will match any path under `/api/` except `/api/register`.
+
+### Performance
+
+To improve performance, I reduced the number of round trips to the database by making use of the session wherever possible. This involved adding a callback to the next-auth `signIn` function to add the username and profile image to the JWT. I also added a client-side method to update the user's token on the client whenever the session's "update" method is triggered, which allowed a user's account settings to be updated across the app without having to re-fetch the new settings from the database. This was made possible by a 2023 update to NextAuth. After which, the useSession() hook exposes an `update(data?: any): Promise<Session | null>` method that can be used to update the session, without reloading the page. I made sure to validate this data on the server before saving it to the token:
+
+```js
+async jwt({ token, trigger, session, user }) {
+      // If updated, return token with updated properties from session
+      if (trigger === 'update' && session) {
+        const validatedSession = SessionUserSchema.safeParse(session.user)
+        if (validatedSession.success) {
+          const { name, image } = validatedSession.data
+          return { ...token, name, picture: image } 
+        }
+      }
+    ...
+}
+```
+
+I continued to add many other performance improvements. These included combining queries, populating foreign keys, centralizing state management for components fetching identical data, and utilizing context where appropriate. I also reduced the number of client hooks and developed more complex layouts to enable more components to be rendered on the server and more data to be shared among them.
+
+Here's an example of a client hook that was used in seven different places. Each time a hook like this is used it causes the tree of components below it to be rendered on the client.
+
+```ts
+import { useParams } from "next/navigation";
+import { useMemo } from "react";
+
+const useConversation = () => {
+  const params = useParams();
+
+  const conversationId = useMemo(() => {
+    if (!params?.conversationId) {
+      return '';
+    }
+
+    return params.conversationId as string;
+  }, [params?.conversationId]);
+
+  const isOpen = useMemo(() => !!conversationId, [conversationId]);
+
+  return useMemo(() => ({
+    isOpen,
+    conversationId
+  }), [isOpen, conversationId]);
+};
+
+export default useConversation;
+```
+
+### UX
+
+The application was missing a few key things and the user flow had issues. I built out the sparse error handling that existed and created error pages and various methods to display errors from the server, including more detailed client and server-side validation of forms. I created loading states and loading pages. Originally there was just one loading modal from a library that disabled the screen. I replaced this with a lightweight SVG. I then developed fallback components and structured pages to exclusively trigger loading states within dynamic sections, facilitating efficient caching and static rendering for the bulk of each page.  Combined with earlier improvements to state management, these modifications notably decreased loading times and ensured a greater portion of the application remained operational during component loading phases.
+
+As I progressed through my list, I fixed many small issues related to the routing and sorting behaviour of the conversations list and conversations page. This improved behaviour during the creation, updating, and deletion of conversations.  I split the existing auth route into separate `/login` and `/register` routes to support external links and built settings pages with multiple routes instead of relying on a modal that was only accessible on large screens. I also added image placeholders to prevent layout shift.
+
+### Accessibility
+
+In terms of accessibility, I replaced many clickable divs with button elements and swapped out divs for semantic elements where suitable. Additionally, I added text for screen readers beneath any icon-only buttons and replaced buttons and divs utilizing the useRouter hook with Link elements where applicable.
+
+### New Features
+
+After fixing the most pressing issues, I added some new features on top of the changes already discussed. I built out the messaging interface, adding more props to the message body component and using them to enhance the use of names in group conversations, to designate a color to each user in a group, and to group sequences of messages from the same user together.
+
+I created a contact list feature and an interface to search from all users and to add or remove them from contacts, with a toggle button for editing mode to show or hide the buttons when needed. I also redesigned the UI, making significant changes to the overall theme of the application and smaller changes to the appearance wherever I saw fit.
+
+![Screenshot of the finished messaging interface](https://res.cloudinary.com/dsrekt1mo/image/upload/v1711495806/conversation_fcnglt.png)
+*The finished product. You can view the live site [here](https://messaging-app-azure.vercel.app/).*
+
+### Final Touches
+
+Finally, I created a seed script that creates multiple users and conversations, as well as a demo account and a demo account login button for the login page. I configured the db to be reset and re-seeded at build time and created a GitHub action with a cron job that builds and deploys my application on a regular schedule. This allows for less moderation and ensures the demo account won't get too far from its original state.
+
+## Conclusion
+
+I'm happy with what I've learned, but it feels like a bit of a cop out to have gone down the tutorial route. I'm glad to have dipped my toes into Next.js, but, the better move may have been to build an Express API from scratch and paired it with Next.js exclusively for the frontend. It's pretty amazing to have everything in one build, but it hides some of the complexity of server-side processes that are explicit in Express and other back-end frameworks.
+
+The Express approach might have even been faster, easier, and presented better in my portfolio. The use of a tutorial to start a project introduces ambiguity I'd rather avoid. Nevertheless, I'm glad to have added new tools to my skill set, particularly TypeScript, which I plan to use extensively in the future. It really is fantastic.
+
+One mistake I should address was the decision to extend the session to manage user state in order to cut down on round trips to the database. After speaking to a few developer friends about it, I realize I tried to optimize this prematurely. I should have conducted performance tests before deciding that those database calls were too slow, considering the added complexity to the app. Simply querying the database for user data whenever needed could have sufficed. If not, wrapping the app in a context provider and leaving the session intact would have been a better solution to maintain user state.
+
+Regarding The Odin Project, I consider the real-time messaging app done, but I won't be submitting my repository since it doesn't meet the guidelines. Nevertheless, I feel comfortable with the skills I've picked up. I can still bang out an Express/Socket.io back-end when necessary. If I ever need a standalone REST API in the future, that's what I'll do.
+
+That leaves just one project left - the Facebook clone. Honestly, I'm not even sure if I need to go there. A lot of the patterns and lessons learned from this project would transfer over. While diving into it could be interesting, at this point, I'm more inclined to pursue personal projects and open-source commitments. I'm no longer fixated on achieving absolute completion. Investing time in creating something practical will be more rewarding. Besides, I can always come back to it if I feel like my portfolio needs it. In any case, the learning never stops.
+
+#  
+
+*For anyone interested, I have a more complete list of changes from the original repo [here](https://github.com/columk1/messaging-app/blob/main/CHANGELOG.md).*

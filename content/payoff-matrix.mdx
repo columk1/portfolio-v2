@@ -1,0 +1,120 @@
+export const metadata = {
+  title: 'Tutorial Hell',
+  description: 'a',
+  date: '2024-01-06',
+  tags: ['JavaScript'],
+  readingLength: 5,
+}
+
+## The Game
+
+**Rock, Paper, Scissors is a game of imperfect information.**
+
+This means that when a player makes a move, they act without any information about the opponent's move. This characteristic allows a developer to make a pretty decent approximation of a human player with very little code. Giving the computer a random choice of move is enough to make it competitive.
+
+**If we were to give the computer player a predetermined strategy it would open the door to exploitation. Players could discern patterns and use them to their advantage in subsequent games.**
+
+### The Challenge of Complex Logic
+
+Using this random strategy we can write a function to simulate a round of the game. Once we have our player's chosen move, and our random move, the only thing left is to write the logic to determine the outcome based on these two moves.
+
+A portion of this logic could be written in pseudo code as such:
+
+> If player one chooses rock and player 2 chooses scissors, player one wins and player two loses.
+
+If we extrapolate that out to all nine possible outcomes, we might end up with something like this:
+
+```js
+function playRound(playerMove, computerMove) {
+  if (playerMove === 'Rock') {
+    if (computerMove === 'Rock') {
+      return 'Draw'
+    } else if (computerMove === 'Paper') {
+      return 'You Lose: Paper beats Rock.'
+    } else if (computerMove === 'Scissors') {
+      return 'You Win: Rock beats Scissors.'
+    }
+  } else if (playerMove === 'Paper') {
+    if (computerMove === 'Rock') {
+      return 'You Win: Paper beats Rock.'
+    } else if (computerMove === 'Paper') {
+      return 'Draw'
+    } else if (computerMove === 'Scissors') {
+      return 'You Lose: Scissors beats Paper.'
+    }
+  } else if (playerMove === 'Scissors') {
+    if (computerMove === 'Rock') {
+      return 'You Lose: Rock beats Scissors.'
+    } else if (computerMove === 'Paper') {
+      return 'You Win: Scissors beats Paper.'
+    } else if (computerMove === 'Scissors') {
+      return 'Draw'
+    }
+  }
+}
+```
+
+Pretty ugly right? Logic like this can quickly become convoluted, which makes it difficult to maintain.
+
+Fortunately, we have better tools at our disposal. Given that Rock, Paper, Scissors is a zero sum game, each of the possible outcomes for a player can be expressed using a payoff matrix to represent the gain or loss associated with each player's strategy:
+
+![Payoff Matrix](https://github.com/columk1/assets/blob/main/blog/payoff-matrix-m.png?raw=true)
+_Payoff matrix for rock paper scissors_
+
+The rows represent player 1's possible strategies while the columns represent player 2's possible strategies. **1 represents a win, 0 a tie, and -1 a loss. So, for instance, the upper left entry is a 0 because if both players choose rock, they tie.\***
+
+And here is how we represent it in javascript using a two dimensional array:
+
+```js
+;[
+  [0, -1, 1],
+  [1, 0, -1],
+  [-1, 1, 0],
+]
+```
+
+The whole game could look something like this:
+
+```js
+const moves = [0, 1, 2] // Rock, Paper, Scissors
+
+const outcomes = [
+  [0, -1, 1],
+  [1, 0, -1],
+  [-1, 1, 0],
+]
+
+function playRound(playerMove) {
+  const computerMove = Math.floor(Math.random() * 3)
+  const result = outcomes[playerMove][computerMove]
+  return result === -1 ? 'Lose' : result ? 'Win!' : 'Draw'
+}
+
+playRound(0) // Win!
+```
+
+The matrix allows us to condense the result logic into a couple of lines. If we want to add some more context to the return value to improve the user experience, we can replace the move integers with strings. The ternary from before gets a bit messy with the extra syntax. Changing to a switch statement makes it easier to read and maintain:
+
+```js
+const moves = ['Rock', 'Paper', 'Scissors']
+
+function playRound(playerMove) {
+  const computerMove = moves[Math.floor(Math.random() * 3)]
+  const result = outcomes[moves.indexOf(playerMove)][moves.indexOf(computerMove)]
+
+  switch (result) {
+    case -1:
+      return `You Lose: ${computerMove} beats ${playerMove}`
+    case 0:
+      return 'Draw'
+    case 1:
+      return `You Win: ${playerMove} beats ${computerMove}`
+    default:
+      return 'Invalid move'
+  }
+}
+```
+
+## Conclusion
+
+A matrix can provide an organized structure for handling complex decision-making processes. This example illustrates how matrices emerge as powerful tools for handling logic.
