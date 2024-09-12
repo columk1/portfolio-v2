@@ -41,6 +41,11 @@
   }
 }
 
+#blog-posts-container {
+  /* Used to place the list of tags (child element) at the bottom left corner of this element */
+  container-type: inline-size;
+}
+
 a {
   color: inherit;
 }

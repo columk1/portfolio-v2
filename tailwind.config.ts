@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   content: [
@@ -36,7 +37,16 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      const newUtilities = {
+        '.text-stroke-1': {
+          '-webkit-text-stroke': '0.5px currentColor', // 1px stroke with the current text color
+        },
+      }
+      addUtilities(newUtilities)
+    }),
+  ],
 }
 
 export default config
