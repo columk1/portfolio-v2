@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Header
             links={[
               { title: 'Projects', route: '/projects' },
-              { title: 'Articles', route: '/articles' },
+              { title: 'Blog', route: '/blog' },
             ]}
           />
           <main className='scrollbar max-h-screen max-w-[100vw] overflow-y-scroll'>{children}</main>

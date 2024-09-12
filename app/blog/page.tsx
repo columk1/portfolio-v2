@@ -1,23 +1,16 @@
-import Link from 'next/link'
 import { getAllBlogPostsData } from '@/lib/getAllBlogPostsData'
+import Posts from '@/ui/Posts'
 
 export default async function BlogPosts() {
   const posts = await getAllBlogPostsData()
-  console.log({ posts })
 
   return (
-    <div>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <p>
-              <Link prefetch={false} href={`/blog/${post.slug}`}>
-                {`${post.metadata.title}`}
-              </Link>
-            </p>
-          </li>
-        ))}
-      </ul>
+    <div
+      id='blog-posts-container'
+      className='flex min-h-[65vh] min-w-[min(80vw,970px)] flex-col justify-between border border-accent font-light font-mono text-sm leading-8'
+    >
+      <Posts posts={posts} />
+      <div className='h-9 border-t border-t-accent' />
     </div>
   )
 }

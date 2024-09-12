@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 export async function getBlogPostMetadata(slug: string): Promise<BlogPostData> {
   try {
     const { metadata } = await import(`@/content/${slug}.mdx`)
-    console.log({ metadata })
     if (metadata) {
       if (!metadata.title || !metadata.description) {
         throw new Error(`Missing some required metadata fields in: ${slug}`)

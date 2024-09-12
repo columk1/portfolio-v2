@@ -15,7 +15,7 @@ export type PostMetadata = Metadata & {
   title: string
   description: string
   date: string
-  tags?: string[]
+  tags: string[]
   readingLength?: string
 }
 

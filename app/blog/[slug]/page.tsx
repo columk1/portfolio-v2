@@ -2,6 +2,7 @@
 import { getAllBlogPostsData } from '@/lib/getAllBlogPostsData'
 import SquaresIcon from '@/ui/icons/SquaresIcon'
 import { getBlogPostContent } from '@/lib/getBlogPostContent'
+import { formatDateString } from '@/lib/utils/formatDateString'
 
 type BlogPageProps = { params: { slug: string } }
 
@@ -14,13 +15,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <h2 className={'mx-0 my-4 text-4xl'}>{metadata.title}</h2>
       <div className='flex flex-col gap-4'>
         <div className='flex flex-col gap-1'>
-          <p className={'font-detail text-xs'}>
-            {new Date(metadata.date).toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
-            })}
-          </p>
+          <p className={'font-detail text-xs'}>{formatDateString(metadata.date)}</p>
           <div className='flex gap-2 font-detail text-xs'>
             {metadata.tags && <p>{metadata.tags?.map((tag) => tag.toUpperCase()).join(', ')}</p>}
             {metadata.readingLength && (
