@@ -11,7 +11,7 @@ const config: Config = {
       fontFamily: {
         mono: 'var(--font-mono)',
         sans: 'var(--font-sans)',
-        montserrat: 'var(--font-detail)',
+        detail: 'var(--font-detail)',
         body: 'var(--font-body)',
       },
       fontSize: {
@@ -25,7 +25,11 @@ const config: Config = {
         border: 'var(--border)',
         'text-primary': 'var(--text-primary)',
         accent: 'var(--accent)',
-        hoverShadow: 'var(--hoverShadow)',
+        hoverShadow: 'var(--hover-shadow)',
+        'bg-light': 'var(--bg-light)',
+        link: 'var(--link)',
+        'link-hover': 'var(--link-hover)',
+        'link-visited': 'var(--link-visited)',
       },
       animation: {
         spin: 'spin 2s linear infinite',

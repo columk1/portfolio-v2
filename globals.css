@@ -10,7 +10,12 @@
     --border: #444;
     --text-primary: #b5b5b5;
     --accent: #834bdb;
-    --hoverShadow: rgba(131, 75, 219, 0.75);
+    --hover-shadow: rgba(131, 75, 219, 0.75);
+    --bg-light: #e2e2e2;
+    --link: #b94afe;
+    --link-hover: rgb(199, 146, 234);
+    --link-visited: #834bdb;
+
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
 
     /* Syntax Highlighting */
@@ -38,6 +43,18 @@
 
 a {
   color: inherit;
+}
+
+blockquote {
+  & p {
+    quotes: initial;
+    &::after {
+      content: '”';
+    }
+    &::before {
+      content: '“';
+    }
+  }
 }
 
 pre {

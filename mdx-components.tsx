@@ -9,6 +9,7 @@ type ListProps = ComponentPropsWithoutRef<'ul'>
 type ListItemProps = ComponentPropsWithoutRef<'li'>
 type AnchorProps = ComponentPropsWithoutRef<'a'>
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>
+type ImageProps = ComponentPropsWithoutRef<'img'>
 
 const components: MDXComponents = {
   h1: (props: HeadingProps) => (
@@ -23,13 +24,13 @@ const components: MDXComponents = {
   li: (props: ListItemProps) => <li className='pl-1' {...props} />,
   // Use this as the image caption until an image component is created
   em: (props: ComponentPropsWithoutRef<'em'>) => (
-    <em className='block text-center font-medium' {...props} />
+    <em className='mt-4 block text-center font-normal text-sm' {...props} />
   ),
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
     <strong className='font-medium' {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className = 'text-blue-500 hover:text-blue-700'
+    const className = 'text-link hover:text-link-hover visited:text-link-visited'
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
@@ -79,7 +80,14 @@ const components: MDXComponents = {
     </table>
   ),
   blockquote: (props: BlockquoteProps) => (
-    <blockquote className='ml-[0.075em] border-gray-300 border-l-3 pl-4 text-gray-700' {...props} />
+    <blockquote className='ml-2 border-l-4 bg-neutral-800 pl-5 font-normal italic' {...props} />
+  ),
+  img: (props: ImageProps) => (
+    // biome-ignore lint/a11y/useAltText: Alt text provided in markdown
+    <img
+      className='mx-auto block max-w-[min(100%,400px)] rounded-md bg-bg-light xl:max-w-100%'
+      {...props}
+    />
   ),
 }
 
