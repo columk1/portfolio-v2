@@ -23,6 +23,7 @@ const config: Config = {
       },
       colors: {
         bg: 'var(--bg)',
+        'bg-dark': 'var(--bg-dark)',
         border: 'var(--border)',
         'text-primary': 'var(--text-primary)',
         accent: 'var(--accent)',

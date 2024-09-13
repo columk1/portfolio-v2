@@ -31,7 +31,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <SquaresIcon styles={{ width: '40px', color: 'var(--accent)' }} />
         </div>
       </div>
-      <div className={'markdown'}>
+      <div className={'markdown max-w-prose font-light font-sans text-base leading-6'}>
         <BlogMarkdown />
       </div>
     </>

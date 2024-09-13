@@ -6,16 +6,6 @@
   :root {
     --base-font: calc(11px + 0.4vw);
     --frame: 2rem;
-    --bg: #181818;
-    --border: #444;
-    --text-primary: #b5b5b5;
-    --accent: #834bdb;
-    --hover-shadow: rgba(131, 75, 219, 0.75);
-    --bg-light: #e2e2e2;
-    --link: #b94afe;
-    --link-hover: rgb(199, 146, 234);
-    --link-visited: #834bdb;
-
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
 
     /* Syntax Highlighting */
@@ -28,6 +18,35 @@
     --sh-jsxliterals: #7aa2f7;
     --sh-keyword: #bb9af7;
     --sh-comment: #565f89;
+
+    /* Global Colors */
+    --accent: #834bdb;
+    --bg-dark: #181818;
+    --link-visited: #834bdb;
+  }
+
+  /* Light Theme Colors */
+  body {
+    --bg: #e2e2e2;
+    --bg-light: #e2e2e2;
+    --text-primary: #444;
+    --border: #b5b5b5;
+    --border-light: #d5d5d5;
+    --link: #b94afe;
+    --link-hover: #c792ea;
+    --hover-shadow: rgba(131, 75, 219, 0.1);
+  }
+
+  /* Dark Theme Colors */
+  body.dark {
+    --bg: #181818;
+    /* --bg-light: #181818; */
+    --text-primary: #b5b5b5;
+    --border: #555;
+    --border-light: #333;
+    --link: #c792ea;
+    --linkHover: #e0abff;
+    --hoverShadow: rgba(131, 75, 219, 0.75);
   }
 }
 
@@ -63,12 +82,12 @@ blockquote {
 }
 
 pre {
-  @apply mb-6 bg-transparent rounded-lg border border-border overflow-x-auto py-2 px-3 text-sm;
+  @apply mb-6 bg-bg-dark rounded-lg border border-border overflow-x-auto py-2 px-3 text-sm;
   scrollbar-color: var(--border) transparent;
 }
 
 pre::-webkit-scrollbar {
-  background-color: #333;
+  /* background-color: #333; */
   border-radius: 0.5rem;
 }
 
