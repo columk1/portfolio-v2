@@ -1,7 +1,9 @@
 import type { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'next-view-transitions'
 import type { MDXComponents } from 'mdx/types'
-import { highlight } from 'sugar-high'
+import { codeToHtml } from 'shiki'
+import { stripCodeTags } from './lib/utils/stripCodeTags'
+import { addCopyButton } from './lib/utils/addCopyButton'
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>
 type ParagraphProps = ComponentPropsWithoutRef<'p'>
@@ -51,10 +53,16 @@ const components: MDXComponents = {
       </a>
     )
   },
-  code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
-    const codeHTML = highlight(children as string)
-    // biome-ignore lint/security/noDangerouslySetInnerHtml: Single trusted author
-    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+  code: async ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
+    const lang = props.className ? props.className.split('-')[1] : 'text'
+    const codeHTML = await codeToHtml(children as string, {
+      lang,
+      themes: { light: 'github-light', dark: 'tokyo-night' },
+      transformers: [addCopyButton({ toggle: 2000 })],
+    })
+    // highlighter adds tags which we remove - next/mdx has already inserted pre/code tags
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted author
+    return <code dangerouslySetInnerHTML={{ __html: stripCodeTags(codeHTML) }} {...props} />
   },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>

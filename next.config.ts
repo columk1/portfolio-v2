@@ -2,6 +2,7 @@ import type { NextConfig } from 'next'
 import createMDX from '@next/mdx'
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'mdx'],
   experimental: {
     mdxRs: true,
