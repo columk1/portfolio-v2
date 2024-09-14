@@ -1,7 +1,7 @@
 'use client'
 
 import type { BlogPostData } from '@/lib/types'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { useState } from 'react'
 import { formatDateString } from '@/lib/utils/formatDateString'
 
