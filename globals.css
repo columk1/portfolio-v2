@@ -30,7 +30,7 @@
     --bg: #e2e2e2;
     --bg-offset: #dadada;
     --bg-light: #e2e2e2;
-    --pre-bg: var(--bg-offset);
+    --pre-bg: #f0f0f0;
     --pre-border: none;
     --text-primary: #444;
     --border: #b5b5b5;
@@ -170,7 +170,7 @@ pre button.copy {
     top: 50%;
     transform: translateY(-50%);
     background-color: var(--bg-offset); /* Background color for the message */
-    color: white; /* Text color */
+    color: inherit; /* Text color */
     padding: 4px 8px;
     border-radius: 4px; /* Rounded corners */
     font-size: 12px; /* Font size of the message */
