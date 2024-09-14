@@ -1,10 +1,22 @@
-// import dynamic from 'next/dynamic'
-import { getAllBlogPostsData } from '@/lib/getAllBlogPostsData'
 import SquaresIcon from '@/ui/icons/SquaresIcon'
 import { getBlogPostContent } from '@/lib/getBlogPostContent'
 import { formatDateString } from '@/lib/utils/formatDateString'
+import type { Metadata } from 'next/types'
 
 type BlogPageProps = { params: { slug: string } }
+
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { metadata } = await getBlogPostContent(params.slug)
+  return {
+    openGraph: {
+      title: `${metadata.title} | Colum Kelly`,
+      description: metadata.description,
+      type: 'article',
+      publishedTime: metadata.date,
+      authors: ['Colum'],
+    },
+  }
+}
 
 export default async function BlogPage({ params }: BlogPageProps) {
   const { metadata, BlogMarkdown } = await getBlogPostContent(params.slug)
@@ -36,12 +48,4 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </div>
     </>
   )
-}
-
-export async function generateStaticParams() {
-  const blogPosts = await getAllBlogPostsData()
-  const blogStaticParams = blogPosts.map((post) => ({
-    slug: post.slug,
-  }))
-  return blogStaticParams
 }
