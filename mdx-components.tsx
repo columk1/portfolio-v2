@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'next-view-transitions'
 import type { MDXComponents } from 'mdx/types'
-import { codeToHtml } from 'shiki'
 import { stripCodeTags } from './lib/utils/stripCodeTags'
 import { addCopyButton } from './lib/utils/addCopyButton'
+import highlighter from './lib/highlighter/highlighter'
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>
 type ParagraphProps = ComponentPropsWithoutRef<'p'>
@@ -55,9 +55,9 @@ const components: MDXComponents = {
   },
   code: async ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
     const lang = props.className ? props.className.split('-')[1] : 'text'
-    const codeHTML = await codeToHtml(children as string, {
+    const codeHTML = await highlighter.codeToHtml(children as string, {
       lang,
-      themes: { light: 'github-light', dark: 'tokyo-night' },
+      themes: { light: 'tokyo-night-light', dark: 'tokyo-night' },
       transformers: [addCopyButton({ toggle: 2000 })],
     })
     // highlighter adds tags which we remove - next/mdx has already inserted pre/code tags
