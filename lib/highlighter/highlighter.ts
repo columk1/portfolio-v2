@@ -16,7 +16,6 @@ const highlighter = await createHighlighter({
     'shell',
     'json',
     'python',
-    'SQL',
     'markdown',
     'ansi',
     'yaml',
