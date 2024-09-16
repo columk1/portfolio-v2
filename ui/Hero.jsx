@@ -7,9 +7,9 @@ import PointerIcon from '@/ui/icons/PointerIcon'
 
 const iconStyles = { width: '2.25rem', color: 'var(--text-primary)' }
 const svgContainerClasses =
-  'w-full aspect-[1] grid place-content-center border-t border-l border-r last:border-b border-purple-400'
+  'w-full aspect-[1] grid place-content-center border-t border-l border-r last:border-b border-accent'
 const svgContainerXLClasses =
-  'w-full aspect-[1/2] grid place-content-center border-t border-l border-r border-purple-400'
+  'w-full aspect-[1/2] grid place-content-center border-t border-l border-r border-accent'
 
 const Hero = () => {
   return (
@@ -40,10 +40,10 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className='height-full col-start-2 row-start-1 row-end-6 grid place-content-center border-purple-400 border-t border-r p-[min(6rem,6vw)] text-3xl'>
+        <div className='height-full col-start-2 row-start-1 row-end-6 grid place-content-center border-accent border-t border-r p-[min(6rem,6vw)] text-3xl'>
           <p>Hi, I&apos;m a full stack developer based in Squamish, British Columbia.</p>
         </div>
-        <div className='height-full relative col-start-2 row-start-6 border-purple-400 border-t border-r border-b'>
+        <div className='height-full relative col-start-2 row-start-6 border-accent border-t border-r border-b'>
           <PointerIcon
             styles={{
               width: '2.75rem',
