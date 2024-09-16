@@ -1,8 +1,8 @@
-import { getAllBlogPostsData } from '@/lib/getAllBlogPostsData'
+import { getBlogPostsData } from '@/lib/getBlogPostsData'
 import Posts from '@/ui/Posts'
 
 export default async function BlogPosts() {
-  const posts = await getAllBlogPostsData()
+  const posts = await getBlogPostsData()
 
   return (
     <div
