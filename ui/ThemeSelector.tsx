@@ -1,33 +1,28 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-const ThemeSelector = () => {
-  const [isDark, setIsDark] = useState(false)
+
+type Theme = 'light' | 'dark'
+
+const ThemeSelector = ({ initialValue }: { initialValue: Theme | undefined }) => {
+  const [theme, setTheme] = useState(initialValue)
 
   useEffect(() => {
-    if (isDark) {
-      document.body.classList.add('dark')
+    if (theme) {
+      document.cookie = `theme=${theme};path=/;`
+      document.body.classList.toggle('dark', theme === 'dark')
     } else {
-      document.body.classList.remove('dark')
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      setTheme(prefersDark ? 'dark' : 'light')
     }
-  }, [isDark])
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-
-    if (mq.matches) {
-      setIsDark(true)
-    }
-
-    mq.addEventListener('change', (e) => setIsDark(e.matches))
-  }, [])
+  }, [theme])
 
   return (
     <div className='-rotate-90 absolute bottom-[--frame] left-10 origin-bottom-left text-xs'>
       <ul className='flex gap-3'>
-        <button type='button' onClick={() => setIsDark(false)}>
+        <button type='button' onClick={() => setTheme('light')}>
           <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
-            {!isDark ? (
+            {theme === 'light' ? (
               <span className='pb-1 text-lg'>■</span>
             ) : (
               <span className='pb-1 text-lg'>□</span>
@@ -35,9 +30,9 @@ const ThemeSelector = () => {
             LIGHT
           </li>
         </button>
-        <button type='button' onClick={() => setIsDark(true)}>
+        <button type='button' onClick={() => setTheme('dark')}>
           <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
-            {isDark ? (
+            {theme === 'dark' ? (
               <span className='pb-1 text-lg'>■</span>
             ) : (
               <span className='pb-1 text-lg'>□</span>
