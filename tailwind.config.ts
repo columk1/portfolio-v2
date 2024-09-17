@@ -24,6 +24,7 @@ const config: Config = {
       colors: {
         bg: 'var(--bg)',
         'bg-dark': 'var(--bg-dark)',
+        bgAlpha: 'var(--bgAlpha)',
         border: 'var(--border)',
         'text-primary': 'var(--text-primary)',
         accent: 'var(--accent)',

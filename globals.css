@@ -7,6 +7,8 @@
     --base-font: calc(11px + 0.4vw);
     --frame: 2rem;
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
+    --bgLight: 226, 226, 226;
+    --bgDark: 24, 24, 24;
 
     /* Syntax Highlighting */
     --sh-class: #7aa2f7;
@@ -28,6 +30,8 @@
   /* Light Theme Colors */
   body {
     --bg: #e2e2e2;
+    --bgRGB: 226, 226, 226;
+    --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #dadada;
     --bg-light: #e2e2e2;
     --pre-bg: #f0f0f0;
@@ -45,6 +49,8 @@
   /* Dark Theme Colors */
   body.dark {
     --bg: #181818;
+    --bgRGB: 24, 24, 24;
+    --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #282828;
     --pre-bg: var(--bg);
     --pre-border: 1px solid var(--border);
@@ -65,6 +71,9 @@
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
+}
+
+header {
 }
 
 @layer utilities {

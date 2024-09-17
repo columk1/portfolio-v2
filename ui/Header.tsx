@@ -9,7 +9,7 @@ const Header = ({ links }: { links: NavItem[] }) => {
   const pathname = usePathname()
   return (
     <>
-      <header className='relative z-10 flex min-h-11 w-full items-baseline justify-between border-border border-b bg-transparent px-5 pt-2 xl:fixed xl:w-[calc(100%-calc(4px+var(--frame)*2))] xl:border-none'>
+      <header className='fixed z-10 flex min-h-11 w-[calc(100%-calc(4px+var(--frame)*2))] items-baseline justify-between border-border border-b bg-bgAlpha px-5 pt-2 backdrop-blur-sm xl:border-none xl:backdrop-blur-none'>
         <Link
           href='/'
           className={`font-light hover:font-normal ${
