@@ -6,14 +6,16 @@ export async function GET(request: Request) {
 
   return new ImageResponse(
     (
-      <div tw='flex w-full h-full items-center justify-center bg-[#181818]'>
-        <div tw='flex w-full py-12 px-4 md:items-center p-8'>
-          <div tw='flex mr-14'>
-            <div tw='absolute left-2 top--4 w-8 h-8 mr-4 border border-[#834bdb]' />
-            <div tw='absolute left-1 top--3 w-8 h-8 mr-4 border border-[#834bdb]' />
-            <div tw='absolute top--2 w-8 h-8 border border-[#834bdb]' />
+      <div tw='flex w-full h-full p-8 items-center justify-center text-[#b5b5b5] bg-[#181818]'>
+        <div tw='flex w-full h-full border border-[#834bdb]'>
+          <div tw='flex items-center justify-center w-full py-12 px-8'>
+            <div tw='flex mr-14'>
+              <div tw='absolute left-2 top--4 w-8 h-8 mr-4 border border-[#834bdb]' />
+              <div tw='absolute left-1 top--3 w-8 h-8 mr-4 border border-[#834bdb]' />
+              <div tw='absolute top--2 w-8 h-8 border border-[#834bdb]' />
+            </div>
+            <h2 tw='flex text-4xl font-bold tracking-tight text-left'>{title}</h2>
           </div>
-          <h2 tw='flex text-4xl font-bold tracking-tight text-left text-[#b5b5b5]'>{title}</h2>
         </div>
       </div>
     ),
