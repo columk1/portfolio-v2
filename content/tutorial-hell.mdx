@@ -13,7 +13,7 @@ By late February, I was almost finished with The Odin Project. Having completed 
 Yet, a sense of weariness was creeping in. I had spent months developing apps that had no users. I received a handful of nice messages whenever I shared my work, and a few of my games' leaderboards had filled up, but I still didn't feel like I was making anything useful.
 
 ![Leaderboard](https://res.cloudinary.com/dsrekt1mo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1711483533/Screenshot_2024-03-26_at_1.00.24_PM_f5704e_cccqmg.jpg?_s=public-apps)
-*The current leaderboard of my "Where's Alex Honnold" photo tagging app...*
+_The current leaderboard of my "Where's Alex Honnold" photo tagging app..._
 
 The one exception was this blog. It was immensely satisfying to make something that I would actually be using. Yet, here I was again, faced with the prospect of spending the next couple of months making clones of social apps with no users. Furthermore, I found myself craving exposure to more opinionated code, having had limited exposure to other developers' processes beyond reading documentation.
 
@@ -25,8 +25,8 @@ The course also encourages the use of Node, Express, and MongoDB for back-end de
 
 The tutorial I chose was called **Real-Time Messenger Clone: Next.js 13, React, Tailwind, Prisma, MongoDB, NextAuth, Pusher (2023)** by [AntonioErdeljac](https://github.com/AntonioErdeljac). You can view his original repo [here](https://github.com/AntonioErdeljac/next13-messenger). It's a fairly simple application that allows anyone who signs up to message anyone else with an account. Conversations are updated in realtime for all users.
 
-![Full Stack Messenger Clone](https://www.codewithantonio.com/_next/image?url=https%3A%2F%2Futfs.io%2Ff%2Fe263eba0-1fd5-411d-b407-fc73e1d1be5a-jrwdgh.jpg&w=3840&q=75)
-*The tutorial I chose to follow*
+![Full Stack Messenger Clone](https://res.cloudinary.com/dsrekt1mo/image/upload/w_1000/q_auto/Messenger_Clone_Antonio_rumcoy.jpg)
+_The tutorial I chose to follow_
 
 Before starting, I spent a few days going through the Next.js docs and working through some of their example projects. Once I was familiar with the folder structure and patterns, I began coding along with the tutorial. In the spirit of changing things up, I made a few design choices along the way, opting to use a serverless Postgres database instead of the MongoDb instance used in the tutorial. I also chose to create some of my own custom solutions where libraries had been used. Furthermore, I updated Next.js to version 14, and most of the libraries to their latest versions, making changes where needed. When I finished the tutorial I had a working real-time chat app and a list of issues to fix and features to implement. I began to work through them one by one.
 
@@ -35,7 +35,7 @@ Before starting, I spent a few days going through the Next.js docs and working t
 This project had a lot of issues. For starters the author placed his Pusher cluster in Europe and his MongoDB cluster in North America! It was easy to spot and correct errors like this one as I coded along. However, there were many others that I had to take note of for later review and correction. I had logged a total of 60 issues when I reached the end of the tutorial. These ranged from accessibility issues and problems with the UI/UX to issues of security and privacy. In terms of performance, there were too many round-trips to the db, lots of unnecessary re-renders and the same data was being repeatedly fetched by several components.
 
 ![Pusher Cluster Location](https://res.cloudinary.com/dsrekt1mo/image/upload/v1711485331/Pusher_Screenshot_xmp8ub.png)
-*A far cry from Virginia*
+_A far cry from Virginia_
 
 ## The Fun Begins... with Security
 
@@ -85,13 +85,14 @@ I also made sure to protect all routes except for `/login` and `/register`. The 
 ```js
 export const config = {
   matcher: [
-    '/contacts/:path*', 
-    '/conversations/:path*', 
+    '/contacts/:path*',
+    '/conversations/:path*',
     '/settings/:path*',
-    '/api/!(register)/:path*' // This line excludes /api/register
+    '/api/!(register)/:path*', // This line excludes /api/register
   ],
 }
 ```
+
 In this path matcher, `!(register)` inside the parentheses is a negative lookahead, meaning it matches any string that is not "register". `So, /api/!(register)/:path*` will match any path under `/api/` except `/api/register`.
 
 ### Performance
@@ -105,7 +106,7 @@ async jwt({ token, trigger, session, user }) {
         const validatedSession = SessionUserSchema.safeParse(session.user)
         if (validatedSession.success) {
           const { name, image } = validatedSession.data
-          return { ...token, name, picture: image } 
+          return { ...token, name, picture: image }
         }
       }
     ...
@@ -117,36 +118,39 @@ I continued to add many other performance improvements. These included combining
 Here's an example of a client hook that was used in seven different places. Each time a hook like this is used it causes the tree of components below it to be rendered on the client.
 
 ```ts
-import { useParams } from "next/navigation";
-import { useMemo } from "react";
+import { useParams } from 'next/navigation'
+import { useMemo } from 'react'
 
 const useConversation = () => {
-  const params = useParams();
+  const params = useParams()
 
   const conversationId = useMemo(() => {
     if (!params?.conversationId) {
-      return '';
+      return ''
     }
 
-    return params.conversationId as string;
-  }, [params?.conversationId]);
+    return params.conversationId as string
+  }, [params?.conversationId])
 
-  const isOpen = useMemo(() => !!conversationId, [conversationId]);
+  const isOpen = useMemo(() => !!conversationId, [conversationId])
 
-  return useMemo(() => ({
-    isOpen,
-    conversationId
-  }), [isOpen, conversationId]);
-};
+  return useMemo(
+    () => ({
+      isOpen,
+      conversationId,
+    }),
+    [isOpen, conversationId]
+  )
+}
 
-export default useConversation;
+export default useConversation
 ```
 
 ### UX
 
-The application was missing a few key things and the user flow had issues. I built out the sparse error handling that existed and created error pages and various methods to display errors from the server, including more detailed client and server-side validation of forms. I created loading states and loading pages. Originally there was just one loading modal from a library that disabled the screen. I replaced this with a lightweight SVG. I then developed fallback components and structured pages to exclusively trigger loading states within dynamic sections, facilitating efficient caching and static rendering for the bulk of each page.  Combined with earlier improvements to state management, these modifications notably decreased loading times and ensured a greater portion of the application remained operational during component loading phases.
+The application was missing a few key things and the user flow had issues. I built out the sparse error handling that existed and created error pages and various methods to display errors from the server, including more detailed client and server-side validation of forms. I created loading states and loading pages. Originally there was just one loading modal from a library that disabled the screen. I replaced this with a lightweight SVG. I then developed fallback components and structured pages to exclusively trigger loading states within dynamic sections, facilitating efficient caching and static rendering for the bulk of each page. Combined with earlier improvements to state management, these modifications notably decreased loading times and ensured a greater portion of the application remained operational during component loading phases.
 
-As I progressed through my list, I fixed many small issues related to the routing and sorting behaviour of the conversations list and conversations page. This improved behaviour during the creation, updating, and deletion of conversations.  I split the existing auth route into separate `/login` and `/register` routes to support external links and built settings pages with multiple routes instead of relying on a modal that was only accessible on large screens. I also added image placeholders to prevent layout shift.
+As I progressed through my list, I fixed many small issues related to the routing and sorting behaviour of the conversations list and conversations page. This improved behaviour during the creation, updating, and deletion of conversations. I split the existing auth route into separate `/login` and `/register` routes to support external links and built settings pages with multiple routes instead of relying on a modal that was only accessible on large screens. I also added image placeholders to prevent layout shift.
 
 ### Accessibility
 
@@ -159,7 +163,7 @@ After fixing the most pressing issues, I added some new features on top of the c
 I created a contact list feature and an interface to search from all users and to add or remove them from contacts, with a toggle button for editing mode to show or hide the buttons when needed. I also redesigned the UI, making significant changes to the overall theme of the application and smaller changes to the appearance wherever I saw fit.
 
 ![Screenshot of the finished messaging interface](https://res.cloudinary.com/dsrekt1mo/image/upload/v1711495806/conversation_fcnglt.png)
-*The finished product. You can view the live site [here](https://messaging-app-azure.vercel.app/).*
+_The finished product. You can view the live site [here](https://messaging-app-azure.vercel.app/)._
 
 ### Final Touches
 
@@ -177,6 +181,6 @@ Regarding The Odin Project, I consider the real-time messaging app done, but I w
 
 That leaves just one project left - the Facebook clone. Honestly, I'm not even sure if I need to go there. A lot of the patterns and lessons learned from this project would transfer over. While diving into it could be interesting, at this point, I'm more inclined to pursue personal projects and open-source commitments. I'm no longer fixated on achieving absolute completion. Investing time in creating something practical will be more rewarding. Besides, I can always come back to it if I feel like my portfolio needs it. In any case, the learning never stops.
 
-#  
+#
 
-*For anyone interested, I have a more complete list of changes from the original repo [here](https://github.com/columk1/messaging-app/blob/main/CHANGELOG.md).*
+_For anyone interested, I have a more complete list of changes from the original repo [here](https://github.com/columk1/messaging-app/blob/main/CHANGELOG.md)._
