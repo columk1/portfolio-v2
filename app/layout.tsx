@@ -7,6 +7,7 @@ import { IBM_Plex_Mono, Montserrat, Work_Sans, Roboto } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
 import type { Metadata } from 'next/types'
 import { cookies } from 'next/headers'
+import { baseUrl } from '@/lib/config'
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['300', '400', '600'],
@@ -22,7 +23,7 @@ const montserrat = Montserrat({
 const roboto = Roboto({ weight: '500', subsets: ['latin'], variable: '--font-body' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http:localhost:3000'),
+  metadataBase: new URL(baseUrl),
   title: {
     default: 'Colum Kelly',
     template: '%s | Colum Kelly',

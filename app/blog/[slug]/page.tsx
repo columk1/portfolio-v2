@@ -3,10 +3,9 @@ import { getBlogPostContent } from '@/lib/getBlogPostContent'
 import { formatDateString } from '@/lib/utils/formatDateString'
 import type { Metadata } from 'next/types'
 import type { PostMetadata } from '@/lib/types'
+import { baseUrl } from '@/lib/config'
 
 type BlogPageProps = { params: { slug: string } }
-
-const baseUrl = 'http://localhost:3000'
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { metadata } = await getBlogPostContent(params.slug)
