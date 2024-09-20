@@ -1,7 +1,8 @@
 import Project from '@/ui/Project'
-import projects from '@/lib/data/projects'
 
-const Projects = () => {
+import type { Project as ProjectType } from '@/lib/data/projects'
+
+const Projects = ({ projects }: { projects: ProjectType[] }) => {
   return (
     <section id='projects' className='mt-11 px-[6vw] py-12'>
       <div className='flex max-w-[970px] flex-col justify-between'>

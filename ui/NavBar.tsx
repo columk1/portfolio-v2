@@ -1,4 +1,3 @@
-// import Link from 'next/link'
 import { Link } from 'next-view-transitions'
 
 import type { NavItem } from '@/lib/types'

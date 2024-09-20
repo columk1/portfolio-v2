@@ -1,5 +1,5 @@
 import { getBlogPostsData } from '@/lib/getBlogPostsData'
-import Posts from '@/ui/Posts'
+import Posts from '@/ui/Posts/Posts'
 
 export default async function BlogPosts() {
   const posts = await getBlogPostsData()

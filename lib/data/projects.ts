@@ -1,4 +1,13 @@
-const projects = [
+export type Project = {
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  liveUrl: string
+  githubUrl: string
+}
+
+const projects: Project[] = [
   {
     title: 'File Uploader',
     description:
