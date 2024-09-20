@@ -1,0 +1,1653 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Projects Component > renders correctly 1`] = `
+<div>
+  <section
+    class="mt-11 px-[6vw] py-12"
+    id="projects"
+  >
+    <div
+      class="flex max-w-[970px] flex-col justify-between"
+    >
+      <h2
+        class="mx-6 mt-4 font-light font-sans text-4xl"
+      >
+        Projects
+      </h2>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://columk-file-uploader.adaptable.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="File Uploader"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Ffile-uploader.png&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Ffile-uploader.png&w=828&q=75 1x, /_next/image?url=%2Fimages%2Ffile-uploader.png&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            File Uploader
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A cloud storage application for file management and sharing. Built with Typescript, Express, EJS and Web Components. Features a modular architecture with various performance and security optimizations.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Typescript
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Node
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Express
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                EJS
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                PostgreSQL
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Docker
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://columk-file-uploader.adaptable.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/file-uploader"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://messaging-app-azure.vercel.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Messaging App"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fmessaging-app.jpg&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fmessaging-app.jpg&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fmessaging-app.jpg&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Messaging App
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A real-time messaging app built with Next.js using React, Tailwind, Prisma, Postgres, NextAuth and Pusher. Although initially modelled on a tutorial with a slightly different stack, I spent a few weeks addressing issues, improving privacy, security and performance, replacing dependencies and adding new features of my own.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                NextJS
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Typescript
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Prisma
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Postgres
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Tailwind
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://messaging-app-azure.vercel.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/messaging-app"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://cms.columkelly.com/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Blog API"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fblog-cms.png&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fblog-cms.png&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fblog-cms.png&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Blog API
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A REST API for my personal blog using Node, Express and MongoDB. I built a simple CMS to interact with the API using React and Tailwind. It includes a markdown previewer with syntax highlighting. Authentication is handled using JWTs via access and refresh tokens stored in HTTP-only cookies.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Node
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Express
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                MongoDB
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                React
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Tailwind
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://cms.columkelly.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/blog-api"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://chieflap.vercel.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Paragliding Dashboard"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fdashboard.png&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fdashboard.png&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fdashboard.png&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Paragliding Dashboard
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A weather dashboard for local paragliding pilots. Features a scrollable dynamic wind graph, displays for multiple weather APIs, an interactive UI for viewing windgrams and a live camera feed of the local mountain.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Typescript
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                React
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                NextJS
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Recharts
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://chieflap.vercel.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/wx-dashboard/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://wheres-honnold.netlify.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Where's Alex Honnold?"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fwheres-honnold.jpg&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fwheres-honnold.jpg&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fwheres-honnold.jpg&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Where's Alex Honnold?
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A hidden object puzzle for climbers. (Think Where's Wally on El Cap). Players are timed as they search a draggable high-resolution image for famous rock features.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                React
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Firebase
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Vite
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://wheres-honnold.netlify.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/wheres-alex-honnold"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://odin-cv-generator.netlify.app"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="CV Generator"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fcv-generator.jpg%3Furl&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fcv-generator.jpg%3Furl&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fcv-generator.jpg%3Furl&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            CV Generator
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A React CV Generator. Users can add additional sections for experience, education, or their own custom sections. A print preview is updated live and can be saved as a PDF.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                React
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                PostCSS
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Vite
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://odin-cv-generator.netlify.app"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/cv-application"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://top-battleship.netlify.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Battleship"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fbattleship.png&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fbattleship.png&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fbattleship.png&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Battleship
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            An MVC battleship game in Vanilla JS, developed using TDD and built with Webpack. Drag and drop to position ships. Computer opponent uses a hunt and target algorithm.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Javascript
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                HTML
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                CSS
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Webpack
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://top-battleship.netlify.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/battleship"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://columk-memory-card.netlify.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Memory Game"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fmemory-game.jpg&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fmemory-game.jpg&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fmemory-game.jpg&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Memory Game
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A memory game built in React. Players are scored based on speed and accuracy.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                React
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Vite
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://columk-memory-card.netlify.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/memory-card"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://odin-members-only.adaptable.app"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Members Only"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fmembers-only.jpg&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fmembers-only.jpg&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fmembers-only.jpg&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Members Only
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            An SSR message board app using Node, Express and MongoDB. Uses EJS for templating and PassportJS for authentication using session cookies.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Node
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Express
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                MongoDB
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                EJS
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                PassportJS
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://odin-members-only.adaptable.app"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/members-only"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-[1fr] items-center gap-8 px-10 py-8 lg:grid-cols-[2fr_3fr] lg:gap-12"
+      >
+        <div
+          class="img-container w-full motion-safe:animate-from-left"
+        >
+          <a
+            href="https://pixel-pad.netlify.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Pixel Pad"
+              class="block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in"
+              data-nimg="1"
+              decoding="async"
+              height="600"
+              loading="lazy"
+              src="/_next/image?url=%2Fimages%2Fpixel-pad.png&w=1920&q=75"
+              srcset="/_next/image?url=%2Fimages%2Fpixel-pad.png&w=828&q=75 1x, /_next/image?url=%2Fimages%2Fpixel-pad.png&w=1920&q=75 2x"
+              style="color: transparent;"
+              width="800"
+            />
+          </a>
+        </div>
+        <div
+          class="flex flex-col justify-between gap-4 text-right"
+        >
+          <h3
+            class="project-title ml-16 border-text-primary border-b-8 text-3xl leading-10"
+          >
+            Pixel Pad
+          </h3>
+          <p
+            class="project-description font-light text-sm"
+          >
+            A pixel art tool in vanilla JS. One of my first web projects.
+          </p>
+          <div
+            class="tags"
+          >
+            <ul
+              class="flex flex-wrap justify-end gap-4"
+            >
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                Javascript
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                HTML
+              </li>
+              <li
+                class="bg-accent px-2 py-0.5 font-bold text-[#eee] text-sm"
+              >
+                CSS
+              </li>
+            </ul>
+          </div>
+          <div
+            class="links flex items-center justify-end gap-2"
+          >
+            <a
+              aria-label="Live Website Link"
+              class="hover:scale-105"
+              href="https://pixel-pad.netlify.app/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                data-name="external-link"
+                id="external-link"
+                viewBox="0 0 27 27"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Link Icon
+                </title>
+                <defs>
+                  <style>
+                    .cls-1 {
+        fill: var(--text-primary);
+        stroke-width: 0px;
+      }
+                  </style>
+                </defs>
+                <g
+                  id="external-link"
+                >
+                  <g>
+                    <polygon
+                      class="cls-1"
+                      points="22.94 27 0 27 0 4.07 10.53 4.07 10.53 6.99 2.92 6.99 2.92 24.08 20.01 24.08 20.01 16.78 22.94 16.78 22.94 27"
+                    />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(.43 15.99) rotate(-45)"
+                        width="16.58"
+                        x="11.23"
+                        y="6.02"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        transform="translate(-3.95 14.18) rotate(-45)"
+                        width="16.58"
+                        x="6.85"
+                        y="10.4"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="2.92"
+                        width="11.57"
+                        x="14.91"
+                        y="0"
+                      />
+                      <rect
+                        class="cls-1"
+                        height="12.09"
+                        width="2.92"
+                        x="24.08"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a
+              aria-label="Github Repo"
+              class="hover:scale-105"
+              href="https://github.com/columk1/pixel-pad"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                viewBox="0 0 98 96"
+                width="27"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Github Icon
+                </title>
+                <path
+                  clip-rule="evenodd"
+                  d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                  fill="var(--text-primary)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="h-9"
+      />
+    </div>
+  </section>
+</div>
+`;
