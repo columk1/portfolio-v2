@@ -18,14 +18,14 @@ const ThemeSelector = ({ initialValue }: { initialValue: Theme | undefined }) =>
   }, [theme])
 
   return (
-    <div className='-rotate-90 absolute bottom-[--frame] left-10 origin-bottom-left text-xs'>
+    <div className='-rotate-90 absolute bottom-[--frame] left-[2.65rem] origin-bottom-left text-xs'>
       <ul className='flex gap-3'>
         <button type='button' onClick={() => setTheme('light')}>
           <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
             {theme === 'light' ? (
-              <span className='pb-1 text-lg'>■</span>
+              <span className='pb-1 text-base leading-7'>■</span>
             ) : (
-              <span className='pb-1 text-lg'>□</span>
+              <span className='pb-1 text-base leading-7'>□</span>
             )}
             LIGHT
           </li>
@@ -33,9 +33,9 @@ const ThemeSelector = ({ initialValue }: { initialValue: Theme | undefined }) =>
         <button type='button' onClick={() => setTheme('dark')}>
           <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
             {theme === 'dark' ? (
-              <span className='pb-1 text-lg'>■</span>
+              <span className='pb-1 text-base leading-7'>■</span>
             ) : (
-              <span className='pb-1 text-lg'>□</span>
+              <span className='pb-1 text-base leading-7'>□</span>
             )}
             DARK
           </li>

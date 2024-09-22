@@ -12,7 +12,7 @@ const NavBar = ({ links }: { links: NavItem[] }) => {
           <li key={link.title}>
             <Link
               href={link.route}
-              className={`font-light hover:font-normal ${
+              className={`font-thin hover:font-light ${
                 pathname === link.route && 'border-text-primary border-b-4'
               }`}
             >

@@ -13,8 +13,8 @@ const svgContainerXLClasses =
 
 const Hero = () => {
   return (
-    <section className='min-h[calc(100svh-8rem-2px)] mt-0 flex justify-center bg-bg align-center font-light font-sans xl:mt-20'>
-      <div className='grid max-w-[970px] flex-1 grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-8 text-text-primary'>
+    <section className='mt-8 flex min-h-[calc(100vh-(2*var(--frame)))] items-center justify-center bg-bg font-light font-sans'>
+      <div className='grid max-w-[970px] grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-10 text-text-primary'>
         <div className='col-start-1 row-span-full'>
           <div className={svgContainerClasses}>
             <GlobeIcon styles={iconStyles} />
@@ -52,12 +52,12 @@ const Hero = () => {
             }}
           />
         </div>
-        <div className='col-span-2 mt-1 flex justify-end gap-3 font-light font-mono'>
+        <div className='col-span-2 flex justify-end gap-3 py-1 font-mono font-thin'>
           <a
             href='https://github.com/columk1'
             target='_blank'
             rel='noreferrer'
-            className='hover:font-normal'
+            className='hover:font-light'
           >
             Github
           </a>
@@ -65,7 +65,7 @@ const Hero = () => {
             href='mailto:"columk1+website@gmail.com'
             target='_blank'
             rel='noreferrer'
-            className='hover:font-normal'
+            className='hover:font-light'
           >
             Email
           </a>

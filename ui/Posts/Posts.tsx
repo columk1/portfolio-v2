@@ -39,7 +39,7 @@ const Posts = ({ posts }: { posts: BlogPostData[] }) => {
             .filter(({ metadata }) => filter === 'All' || metadata.tags.includes(filter))
             .map((post) => (
               <Link
-                className='hover:font-normal'
+                className='hover:font-light'
                 key={post.metadata.title}
                 prefetch={false}
                 href={`/blog/${post.slug}`}

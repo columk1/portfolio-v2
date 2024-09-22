@@ -10,7 +10,7 @@ import { cookies } from 'next/headers'
 import { baseUrl } from '@/lib/config'
 
 const ibmPlexMono = IBM_Plex_Mono({
-  weight: ['300', '400', '600'],
+  weight: ['200', '300', '400'],
   subsets: ['latin'],
   variable: '--font-mono',
 })
@@ -54,9 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 { title: 'Blog', route: '/blog' },
               ]}
             />
-            <main className='scrollbar max-h-screen max-w-[100vw] overflow-y-scroll'>
-              {children}
-            </main>
+            <main className='scrollbar max-w-[100vw] overflow-y-scroll'>{children}</main>
             <Footer />
             <ThemeSelector initialValue={theme?.value as 'light' | 'dark'} />
           </div>
