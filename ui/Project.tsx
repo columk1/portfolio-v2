@@ -3,7 +3,13 @@ import LinkIcon from '@/ui/icons/LinkIcon'
 import Image from 'next/image'
 import type { Project as ProjectType } from '@/lib/data/projects'
 
-const Project = ({ project }: { project: ProjectType }) => {
+const Project = ({
+  project,
+  preloadImage = false,
+}: {
+  project: ProjectType
+  preloadImage: boolean
+}) => {
   const { title, description, image, tags, liveUrl, githubUrl } = project
 
   const iconStyles = { color: 'var(--text-primary)', width: '27' }
@@ -18,6 +24,8 @@ const Project = ({ project }: { project: ProjectType }) => {
             height={600}
             alt={title}
             className='block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in'
+            priority={preloadImage}
+            loading={preloadImage ? 'eager' : 'lazy'}
           />
         </a>
       </div>
