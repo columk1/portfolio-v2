@@ -1,9 +1,10 @@
-import { createHighlighter } from 'shiki'
-import fs from 'node:fs'
+import { createHighlighter, type ThemeRegistrationResolved } from 'shiki'
+import tokyoNightLight from './tokyo-night-light.json'
+// import fs from 'node:fs'
 
-const tokyoNightLight = JSON.parse(
-  fs.readFileSync('./lib/highlighter/tokyo-night-light.json', 'utf8')
-)
+// const tokyoNightLight = JSON.parse(
+//   fs.readFileSync('./lib/highlighter/tokyo-night-light.json', 'utf8')
+// )
 
 const highlighter = await createHighlighter({
   langs: [
@@ -22,6 +23,7 @@ const highlighter = await createHighlighter({
   ],
   themes: ['tokyo-night'],
 })
-await highlighter.loadTheme(tokyoNightLight)
+
+await highlighter.loadTheme(tokyoNightLight as unknown as ThemeRegistrationResolved)
 
 export default highlighter
