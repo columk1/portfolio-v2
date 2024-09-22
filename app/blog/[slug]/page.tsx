@@ -4,6 +4,7 @@ import { formatDateString } from '@/lib/utils/formatDateString'
 import type { Metadata } from 'next/types'
 import type { PostMetadata } from '@/lib/types'
 import { baseUrl } from '@/lib/config'
+import { getBlogPostsData } from '@/lib/getBlogPostsData'
 
 type BlogPageProps = { params: { slug: string } }
 
@@ -86,4 +87,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </div>
     </>
   )
+}
+
+export async function generateStaticParams() {
+  const postsData = await getBlogPostsData()
+  return postsData.map((post) => ({ slug: post.slug }))
 }
