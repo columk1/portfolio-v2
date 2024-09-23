@@ -2,14 +2,21 @@ import SquaresIcon from '@/ui/icons/SquaresIcon'
 import { getBlogPostContent } from '@/lib/getBlogPostContent'
 import { formatDateString } from '@/lib/utils/formatDateString'
 import type { Metadata } from 'next/types'
-import type { PostMetadata } from '@/lib/types'
+import type { BlogPostContent, PostMetadata } from '@/lib/types'
 import { baseUrl } from '@/lib/config'
 import { getBlogPostsData } from '@/lib/getBlogPostsData'
+import { cache } from 'react'
 
 type BlogPageProps = { params: { slug: string } }
 
+const getCachedBlogPostContent = cache(async function getCachedBlogPostContent(
+  slug: string
+): Promise<BlogPostContent> {
+  return await getBlogPostContent(slug)
+})
+
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const { metadata } = await getBlogPostContent(params.slug)
+  const { metadata } = await getCachedBlogPostContent(params.slug)
   const { title, description, date } = metadata
   const ogUrl = `${baseUrl}/api/og?title=${encodeURIComponent(title)}`
 
@@ -52,7 +59,7 @@ function generateJsonLd(metadata: PostMetadata, slug: string) {
 
 export default async function BlogPage({ params }: BlogPageProps) {
   // const BlogMarkdown = dynamic(() => import(`@/content/${params.slug}.mdx`))
-  const { metadata, BlogMarkdown } = await getBlogPostContent(params.slug)
+  const { metadata, BlogMarkdown } = await getCachedBlogPostContent(params.slug)
   const jsonLd = generateJsonLd(metadata, params.slug)
 
   return (
