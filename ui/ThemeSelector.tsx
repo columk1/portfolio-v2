@@ -1,15 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { setThemeCookie } from '@/app/actions'
 
-type Theme = 'light' | 'dark'
+type Theme = 'light' | 'dark' | null
 
-const ThemeSelector = ({ initialValue }: { initialValue: Theme | undefined }) => {
-  const [theme, setTheme] = useState(initialValue)
+const ThemeSelector = ({ initialValue }: { initialValue: Theme }) => {
+  const [theme, setTheme] = useState<Theme>(initialValue)
 
   useEffect(() => {
     if (theme) {
-      document.cookie = `theme=${theme};path=/;`
+      setThemeCookie(theme)
       document.body.classList.toggle('dark', theme === 'dark')
     } else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches

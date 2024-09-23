@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const cookieStore = cookies()
-  const theme = cookieStore.get('theme')
+  const theme = cookieStore.get('theme')?.value
 
   return (
     <ViewTransitions>
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <body
           className={`${
-            theme?.value === 'dark' && 'dark'
+            theme ? theme : ''
           } mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary transition-colors duration-[1500]`}
         >
           <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border'>
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             />
             <main className='scrollbar max-w-[100vw] overflow-y-scroll'>{children}</main>
             <Footer />
-            <ThemeSelector initialValue={theme?.value as 'light' | 'dark'} />
+            <ThemeSelector initialValue={(theme as 'light' | 'dark') || null} />
           </div>
         </body>
       </html>
