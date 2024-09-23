@@ -4,6 +4,7 @@ import type { Dirent } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import { getBlogPostMetadata } from './getBlogPostMetadata'
 import type { BlogPostData } from './types'
+import path from 'node:path'
 
 const isMDXFile = (dirent: Dirent) => !dirent.isDirectory() && dirent.name.endsWith('.mdx')
 // const isDirectory = (dirent: Dirent) => dirent.isDirectory()
@@ -12,7 +13,9 @@ const isMDXFile = (dirent: Dirent) => !dirent.isDirectory() && dirent.name.endsW
 
 export async function getBlogPostsData(): Promise<BlogPostData[]> {
   try {
-    const dirents = await readdir('content', { withFileTypes: true })
+    const contentDir = path.join(process.cwd(), 'content')
+    console.log(contentDir)
+    const dirents = await readdir(contentDir, { withFileTypes: true })
 
     const slugs = dirents
       .filter(isMDXFile)

@@ -1,6 +1,8 @@
 import { getBlogPostsData } from '@/lib/getBlogPostsData'
 import Posts from '@/ui/Posts/Posts'
 
+// export const dynamic = 'force-static'
+
 export default async function BlogPosts() {
   const posts = await getBlogPostsData()
 
