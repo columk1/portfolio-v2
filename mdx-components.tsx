@@ -4,6 +4,7 @@ import type { MDXComponents } from 'mdx/types'
 import { stripCodeTags } from './lib/utils/stripCodeTags'
 import { addCopyButton } from './lib/utils/addCopyButton'
 import highlighter from './lib/highlighter/highlighter'
+import Image from 'next/image'
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>
 type ParagraphProps = ComponentPropsWithoutRef<'p'>
@@ -91,10 +92,13 @@ const components: MDXComponents = {
     <blockquote className='ml-2 border-l-4 bg-neutral-800 pl-5 font-normal italic' {...props} />
   ),
   img: (props: ImageProps) => (
-    // biome-ignore lint/a11y/useAltText: Alt text provided in markdown
-    <img
+    <Image
       className='mx-auto block max-w-[min(100%,400px)] rounded-md bg-bg-light xl:max-w-100%'
+      src={props.src as string}
+      alt={props.alt || ''}
       {...props}
+      width={(props.width as number) || 800}
+      height={(props.height as number) || 800}
     />
   ),
 }

@@ -15,6 +15,7 @@ const NavBar = ({ links }: { links: NavItem[] }) => {
               className={`font-thin hover:font-light ${
                 pathname === link.route && 'border-text-primary border-b-4'
               }`}
+              prefetch={true}
             >
               {link.title}
             </Link>

@@ -41,7 +41,7 @@ const Posts = ({ posts }: { posts: BlogPostData[] }) => {
               <Link
                 className='hover:font-light'
                 key={post.metadata.title}
-                prefetch={false}
+                prefetch={true}
                 href={`/blog/${post.slug}`}
               >
                 <div className='flex w-full items-baseline justify-between gap-2'>
