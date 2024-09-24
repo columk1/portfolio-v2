@@ -5,19 +5,25 @@ import { setThemeCookie } from '@/app/actions'
 
 type Theme = 'light' | 'dark'
 
-const ThemeSelector = ({ initialValue }: { initialValue: Theme }) => {
-  const [theme, setTheme] = useState<Theme>(initialValue)
+const ThemeSelector = ({ initialValue }: { initialValue: Theme | null }) => {
+  const [theme, setTheme] = useState<Theme | null>(initialValue)
 
   const handleThemeChange = useCallback((theme: Theme) => {
     setTheme(theme)
     setThemeCookie(theme)
-    document.body.classList.toggle('dark', theme === 'dark')
+    document.documentElement.classList.toggle('dark', theme === 'dark')
   }, [])
 
   useEffect(() => {
     if (!theme) {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      handleThemeChange(prefersDark ? 'dark' : 'light')
+      if (document.cookie.includes('theme=dark')) {
+        setTheme('dark')
+      } else if (document.cookie.includes('theme=light')) {
+        setTheme('light')
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        handleThemeChange(prefersDark ? 'dark' : 'light')
+      }
     }
   }, [theme, handleThemeChange])
 

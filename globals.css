@@ -28,7 +28,7 @@
   }
 
   /* Light Theme Colors */
-  body {
+  html {
     --bg: #e2e2e2;
     --bgRGB: 226, 226, 226;
     --bgAlpha: rgba(var(--bgRGB), 0.75);
@@ -47,7 +47,7 @@
   }
 
   /* Dark Theme Colors */
-  body.dark {
+  html.dark {
     --bg: #181818;
     --bgRGB: 24, 24, 24;
     --bgAlpha: rgba(var(--bgRGB), 0.75);
@@ -63,7 +63,7 @@
     --hoverShadow: rgba(131, 75, 219, 0.75);
   }
 
-  body.dark code span {
+  html.dark code span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
     /* Optional, if you also want font styles */

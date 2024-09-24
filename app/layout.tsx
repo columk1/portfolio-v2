@@ -1,5 +1,5 @@
 import '@/globals.css'
-import type { ReactNode } from 'react'
+import { useMemo, type ReactNode } from 'react'
 import ThemeSelector from '@/ui/ThemeSelector'
 import Footer from '@/ui/Footer'
 import Header from '@/ui/Header'
@@ -32,9 +32,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const cookieStore = cookies()
-  const theme = cookieStore.get('theme')?.value
-
   return (
     <ViewTransitions>
       <html
@@ -43,10 +40,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`text-base ${montserrat.variable} ${workSans.variable} ${roboto.variable} ${ibmPlexMono.variable}`}
       >
         <body
-          className={`${
-            theme ? theme : ''
-          } mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary transition-colors duration-[1500]`}
+          className={
+            'mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary transition-colors duration-[1500]'
+          }
         >
+          <script
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted author
+            dangerouslySetInnerHTML={{
+              __html: `
+            try {
+              const themeCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('theme='))
+              if (themeCookie) {
+                const theme = themeCookie.split('=')[1]
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+              } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+                document.documentElement.classList.toggle('dark', prefersDark)
+              }
+            } catch (_) {}
+          `,
+            }}
+          />
           <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border'>
             <Header
               links={[
@@ -56,7 +70,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             />
             <main className='scrollbar max-w-[100vw] overflow-y-scroll'>{children}</main>
             <Footer />
-            <ThemeSelector initialValue={(theme as 'light' | 'dark') || null} />
+            <ThemeSelector initialValue={null} />
           </div>
         </body>
       </html>
