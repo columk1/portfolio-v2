@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --base-font: calc(11px + 0.3vw);
+    --base-font: calc(12px + 0.3vw);
     --frame: 2rem;
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
     --bgLight: 226, 226, 226;
@@ -37,6 +37,7 @@
     --pre-bg: #f0f0f0;
     --pre-border: none;
     --text-primary: #444;
+    --text-secondary: #4b5563;
     --border: #b5b5b5;
     --border-light: #d5d5d5;
     --link: #b94afe;
@@ -55,6 +56,7 @@
     --pre-bg: var(--bg);
     --pre-border: 1px solid var(--border);
     --text-primary: #b5b5b5;
+    --text-secondary: #9ca3af;
     --border: #555;
     --border-light: #333;
     --link: #c792ea;
@@ -70,6 +72,17 @@
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+  /* For improved legibility of blog posts on mobile */
+  @media (max-width: 640px) {
+    html:has(.markdown),
+    html.dark:has(.markdown) {
+      /* --border: transparent; */
+      --frame: 0px;
+      & #theme-selector {
+        display: none;
+      }
+    }
   }
 }
 

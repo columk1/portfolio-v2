@@ -5,5 +5,5 @@ export const metadata = {
 }
 
 export default function BlogLayout({ children }: { children: ReactNode }) {
-  return <section className='mt-11 px-[12vw] py-12'>{children}</section>
+  return <section className='mt-11 px-5 py-12 sm:px-[10vw]'>{children}</section>
 }

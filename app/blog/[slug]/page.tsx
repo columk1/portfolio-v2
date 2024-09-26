@@ -71,8 +71,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
         dangerouslySetInnerHTML={{ __html: jsonLd }}
       />
       <h2 className={'mx-0 my-4 text-4xl'}>{metadata.title}</h2>
-      <div className='flex flex-col gap-4'>
-        <div className='flex flex-col gap-1'>
+      <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-1 text-text-secondary'>
           <p className={'font-detail text-xs'}>{formatDateString(metadata.date)}</p>
           <div className='flex gap-2 font-detail text-xs'>
             {metadata.tags && <p>{metadata.tags?.map((tag) => tag.toUpperCase()).join(', ')}</p>}
@@ -84,12 +84,16 @@ export default async function BlogPage({ params }: BlogPageProps) {
             )}
           </div>
         </div>
-        <div className='h-5 w-full bg-text-primary' />
+        <div className='h-2 w-full bg-text-primary' />
         <div className='my-2'>
           <SquaresIcon styles={{ width: '40px', color: 'var(--accent)' }} />
         </div>
       </div>
-      <div className={'markdown max-w-prose font-light font-sans text-base leading-6'}>
+      <div
+        className={
+          'markdown max-w-prose font-light font-sans text-base leading-7 [&_p]:text-text-secondary'
+        }
+      >
         <BlogMarkdown />
       </div>
     </>

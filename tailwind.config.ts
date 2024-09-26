@@ -27,6 +27,7 @@ const config: Config = {
         bgAlpha: 'var(--bgAlpha)',
         border: 'var(--border)',
         'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
         accent: 'var(--accent)',
         hoverShadow: 'var(--hover-shadow)',
         'bg-light': 'var(--bg-light)',

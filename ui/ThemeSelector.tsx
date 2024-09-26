@@ -28,7 +28,10 @@ const ThemeSelector = ({ initialValue }: { initialValue: Theme | null }) => {
   }, [theme, handleThemeChange])
 
   return (
-    <div className='-rotate-90 absolute bottom-[--frame] left-[2.65rem] origin-bottom-left text-xs'>
+    <div
+      id='theme-selector'
+      className='-rotate-90 absolute bottom-[--frame] left-[2.65rem] origin-bottom-left text-xs'
+    >
       <ul className='flex gap-3'>
         <button type='button' onClick={() => handleThemeChange('light')}>
           <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
