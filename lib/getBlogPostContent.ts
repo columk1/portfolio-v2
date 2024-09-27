@@ -3,7 +3,14 @@ import { notFound } from 'next/navigation'
 
 export async function getBlogPostContent(slug: string): Promise<BlogPostContent> {
   try {
-    const mdxModule = await import(`@/content/${slug}.mdx`)
+    const mdxModule = await import(`@/content/${slug}.mdx`).catch(async (err) => {
+      try {
+        return await import(`@/content/drafts/${slug}.mdx`)
+      } catch (draftErr) {
+        throw new Error(`Unable to find ${slug} in both content and drafts.`)
+      }
+    })
+    console.log('mdxModule', mdxModule)
     const { metadata } = mdxModule
     if (metadata) {
       if (!metadata.title || !metadata.description) {
