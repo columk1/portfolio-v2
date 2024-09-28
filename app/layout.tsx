@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 { title: 'Blog', route: '/blog' },
               ]}
             />
-            <main className='scrollbar max-w-[100vw] overflow-y-scroll'>{children}</main>
+            <main className='scrollbar h-full max-w-[100vw] overflow-y-scroll'>{children}</main>
             <Footer />
             <ThemeSelector initialValue={null} />
           </div>
