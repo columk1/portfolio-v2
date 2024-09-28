@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description: 'Web designer and developer',
 }
 
-const applyThemeScript = `
+export const applyThemeScript = `
   try {
     const themeCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('theme='))
     if (themeCookie) {
@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             'mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary transition-colors duration-[1500]'
           }
         >
-          <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden sm:border-[1px] sm:border-border'>
+          <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border has-[.markdown]:border-0 has-[.markdown]:sm:border-[1px]'>
             <Header
               links={[
                 { title: 'Projects', route: '/projects' },

@@ -77,7 +77,6 @@
   @media (max-width: 640px) {
     html:has(.markdown),
     html.dark:has(.markdown) {
-      /* --border: transparent; */
       --frame: 0px;
       & #theme-selector {
         display: none;
