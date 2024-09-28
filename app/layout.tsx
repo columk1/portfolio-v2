@@ -7,6 +7,7 @@ import { IBM_Plex_Mono, Montserrat, Work_Sans, Roboto } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
 import type { Metadata } from 'next/types'
 import { baseUrl } from '@/lib/config'
+import { applyThemeScript } from '@/lib/utils/applyThemeScript'
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['200', '300', '400'],
@@ -29,19 +30,6 @@ export const metadata: Metadata = {
   },
   description: 'Web designer and developer',
 }
-
-export const applyThemeScript = `
-  try {
-    const themeCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('theme='))
-    if (themeCookie) {
-      const theme = themeCookie.split('=')[1]
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      document.documentElement.classList.toggle('dark', prefersDark)
-    }
-  } catch (_) {}
-`
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

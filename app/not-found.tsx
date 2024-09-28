@@ -1,6 +1,6 @@
-import { applyThemeScript } from './layout'
+import { applyThemeScript } from '@/lib/utils/applyThemeScript'
 
-function NotFoundPage() {
+export default function NotFoundPage() {
   return (
     <>
       <head>
@@ -21,5 +21,3 @@ function NotFoundPage() {
     </>
   )
 }
-
-export default NotFoundPage
