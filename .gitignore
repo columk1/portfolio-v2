@@ -175,4 +175,4 @@ dist
 .DS_Store
 
 # Unpublished blog posts
-content/drafts
+content/drafts/*.mdx
