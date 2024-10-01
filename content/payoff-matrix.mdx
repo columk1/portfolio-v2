@@ -58,10 +58,10 @@ Pretty ugly right? Logic like this can quickly become convoluted, which makes it
 
 Fortunately, we have better tools at our disposal. Given that Rock, Paper, Scissors is a zero sum game, each of the possible outcomes for a player can be expressed using a payoff matrix to represent the gain or loss associated with each player's strategy:
 
-![Payoff Matrix](https://github.com/columk1/assets/blob/main/blog/payoff-matrix-m.png?raw=true)
+![Payoff Matrix](https://raw.githubusercontent.com/columk1/assets/refs/heads/main/blog/payoff-matrix-m.png)
 _Payoff matrix for rock paper scissors_
 
-The rows represent player 1's possible strategies while the columns represent player 2's possible strategies. **1 represents a win, 0 a tie, and -1 a loss. So, for instance, the upper left entry is a 0 because if both players choose rock, they tie.\***
+The rows represent player 1's possible strategies while the columns represent player 2's possible strategies. **1 represents a win, 0 a tie, and -1 a loss. So, for instance, the upper left entry is a 0 because if both players choose rock, they tie.**
 
 And here is how we represent it in javascript using a two dimensional array:
 
@@ -115,6 +115,6 @@ function playRound(playerMove) {
 }
 ```
 
-## Conclusion
+## TLDR
 
-A matrix can provide an organized structure for handling complex decision-making processes. This example illustrates how matrices emerge as powerful tools for handling logic.
+A matrix can provide an organized structure for handling complex decision-making processes. This example illustrates how they can be used to condense game logic with many conditional branches into a few lines of code.

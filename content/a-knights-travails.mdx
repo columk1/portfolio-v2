@@ -1,6 +1,7 @@
 export const metadata = {
   title: "A Knight's Travails",
-  description: 'Find the shortest path for a knight to travel from one square to another on a chessboard.',
+  description:
+    'Find the shortest path for a knight to travel from one square to another on a chessboard.',
   date: '2024-01-15',
   tags: ['JavaScript'],
   readingLength: 7,
@@ -8,7 +9,7 @@ export const metadata = {
 
 ## Introduction
 
-The knight's travails problem is a classic interview question where you must find the shortest path for a knight to travel from one square of a chessboard to another. I came across it while working my way through The Odin Project and really enjoyed the challenge it provided at the time.
+The knight's travails problem is a classic interview question where you must find the shortest path for a knight to travel from one square of a chessboard to another. I came across it while working my way through The Odin Project's JavaScript curriculum and really enjoyed the challenge it provided at the time.
 
 ### The Problem
 
@@ -40,9 +41,9 @@ I did run into some issues comparing equality between arrays within the Map obje
 
 With the graph in place, I did some Googling on graph search algorithms and compared depth-first to breadth-first algorithms. A breadth-first search (BFS) seemed to be the most appropriate for this problem.
 
-First, the BFS will add every edge of a vertex to a queue. Then it will repeat the process for each of those vertices, adding each additional edge to the queue if it hasn’t already been visited. This way we can slowly branch out from our starting position on the chessboard, carving paths in every direction until the end position is reached. A depth first algorithm would begin carving unnecessarily long paths for this problem.
+A BFS will begin by adding every edge of a vertex to a queue. Then it will repeat the process for each of those vertices, adding each additional edge to the queue if it hasn’t already been visited. This way we can slowly branch out from our starting position on the chessboard, carving paths in every direction until the end position is reached. A depth first algorithm would begin carving unnecessarily long paths for this problem.
 
-First I parsed the key of each square into separate integer variables. Then, I declared a list of operations for each move. Finally, I added an adjacency list of all possible moves for each vertex in the map object.
+To start, I parsed the key of each square into separate integer variables. Then, I declared a list of operations for each move. Finally, I added an adjacency list of all possible moves for each vertex in the map object.
 
 ```js
 // Parse x, y coordinates of each vertex as integers for arithmetic
@@ -70,14 +71,14 @@ for (let [square] of chessboard) {
 }
 ```
 
-![Knight Moves](https://github.com/columk1/assets/blob/main/blog/knight-moves.png?raw=true)
+![Knight Moves](https://raw.githubusercontent.com/columk1/assets/refs/heads/main/blog/knight-moves.png)
 _A knight has 8 possible moves_
 
 ### Using a Queue to Find the Shortest Path
 
 To implement the breadth-first search algorithm, I used a queue data structure to keep track of the next vertices to visit. We start with the source vertex and add it to the queue. Then, we visit each of its neighbors and add them one by one to the queue. As vertices are removed from the queue, they are added to a set of visited squares. This ensures that we don't visit the same vertex twice. This process continues until we reach the destination vertex.
 
-Once we've found the destination vertex, we have all the breadcrumbs we need to return the shortest path. It's quite easy in this case. Since we are using a BFS, the first path to reach the target will be the shortest one.
+Once we've found the destination vertex, we have all the breadcrumbs needed to return the shortest path. It's quite easy in this case. Since we are using a BFS, the first path to reach the target will be the shortest one.
 
 #### Here's the code I ended up with:
 
@@ -126,6 +127,6 @@ While this algorithm is efficient for small chessboards, it quickly becomes impr
 
 ## Conclusion
 
-I'm sure there are better ways to implement this, but I'm confident that using a graph data structure and a breadth-first search algorithm can be an effective way to solve the knight's travails problem. With some improvements, this algorithm can be scaled to solve larger chessboards.
+I'm sure there are better ways to implement this, but I'm confident that using a graph data structure and a breadth-first search algorithm can be an effective way to solve this problem. With some improvements, this algorithm can be scaled to solve larger chessboards.
 
 Give it a try and see how quickly you can solve the knight's travails problem on your own!
