@@ -30,29 +30,29 @@ const ThemeSelector = ({ initialValue }: { initialValue: Theme | null }) => {
   return (
     <div
       id='theme-selector'
-      className='-rotate-90 absolute bottom-[--frame] left-[2.65rem] origin-bottom-left text-xs'
+      className='-rotate-90 absolute bottom-[--frame] left-[2.1rem] origin-bottom-left text-xs'
     >
       <ul className='flex gap-3'>
-        <button type='button' onClick={() => handleThemeChange('light')}>
-          <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
+        <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
+          <button type='button' onClick={() => handleThemeChange('light')}>
             {theme === 'light' ? (
-              <span className='pb-1 text-base leading-7'>■</span>
+              <span className='pb-1 text-base'>■</span>
             ) : (
-              <span className='pb-1 text-base leading-7'>□</span>
+              <span className='pb-1 text-base'>□</span>
             )}
             LIGHT
-          </li>
-        </button>
-        <button type='button' onClick={() => handleThemeChange('dark')}>
-          <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
+          </button>
+        </li>
+        <li className='flex items-center gap-1 font-light font-sans hover:[-webkit-text-stroke:0.5px]'>
+          <button type='button' onClick={() => handleThemeChange('dark')}>
             {theme === 'dark' ? (
-              <span className='pb-1 text-base leading-7'>■</span>
+              <span className='pb-1 text-base'>■</span>
             ) : (
-              <span className='pb-1 text-base leading-7'>□</span>
+              <span className='pb-1 text-base'>□</span>
             )}
             DARK
-          </li>
-        </button>
+          </button>
+        </li>
       </ul>
     </div>
   )
