@@ -10,17 +10,6 @@
     --bgLight: 226, 226, 226;
     --bgDark: 24, 24, 24;
 
-    /* Syntax Highlighting */
-    --sh-class: #7aa2f7;
-    --sh-identifier: rgb(199, 146, 234);
-    --sh-sign: #89ddff;
-    --sh-property: #73daca;
-    --sh-entity: #e0af68;
-    --sh-string: #6ab3ce;
-    --sh-jsxliterals: #7aa2f7;
-    --sh-keyword: #bb9af7;
-    --sh-comment: #565f89;
-
     /* Global Colors */
     --accent: #834bdb;
     --bg-dark: #181818;
@@ -35,6 +24,9 @@
     --bg-offset: #dadada;
     --bg-light: #e2e2e2;
     --pre-bg: #f0f0f0;
+    --info-bg: #e0e7ff;
+    --info-icon: #4f46e5;
+    --info-text: #111827;
     --pre-border: none;
     --text-primary: #444;
     --text-secondary: #4b5563;
@@ -54,6 +46,9 @@
     --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #282828;
     --pre-bg: var(--bg);
+    --info-bg: #1e1b4b;
+    --info-icon: #818cf8;
+    --info-text: #bfc4cc;
     --pre-border: 1px solid var(--border);
     --text-primary: #b5b5b5;
     --text-secondary: #9ca3af;
@@ -148,6 +143,8 @@ code span {
 }
 
 :not(pre) > code {
+  position: relative;
+  bottom: 0.5px;
   padding: 3px 6px;
   margin: 0 -4px;
   border-radius: 4px;
@@ -156,7 +153,7 @@ code span {
 }
 
 pre:has(code) {
-  position: relative;
+  @apply relative;
 }
 
 /* Copy button in codeblock elements */
