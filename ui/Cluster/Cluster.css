@@ -1,0 +1,9 @@
+.cluster-container {
+  margin: 0 auto;
+  width: min(300px, 100%);
+}
+
+.cluster-container svg {
+  margin: -60px 0 -30px;
+  cursor: pointer;
+}
