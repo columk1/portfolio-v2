@@ -12,8 +12,11 @@ By late February, I was almost finished with The Odin Project. Having completed 
 
 Yet, a sense of weariness was creeping in. I had spent months developing apps that had no users. I received a handful of nice messages whenever I shared my work, and a few of my games' leaderboards had filled up, but I still didn't feel like I was making anything useful.
 
-![Leaderboard](https://res.cloudinary.com/dsrekt1mo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1711483533/Screenshot_2024-03-26_at_1.00.24_PM_f5704e_cccqmg.jpg?_s=public-apps)
-_The current leaderboard of my "Where's Alex Honnold" photo tagging app..._
+<Image
+  alt='Leaderboard'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1711483533/Screenshot_2024-03-26_at_1.00.24_PM_f5704e_cccqmg.jpg?_s=public-apps'
+  caption="The current leaderboard of my Where's Alex Honnold photo tagging app..."
+/>
 
 The one exception was this blog. It was immensely satisfying to make something that I would actually be using. Yet, here I was again, faced with the prospect of spending the next couple of months making clones of social apps with no users. Furthermore, I found myself craving exposure to more opinionated code, having had limited exposure to other developers' processes beyond reading documentation.
 
@@ -25,8 +28,11 @@ The course also encourages the use of Node, Express, and MongoDB for back-end de
 
 The tutorial I chose was called **Real-Time Messenger Clone: Next.js 13, React, Tailwind, Prisma, MongoDB, NextAuth, Pusher (2023)** by [AntonioErdeljac](https://github.com/AntonioErdeljac). You can view his [original repo](https://github.com/AntonioErdeljac/next13-messenger). It's a fairly simple application that allows anyone who signs up to message anyone else with an account. Conversations are updated in realtime for all users.
 
-![Full Stack Messenger Clone](https://res.cloudinary.com/dsrekt1mo/image/upload/w_1000/q_auto/Messenger_Clone_Antonio_rumcoy.jpg)
-_The tutorial I chose to follow_
+<Image
+  alt='Full Stack Messenger Clone'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/w_1000/q_auto/Messenger_Clone_Antonio_rumcoy.jpg'
+  caption='The tutorial I chose to follow'
+/>
 
 Before starting, I spent a few days going through the Next.js docs and working through some of their example projects. Once I was familiar with the folder structure and patterns, I began coding along with the tutorial. In the spirit of changing things up, I made a few design choices along the way, opting to use a serverless Postgres database instead of the MongoDb instance used in the tutorial. I also chose to create some of my own custom solutions where libraries had been used. Furthermore, I updated Next.js to version 14, and most of the libraries to their latest versions, making changes where needed. When I finished the tutorial I had a working real-time chat app and a list of issues to fix and features to implement. I began to work through them one by one.
 
@@ -34,8 +40,11 @@ Before starting, I spent a few days going through the Next.js docs and working t
 
 This project had a lot of issues. For starters the author placed his Pusher cluster in Europe and his MongoDB cluster in North America! It was easy to spot and correct errors like this one as I coded along. However, there were many others that I had to take note of for later review and correction. I had logged a total of 60 issues when I reached the end of the tutorial. These ranged from accessibility issues and problems with the UI/UX to issues of security and privacy. In terms of performance, there were too many round-trips to the db, lots of unnecessary re-renders and the same data was being repeatedly fetched by several components.
 
-![Pusher Cluster Location](https://res.cloudinary.com/dsrekt1mo/image/upload/v1711485331/Pusher_Screenshot_xmp8ub.png)
-_A far cry from Virginia_
+<Image
+  alt='Pusher Cluster Location'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1711485331/Pusher_Screenshot_xmp8ub.png'
+  caption='A far cry from Virginia'
+/>
 
 ## The Fun Begins... with Security
 
@@ -162,8 +171,11 @@ After fixing the most pressing issues, I added some new features on top of the c
 
 I created a contact list feature and an interface to search from all users and to add or remove them from contacts, with a toggle button for editing mode to show or hide the buttons when needed. I also redesigned the UI, making significant changes to the overall theme of the application and smaller changes to the appearance wherever I saw fit.
 
-![Screenshot of the finished messaging interface](https://res.cloudinary.com/dsrekt1mo/image/upload/v1711495806/conversation_fcnglt.png)
-_The finished product. Visit the [site](https://messaging-app-azure.vercel.app/)._
+<Image
+  alt='Screenshot of the finished messaging interface'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1711495806/conversation_fcnglt.png'
+  caption='The finished product. You can try it at https://messaging-app-azure.vercel.app/'
+/>
 
 ### Final Touches
 
@@ -183,4 +195,4 @@ That leaves just one project left - the Facebook clone. Honestly, I'm not even s
 
 #
 
-_For anyone interested, I have a more complete [list of changes](https://github.com/columk1/messaging-app/blob/main/CHANGELOG.md) from the original repo._
+_For anyone interested, you can view the complete [changelog](https://github.com/columk1/messaging-app/blob/main/CHANGELOG.md) on my GitHub._

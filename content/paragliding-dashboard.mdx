@@ -16,8 +16,11 @@ On top of that, the main source of wind data that we used needed to be refreshed
 
 The same was true for checking conditions during a flight, which really distracted attention from where it was needed!
 
-![A paragliding flight](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714808529/recharts-flight_fezxn0.jpg)
-_When it does work out it can be pretty special_
+<Image
+  alt='POV paragliding at sunset'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714808529/recharts-flight_fezxn0.jpg'
+  caption='When it does work out it can be pretty special'
+/>
 
 So, when I had some free time between courses I built it. I came up with a solution that allows me to quickly gather all of the information I need to make a decision of whether to fly or not. It's an SPA built with Next.js that updates a few different widgets on custom intervals. The intervals are mapped to their relative API's update interval to ensure that the data always stays current. Instead of having to constantly refresh, the UI updates on the client whenever a new data point is produced. This involved scraping some local weather sites, APIs and webcams.
 
@@ -33,8 +36,11 @@ Once I had decided on this format, I spent some time looking at different charti
 
 Recharts is a component based charting library with a lightweight dependency on D3 submodules. It's documentation is fantastic and features many working examples of different charts with their code. I quickly got a basic chart up and running after spending 15 minutes or so browsing through the docs. I then began to plan out what I would need once I had an idea of what might be possible.
 
-![Recharts docs](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714804696/recharts-docs_qyvetw.png)
-_The excellent Recharts API documentation_
+<Image
+  alt='Recharts docs screenshot'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714804696/recharts-docs_qyvetw.png'
+  caption='The excellent Recharts API documentation'
+/>
 
 ### The Scope
 
@@ -126,8 +132,11 @@ Next, I created an XAxis component and linked it to the time dataKey in the main
 
 I wasn't sure how to go about this, so I spent some time searching through Github issues until I found something that looked promising.
 
-![Github issue screenshot](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714805174/recharts-issue_q61fkr.jpg)
-_tkeffer to the rescue_
+<Image
+  alt='GitHub issue screenshot'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714805174/recharts-issue_q61fkr.jpg'
+  caption='tkeffer to the rescue'
+/>
 
 Here's the snippet that was provided:
 
@@ -174,8 +183,11 @@ This would calculate the nearest whole hour to my first data point and begin the
 
 At this point I noticed an error in my console.
 
-![Console error](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714805639/recharts-error_ccj4mb.jpg)
-_Oops_
+<Image
+  alt='Console error screenshot'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714805639/recharts-error_ccj4mb.jpg'
+  caption='Oops'
+/>
 
 A quick search on Github turned up the following solution:
 
@@ -277,7 +289,12 @@ Another item in my requirements was the tooltip, which would give the user more 
 
 And here's how it looks on the page:
 
-![Tooltip component](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714806039/recharts-tooltip_kgepsf.jpg)
+<Image
+  alt='Tooltip component'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714806039/recharts-tooltip_kgepsf.jpg'
+  caption='The tooltip component'
+  width={400}
+/>
 
 ### Legend
 
@@ -285,8 +302,11 @@ The final piece to add was the legend, so I added a Legend component from the li
 
 To achieve this, I set up the Legend component the way I wanted it, and then simply copied the html from my local server and pasted it into a new custom component of my own. I added another key to this custom Legend component using the arrow SVG and a "Direction" label. I exported this and then imported it into my chart component and placed it beneath the rest of the chart. Here is the finished chart:
 
-![Finished wind chart component](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714806351/recharts-chart_gebtug.jpg)
-_Job done_
+<Image
+  alt='Finished wind chart component'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714806351/recharts-chart_gebtug.jpg'
+  caption='Job done'
+/>
 
 ### Finishing Up
 
@@ -296,8 +316,12 @@ With the UI finished, I created an action to fetch the live data and added a hoo
 
 I also included a links section with links to the most relevant resources for pilots planning cross country flights.
 
-![Homepage sample](https://res.cloudinary.com/dsrekt1mo/image/upload/v1714807124/recharts-homepage_mpxepk.jpg)
-_The main section of the site_
+<Image
+  alt='Screenshot'
+  src='https://res.cloudinary.com/dsrekt1mo/image/upload/v1714807124/recharts-homepage_mpxepk.jpg'
+  caption='The main section of the site'
+  width={300}
+/>
 
 ### Conclusion
 
