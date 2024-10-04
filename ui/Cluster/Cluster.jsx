@@ -42,6 +42,7 @@ export default function Cluster() {
   }
 
   function toggle() {
+    event.stopPropagation()
     if (params.isGrouped) {
       groupGroups()
     } else {
@@ -159,8 +160,15 @@ export default function Cluster() {
   }
 
   return (
-    <div className='cluster-container'>
-      <svg />
-    </div>
+    <button
+      type='button'
+      aria-label='Toggle cluster animation'
+      onClick={toggle}
+      className='cluster-button'
+    >
+      <div className='cluster-container'>
+        <svg />
+      </div>
+    </button>
   )
 }

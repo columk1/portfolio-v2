@@ -1,6 +1,12 @@
-.cluster-container {
-  margin: 0 auto;
+.cluster-button {
+  display: block;
   width: min(300px, 100%);
+  margin: 0 auto;
+  outline-offset: -45px;
+}
+
+.cluster-container {
+  width: 100%;
 }
 
 .cluster-container svg {
