@@ -18,6 +18,7 @@ export function addCopyButton(options: { toggle?: number } = {}) {
           this.classList.add('copied');
           setTimeout(() => this.classList.remove('copied'), ${toggleMs})
         `,
+          'aria-label': 'Copy to clipboard',
         },
         [h('span', { class: 'ready' }), h('span', { class: 'success' })]
       )
