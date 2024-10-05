@@ -5,6 +5,7 @@ import { stripCodeTags } from './lib/utils/stripCodeTags'
 import { addCopyButton } from './lib/utils/addCopyButton'
 import highlighter from './lib/highlighter/highlighter'
 import NextImage from 'next/image'
+import Aside from '@/ui/Aside'
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>
 type ParagraphProps = ComponentPropsWithoutRef<'p'>
@@ -95,9 +96,10 @@ const components: MDXComponents = {
 
 export function useMDXComponents(otherComponents: MDXComponents): MDXComponents {
   return {
+    Aside,
     Image,
-    ...otherComponents,
     ...components,
+    ...otherComponents,
   }
 }
 
