@@ -176,3 +176,6 @@ dist
 
 # Unpublished blog posts
 content/drafts/*.mdx
+
+# Sandbox for playing around
+sandbox/
