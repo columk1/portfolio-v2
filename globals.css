@@ -178,8 +178,8 @@ button.copy {
   position: absolute;
   /* top: anchor(start); */
   /* right: anchor(end); */
-  top: 8px;
-  right: 8px;
+  top: 10px;
+  right: 10px;
   height: 28px;
   width: 28px;
   padding: 0;
@@ -208,10 +208,15 @@ button.copy {
     font-size: 12px; /* Font size of the message */
     white-space: nowrap; /* Prevents text from wrapping */
     opacity: 0; /* Initially hidden */
+    pointer-events: none;
   }
 
   & .ready {
     background-image: url(/icons/copy.svg);
+    transition: transform 0.1s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   & .success {
