@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef } from 'react'
+import { Children, isValidElement, useCallback, type ComponentPropsWithoutRef } from 'react'
 import { Link } from 'next-view-transitions'
 import type { MDXComponents } from 'mdx/types'
 import { stripCodeTags } from './lib/utils/stripCodeTags'
@@ -59,11 +59,35 @@ const components: MDXComponents = {
     const codeHTML = await highlighter.codeToHtml(children as string, {
       lang,
       themes: { light: 'tokyo-night-light', dark: 'tokyo-night' },
-      transformers: [addCopyButton({ toggle: 2000 })],
     })
     // highlighter adds tags which we remove - next/mdx has already inserted pre/code tags
     // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted author
     return <code dangerouslySetInnerHTML={{ __html: stripCodeTags(codeHTML) }} {...props} />
+  },
+  pre: async ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
+    const isCodeElement = useCallback((child: React.ReactNode): child is React.ReactElement => {
+      return isValidElement(child) && typeof child.type === 'function' && child.type.name === 'code'
+    }, [])
+
+    // Select the <code> element inside the <pre>
+    const codeElement = Children.toArray(children)[0]
+
+    if (isCodeElement(codeElement)) {
+      const lang = codeElement.props.className?.split('-')[1] || 'text'
+      const codeHTML = await highlighter.codeToHtml(codeElement.props.children as string, {
+        lang,
+        themes: { light: 'tokyo-night-light', dark: 'tokyo-night' },
+        transformers: [addCopyButton({ toggle: 2000 })],
+      })
+      return (
+        <div
+          className={`code-wrapper language-${lang}`}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+          dangerouslySetInnerHTML={{ __html: codeHTML }}
+        />
+      )
+    }
+    return <pre>{children}</pre>
   },
   Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
     <table>

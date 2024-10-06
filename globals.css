@@ -24,6 +24,7 @@
     --bg-offset: #dadada;
     --bg-light: #e2e2e2;
     --pre-bg: #f0f0f0;
+    --code-bg: var(--pre-bg);
     --info-bg: #e0e7ff;
     --info-icon: #4f46e5;
     --info-text: #111827;
@@ -32,7 +33,8 @@
     --text-secondary: #4b5563;
     --border: #b5b5b5;
     --border-light: #d5d5d5;
-    --link: #b94afe;
+    --link: var(--accent);
+    /* --link: #b94afe; */
     --link-hover: #c792ea;
     --inline-code: var(--accent);
     --hover-shadow: rgba(131, 75, 219, 0.1);
@@ -46,6 +48,7 @@
     --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #282828;
     --pre-bg: var(--bg);
+    --code-bg: var(--bg-offset);
     --info-bg: #1e1b4b;
     --info-icon: #818cf8;
     --info-text: #bfc4cc;
@@ -121,6 +124,8 @@ pre {
   border: var(--pre-border);
   background-color: var(--pre-bg);
   scrollbar-color: var(--border-light) transparent;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+    monospace;
 }
 
 pre::-webkit-scrollbar {
@@ -136,6 +141,7 @@ pre code {
   @apply p-0;
   border: initial;
   line-height: 1.5;
+  font-family: inherit;
 }
 
 code span {
@@ -143,29 +149,37 @@ code span {
 }
 
 :not(pre) > code {
-  position: relative;
   bottom: 0.5px;
-  padding: 3px 6px;
-  margin: 0 -4px;
+  padding: 3px 3px;
+  margin: 0 -1px;
   border-radius: 4px;
-  background-color: var(--bg-offset);
+  background-color: var(--code-bg);
   color: var(--inline-code);
 }
 
 pre:has(code) {
-  @apply relative;
+  /* @apply relative; */
 }
 
 /* Copy button in codeblock elements */
 
+.code-wrapper:hover button.copy,
 pre:hover button.copy {
   opacity: 1;
 }
 
-pre button.copy {
+.code-wrapper {
+  position: relative;
+  /* position: anchor; */
+  /* anchor-name: --copyAnchor; */
+}
+
+button.copy {
   position: absolute;
-  right: 16px;
-  top: 16px;
+  /* top: anchor(start); */
+  /* right: anchor(end); */
+  top: 8px;
+  right: 8px;
   height: 28px;
   width: 28px;
   padding: 0;
@@ -189,7 +203,7 @@ pre button.copy {
     transform: translateY(-50%);
     background-color: var(--bg-offset); /* Background color for the message */
     color: inherit; /* Text color */
-    padding: 4px 8px;
+    padding: 4px 40px 4px 8px;
     border-radius: 4px; /* Rounded corners */
     font-size: 12px; /* Font size of the message */
     white-space: nowrap; /* Prevents text from wrapping */
@@ -203,6 +217,7 @@ pre button.copy {
   & .success {
     display: none;
     background-image: url(/icons/copy-success.svg);
+    z-index: 10;
   }
 
   &.copied {
