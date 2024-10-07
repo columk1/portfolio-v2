@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   experimental: {
     mdxRs: true,
+    optimizePackageImports: ['lucide-react'],
   },
   devIndicators: {
     appIsrStatus: false,
@@ -37,3 +38,10 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({})
 
 export default withMDX(nextConfig)
+
+// Alternatively, use bundle analyzer
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// })
+// export default withBundleAnalyzer(withMDX(nextConfig))
