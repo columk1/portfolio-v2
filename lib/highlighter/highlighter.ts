@@ -1,10 +1,10 @@
 import { createHighlighter, type ThemeRegistrationResolved } from 'shiki'
-import tokyoNightLight from './tokyo-night-light.json'
-// import fs from 'node:fs'
+import { latte, frappe } from '@catppuccin/vscode'
 
-// const tokyoNightLight = JSON.parse(
-//   fs.readFileSync('./lib/highlighter/tokyo-night-light.json', 'utf8')
-// )
+export const themes = {
+  light: 'catppuccin-latte',
+  dark: 'catppuccin-frappe',
+}
 
 const globalHighlighter = global as typeof globalThis & {
   highlighterInstance?: ReturnType<typeof createHighlighter>
@@ -27,10 +27,11 @@ if (!globalHighlighter.highlighterInstance) {
         'ansi',
         'yaml',
       ],
-      themes: ['tokyo-night'],
+      themes: [],
     })
 
-    await highlighter.loadTheme(tokyoNightLight as unknown as ThemeRegistrationResolved)
+    await highlighter.loadTheme(latte as unknown as ThemeRegistrationResolved)
+    await highlighter.loadTheme(frappe as unknown as ThemeRegistrationResolved)
     return highlighter
   })()
 }

@@ -3,7 +3,7 @@ import { Link } from 'next-view-transitions'
 import type { MDXComponents } from 'mdx/types'
 import { stripCodeTags } from './lib/utils/stripCodeTags'
 import { addCopyButton } from './lib/utils/addCopyButton'
-import highlighter from './lib/highlighter/highlighter'
+import highlighter, { themes } from './lib/highlighter/highlighter'
 import NextImage from 'next/image'
 import Aside from '@/ui/Aside'
 
@@ -58,7 +58,7 @@ const components: MDXComponents = {
     const lang = props.className ? props.className.split('-')[1] : 'text'
     const codeHTML = await highlighter.codeToHtml(children as string, {
       lang,
-      themes: { light: 'tokyo-night-light', dark: 'tokyo-night' },
+      themes: { light: themes.light, dark: themes.dark },
     })
     // highlighter adds tags which we remove - next/mdx has already inserted pre/code tags
     // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted author
@@ -76,7 +76,7 @@ const components: MDXComponents = {
       const lang = codeElement.props.className?.split('-')[1] || 'text'
       const codeHTML = await highlighter.codeToHtml(codeElement.props.children as string, {
         lang,
-        themes: { light: 'tokyo-night-light', dark: 'tokyo-night' },
+        themes: { light: themes.light, dark: themes.dark },
         transformers: [addCopyButton({ toggle: 2000 })],
       })
       return (

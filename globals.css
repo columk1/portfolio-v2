@@ -23,7 +23,7 @@
     --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #dadada;
     --bg-light: #e2e2e2;
-    --pre-bg: #f0f0f0;
+    --pre-bg: #e6e9ef;
     --code-bg: var(--pre-bg);
     --info-bg: #e0e7ff;
     --info-icon: #4f46e5;
@@ -47,7 +47,7 @@
     --bgRGB: 24, 24, 24;
     --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #282828;
-    --pre-bg: var(--bg);
+    --pre-bg: #24273a;
     --code-bg: var(--bg-offset);
     --info-bg: #1e1b4b;
     --info-icon: #818cf8;
@@ -150,7 +150,7 @@ code span {
 
 :not(pre) > code {
   bottom: 0.5px;
-  padding: 3px 3px;
+  padding: 1px 3px;
   margin: 0 -1px;
   border-radius: 4px;
   background-color: var(--code-bg);
