@@ -1,0 +1,16 @@
+import type { Parent } from 'hast'
+import type { ShikiTransformerContextSource } from '@shikijs/types'
+
+export function stripInlineStyles() {
+  return {
+    name: 'shiki-transformer-strip-inline-styles',
+    pre(node: Parent & { properties?: { style?: string } }) {
+      const context = this as unknown as ShikiTransformerContextSource
+
+      // Remove inline styles from <pre> element
+      if (node.properties?.style) {
+        node.properties.style = ''
+      }
+    },
+  }
+}

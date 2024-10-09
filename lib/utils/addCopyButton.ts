@@ -6,13 +6,8 @@ export function addCopyButton(options: { toggle?: number } = {}) {
   const toggleMs = options.toggle || 3000
   return {
     name: 'shiki-transformer-copy-button',
-    pre(node: Parent & { properties?: { style?: string } }) {
+    pre(node: Parent) {
       const context = this as unknown as ShikiTransformerContextSource
-
-      // Remove inline styles from <pre> element
-      if (node.properties?.style) {
-        node.properties.style = ''
-      }
 
       const button = h(
         'button',

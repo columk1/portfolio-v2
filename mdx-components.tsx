@@ -3,6 +3,7 @@ import { Link } from 'next-view-transitions'
 import type { MDXComponents } from 'mdx/types'
 import { stripCodeTags } from './lib/utils/stripCodeTags'
 import { addCopyButton } from './lib/utils/addCopyButton'
+import { stripInlineStyles } from './lib/utils/stripInlineStyles'
 import highlighter, { themes } from './lib/highlighter/highlighter'
 import NextImage from 'next/image'
 import Aside from '@/ui/Aside'
@@ -78,11 +79,11 @@ const components: MDXComponents = {
       const codeHTML = await highlighter.codeToHtml(codeElement.props.children as string, {
         lang,
         themes: { light: themes.light, dark: themes.dark },
-        transformers: [addCopyButton({ toggle: 2000 })],
+        transformers: [stripInlineStyles(), addCopyButton({ toggle: 2000 })],
       })
       return (
         <div
-          className={`code-wrapper language-${lang}`}
+          className={`code-block language-${lang}`}
           // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
           dangerouslySetInnerHTML={{ __html: codeHTML }}
         />

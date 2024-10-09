@@ -161,12 +161,12 @@ code span {
 
 /* Copy button in codeblock elements */
 
-.code-wrapper:hover button.copy,
+.code-block:hover button.copy,
 pre:hover button.copy {
   opacity: 1;
 }
 
-.code-wrapper {
+.code-block {
   position: relative;
   /* position: anchor; */
   /* anchor-name: --copyAnchor; */
