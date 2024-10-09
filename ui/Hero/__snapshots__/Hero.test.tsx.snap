@@ -3,10 +3,10 @@
 exports[`Hero Component > renders correctly 1`] = `
 <div>
   <section
-    class="min-h[calc(100svh-8rem-2px)] mt-0 flex justify-center bg-bg align-center font-light font-sans xl:mt-20"
+    class="flex min-h-full items-center justify-center bg-bg font-light font-sans"
   >
     <div
-      class="grid max-w-[970px] flex-1 grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-8 text-text-primary"
+      class="grid max-w-[970px] grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-10 text-text-primary"
     >
       <div
         class="col-start-1 row-span-full"
@@ -325,10 +325,10 @@ stroke-width: 0px;
         </svg>
       </div>
       <div
-        class="col-span-2 mt-1 flex justify-end gap-3 font-light font-mono"
+        class="col-span-2 flex justify-end gap-3 py-1 font-mono font-thin"
       >
         <a
-          class="hover:font-normal"
+          class="hover:font-light"
           href="https://github.com/columk1"
           rel="noreferrer"
           target="_blank"
@@ -336,7 +336,7 @@ stroke-width: 0px;
           Github
         </a>
         <a
-          class="hover:font-normal"
+          class="hover:font-light"
           href="mailto:"columk1+website@gmail.com"
           rel="noreferrer"
           target="_blank"
