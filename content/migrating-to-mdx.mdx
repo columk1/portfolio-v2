@@ -1,0 +1,188 @@
+import ChangeList from '@/ui/ChangeList'
+import Cluster from '@/ui/Cluster/LazyCluster'
+
+export const metadata = {
+  title: 'Migrating my Blog to Next.js, TypeScript and MDX',
+  description: 'How I rebuilt my blog to improve DX and performance',
+  date: '2024-10-09',
+  tags: ['React', 'Next.js'],
+  readingLength: 11,
+}
+
+## Why the Change?
+
+When I created my original blog, the intention was to practice API development. I created an Express REST
+API and two React frontends: a CMS for CRUD operations and the blog itself.
+
+It was a nice exercise, but it didn't
+really make sense for my personal blog to have this level of complexity. When Adaptable.io, (where my Express
+server was hosted) announced the end of their free tier, I decided to scrap the API entirely and migrate
+to NextJS.
+
+<Aside variant='info' title='Note'>
+  I considered refactoring to deploy the backend on a Cloudflare Worker, but decided against it.
+  Removing the API would simplify the development process and enable static generation at build
+  time.
+</Aside>
+
+## The Stack
+
+I kept the original look and feel of the site but changed many parts of the stack during the migration. Here are a few of those changes:
+
+<ChangeList
+  changes={[
+    { prev: 'Express, Vite, React Router', next: 'Next.js 15' },
+    { prev: 'React 18', next: 'React 19' },
+    { prev: 'JavaScript', next: 'TypeScript' },
+    { prev: 'Markdown', next: 'MDX' },
+    { prev: 'CSS Modules', next: 'Tailwind CSS' },
+    { prev: 'React Syntax Highlighter', next: 'Shiki' },
+    { prev: 'Prettier, Eslint', next: 'Biome' },
+  ]}
+/>
+
+### Next.js
+
+I really like Next.js (and Vercel). It allows a mix of server-components and statically generated pages which has given the site a huge boost in performance.
+
+There are many other nice features, such as API routes, server functions and the built-in Image component that can optimize and cache images from external sources.
+
+### React 19
+
+I'm not using any features from the release candidate yet on this site, but I _have_ benefited from the improved hydration errors...
+
+### Typescript
+
+This was a no brainer, I'll make this change any time I revisit an old project. It's a quick switch and makes development so much nicer. There's not much to say about this part as it was painless.
+
+### MDX
+
+This is a markdown extension that allows React components to be imported directly into markdown files and rendered on the page. MDX support was another good reason to switch to Next.js since Next provides its own library for processing MDX files.
+
+You might have already noticed a few components in this post, but here's an example of an interactive React component. Try clicking on the cluster.
+
+<Cluster />
+
+Pretty neato eh?! This is all generated from a markdown file. Server components are rendered with the rest of the page at build time and client components are pre-rendered on the server and then hydrated on the client. I chose to lazy-load this particular one as it's quite heavy.
+
+(Credit: [@ksenia-k](https://codepen.io/ksenia-k) on Codepen for the clustering animation)
+
+### Shiki
+
+My old blog used React Syntax Highlighter (which depends on Highlight.js). Shiki is a much better tool. It runs at build time so you can support as many languages as you like without slowing down the site. It also works with textmate themes which is really nice. I can load multiple themes from easily customizable JSON files and switch between them for light and dark mode.
+
+### Tailwind
+
+I'm still not completely sold on Tailwind. I like the colocation of CSS and markup but there are still some pain points with the config. These _might_ be somewhat resolved with Tailwind 4 but I'm using v3 for this project. (I tried the v4 RC briefly but found the docs to be lacking.)
+
+### Biome
+
+Biome is a Rust-based linter, formatter and import sorter that replaces Eslint and Prettier and it's an absolute joy to use. It's opinionated like Prettier which I like. The default config works well for me with a few minor tweaks.
+
+## Making it All Work
+
+The trickiest part of this update by far was the MDX support.
+
+The way it works currently is that I have all of my `.mdx` files in a folder named `content`. Then, in my app router, I have a route at `blog/[slug]` where I import a number of functions that read from the file system and generate routes, metadata, linked data and pages for each of the files.
+
+I also have a `drafts` subfolder and a conditional branch to include those files in development, as well as an API route to generate an OG image for each blog post.
+
+Here is the structure:
+
+```
+├── app
+│   ├── api
+│   │   └── og
+│   │       └── route.tsx
+│   ├── blog
+│   │   └── [slug]
+│   │       └── page.tsx
+│   ├── layout.tsx
+│   └── page.tsx
+└── content
+    ├── drafts
+    │    └── post-c.mdx
+    ├── post-a.mdx
+    └── post-b.mdx
+```
+
+There's more in there of course but that's the gist.
+
+The Next docs suggest using frontmatter as metadata and recommend a couple of libraries to support this. I chose to export a regular object at the top of each blog post. It's a simpler solution that allows me to have the equivalent of frontmatter without having to bring in more libraries.
+
+The downside is that this object is not typesafe, but frontmatter would be no different.
+
+Another part of the puzzle is a file called `mdx-components.tsx`. It defines how markdown elements will be replaced with markup and React components. Here's an example of a few simple elements:
+
+```tsx
+const components: MDXComponents = {
+  //...
+  h3: (props: HeadingProps) => <h3 className='mt-8 mb-3 font-medium text-xl' {...props} />,
+  h4: (props: HeadingProps) => <h4 className='font-normal' {...props} />,
+  p: (props: ParagraphProps) => <p className='mb-6' {...props} />,
+}
+```
+
+This is also where I define more complex components that I want to be available in markdown files without having to import them. Everything is combined in a function:
+
+```tsx
+export function useMDXComponents(otherComponents: MDXComponents): MDXComponents {
+  return {
+    Image,
+    Aside, // Novel components available in all files
+    ...components, // Components that replace markdown tags, h1 etc...
+    ...otherComponents, // Components imported into a specific file
+  }
+}
+```
+
+### Syntax Highlighting with Shiki
+
+Shiki didn't take long to set up but it was tricky to get the styling right. The markup was quite deeply nested after running the code blocks through next/mdx and Shiki.
+
+I created a Shiki transformer function to strip the inline styles from `<pre>` tags and to add a copy-to-clipboard button. I used another function to strip some of the wrapper elements from the output and then used a regular stylesheet to apply styles to a few different configurations of `<pre>` and `<code>` blocks.
+
+I also had an issue with multiple instances of Shiki eating up memory but this was solved by extending Node's `globalThis` object to include a single instance of the highlighter.
+
+### Light and Dark Themes
+
+My old site didn't persist the user's theme selection! I wanted to fix this, but it seemed like no matter which solution I tried from a GitHub issue or Stack Overflow post, it always resulted in a hydration error or an FOUC.
+
+Eventually, a very kind email from Josh Comeau set me in the right direction (who, by coincidence was also rebuilding his MDX blog to use the app router at the time). I settled on using a cookie and a script injected into the head tag of my main layout. Here's the script:
+
+```js
+try {
+  const themeCookie = document.cookie.split('; ').find((cookie) => cookie.startsWith('theme='))
+  if (themeCookie) {
+    const theme = themeCookie.split('=')[1]
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    document.documentElement.classList.toggle('dark', prefersDark)
+  }
+} catch (_) {}
+```
+
+## Let's Talk Perf
+
+My old site and the new site both score 100 on Lighthouse. Page Speed Insights with slow CPUs and network throttling gives a more useful report. My old site had a 67 in Performance while the new site gets 76.
+
+This doesn't really express how massive the performance increase has been. The old site displayed a loading spinner while it fetched blog posts. This could take a few seconds!
+
+The new site immediately paints the final content because it's generated on the server. I believe the difference in scores is small because NextJS ships more javascript and hydration delays the time to interactive.
+
+## Accessiblility
+
+I made a couple of minor changes. Both sites score 100, but that doesn't mean there isn't room for improvement.
+
+## SEO
+
+I made a conscious effort to do everything I could here. Metadata is generated for each route and inserted into the `<head>` tag. I also generate linked data for each blog post. OG images are created dynamically for each page using an API route. I generate a `robots.txt`, `sitemap.xml` and `manifest.json` at build time. The old site scored 77 while the new site scores 100.
+
+## Design
+
+The design of the site wasn't my focus with this rebuild. I made some minor tweaks to improve legibility on small devices. Apart from that the look and feel is the same.
+
+MDX support opens the door to making interactive content, that's what I'll be playing around with in the future.
+
+Check out [the repository](https://github.com/columk1/portfolio-v2) for more details.
