@@ -20,6 +20,7 @@ const config: Config = {
       },
       spacing: {
         frame: 'var(--frame)',
+        header: 'var(--header)',
       },
       colors: {
         bg: 'var(--bg)',

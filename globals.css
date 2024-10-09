@@ -6,6 +6,7 @@
   :root {
     --base-font: calc(13px + 0.2vw);
     --frame: 2rem;
+    --header: 2.75rem;
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
     --bgLight: 226, 226, 226;
     --bgDark: 24, 24, 24;
