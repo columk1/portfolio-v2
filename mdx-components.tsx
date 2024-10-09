@@ -1,12 +1,12 @@
-import { Children, isValidElement, useCallback, type ComponentPropsWithoutRef } from 'react'
-import { Link } from 'next-view-transitions'
-import type { MDXComponents } from 'mdx/types'
-import { stripCodeTags } from './lib/utils/stripCodeTags'
-import { addCopyButton } from './lib/utils/addCopyButton'
-import { stripInlineStyles } from './lib/utils/stripInlineStyles'
-import highlighter, { themes } from './lib/highlighter/highlighter'
-import NextImage from 'next/image'
 import Aside from '@/ui/Aside'
+import type { MDXComponents } from 'mdx/types'
+import { Link } from 'next-view-transitions'
+import NextImage from 'next/image'
+import { Children, type ComponentPropsWithoutRef, isValidElement, useCallback } from 'react'
+import highlighter, { themes } from './lib/highlighter/highlighter'
+import { addCopyButton } from './lib/utils/addCopyButton'
+import { stripCodeTags } from './lib/utils/stripCodeTags'
+import { stripInlineStyles } from './lib/utils/stripInlineStyles'
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>
 type ParagraphProps = ComponentPropsWithoutRef<'p'>

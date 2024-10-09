@@ -1,20 +1,19 @@
 {
   "name": "portfolio-v2",
-  "module": "app.ts",
   "type": "module",
+  "module": "app.ts",
   "scripts": {
-    "dev": "next dev --turbo",
     "build": "next build",
+    "dev": "next dev --turbo",
+    "lint": "next lint",
     "start": "next start",
-    "test": "vitest",
-    "lint": "next lint"
+    "test": "vitest"
   },
   "dependencies": {
     "@catppuccin/vscode": "^3.15.2",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.9",
-    "@types/react": "^18.3.5",
     "clsx": "^2.1.1",
     "d3": "^7.9.0",
     "lucide-react": "^0.446.0",
@@ -30,6 +29,7 @@
     "@testing-library/react": "^16.0.1",
     "@types/bun": "latest",
     "@types/mdx": "^2.0.13",
+    "@types/react": "^18.3.11",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "hastscript": "^9.0.0",

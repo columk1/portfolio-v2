@@ -1,5 +1,5 @@
-import type { BlogPostContent } from './types'
 import { notFound } from 'next/navigation'
+import type { BlogPostContent } from './types'
 
 export async function getBlogPostContent(slug: string): Promise<BlogPostContent> {
   try {

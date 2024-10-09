@@ -2,9 +2,9 @@
 
 import type { Dirent } from 'node:fs'
 import { readdir } from 'node:fs/promises'
+import path from 'node:path'
 import { getBlogPostMetadata } from './getBlogPostMetadata'
 import type { BlogPostData } from './types'
-import path from 'node:path'
 
 const isMDXFile = (dirent: Dirent) => !dirent.isDirectory() && dirent.name.endsWith('.mdx')
 

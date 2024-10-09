@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
+import { useEffect, useRef, useState } from 'react'
 
 // const LazyCluster = React.lazy(() => import('./Cluster'))
 const LazyCluster = dynamic(() => import('./Cluster'))

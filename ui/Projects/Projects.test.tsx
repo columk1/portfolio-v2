@@ -1,5 +1,5 @@
-import projects from '../../lib/data/projects'
 import { render } from '@testing-library/react'
+import projects from '../../lib/data/projects'
 import Projects from './Projects'
 
 describe('Projects Component', () => {

@@ -1,10 +1,10 @@
-import SquaresIcon from '@/ui/icons/SquaresIcon'
-import { getBlogPostContent } from '@/lib/getBlogPostContent'
-import { formatDateString } from '@/lib/utils/formatDateString'
-import type { Metadata } from 'next/types'
-import type { BlogPostContent, PostMetadata } from '@/lib/types'
 import { baseUrl } from '@/lib/config'
+import { getBlogPostContent } from '@/lib/getBlogPostContent'
 import { getBlogPostsData } from '@/lib/getBlogPostsData'
+import type { BlogPostContent, PostMetadata } from '@/lib/types'
+import { formatDateString } from '@/lib/utils/formatDateString'
+import SquaresIcon from '@/ui/icons/SquaresIcon'
+import type { Metadata } from 'next/types'
 import { cache } from 'react'
 
 type BlogPageProps = { params: { slug: string } }

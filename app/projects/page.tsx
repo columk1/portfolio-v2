@@ -1,5 +1,5 @@
-import Projects from '@/ui/Projects/Projects'
 import projects from '@/lib/data/projects'
+import Projects from '@/ui/Projects/Projects'
 
 export const metadata = {
   title: 'Projects',

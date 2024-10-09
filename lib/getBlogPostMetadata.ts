@@ -1,5 +1,5 @@
-import type { BlogPostData } from './types'
 import { notFound } from 'next/navigation'
+import type { BlogPostData } from './types'
 
 export async function getBlogPostMetadata(slug: string): Promise<BlogPostData> {
   try {

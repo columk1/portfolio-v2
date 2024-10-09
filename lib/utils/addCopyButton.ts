@@ -1,6 +1,6 @@
-import { h } from 'hastscript'
-import type { Parent } from 'hast'
 import type { ShikiTransformerContextSource } from '@shikijs/types'
+import type { Parent } from 'hast'
+import { h } from 'hastscript'
 
 export function addCopyButton(options: { toggle?: number } = {}) {
   const toggleMs = options.toggle || 3000

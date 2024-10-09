@@ -1,13 +1,13 @@
 import '@/globals.css'
-import type { ReactNode } from 'react'
-import ThemeSelector from '@/ui/ThemeSelector'
-import Footer from '@/ui/Footer'
-import Header from '@/ui/Header'
-import { IBM_Plex_Mono, Montserrat, Work_Sans, Roboto } from 'next/font/google'
-import { ViewTransitions } from 'next-view-transitions'
-import type { Metadata } from 'next/types'
 import { baseUrl } from '@/lib/config'
 import { applyThemeScript } from '@/lib/utils/applyThemeScript'
+import Footer from '@/ui/Footer'
+import Header from '@/ui/Header'
+import ThemeSelector from '@/ui/ThemeSelector'
+import { ViewTransitions } from 'next-view-transitions'
+import { IBM_Plex_Mono, Montserrat, Roboto, Work_Sans } from 'next/font/google'
+import type { Metadata } from 'next/types'
+import type { ReactNode } from 'react'
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['200', '300', '400'],

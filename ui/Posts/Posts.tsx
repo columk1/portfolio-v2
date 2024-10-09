@@ -1,9 +1,9 @@
 'use client'
 
 import type { BlogPostData } from '@/lib/types'
+import { formatDateString } from '@/lib/utils/formatDateString'
 import { Link } from 'next-view-transitions'
 import { useState } from 'react'
-import { formatDateString } from '@/lib/utils/formatDateString'
 
 const tags = ['JavaScript', 'HTML', 'CSS', 'React', 'NodeJS', 'Typescript', 'All']
 

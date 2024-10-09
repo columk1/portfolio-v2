@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
 import * as d3 from 'd3'
+import { useEffect } from 'react'
 import './Cluster.css'
 
 export default function Cluster() {

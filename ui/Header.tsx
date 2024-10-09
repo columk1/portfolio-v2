@@ -1,8 +1,8 @@
 'use client'
 
+import type { NavItem } from '@/lib/types'
 import NavBar from '@/ui/NavBar'
 import { Link } from 'next-view-transitions'
-import type { NavItem } from '@/lib/types'
 import { usePathname } from 'next/navigation'
 
 const Header = ({ links }: { links: NavItem[] }) => {

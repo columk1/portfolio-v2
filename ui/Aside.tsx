@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { AlertCircle, Info, AlertTriangle, CheckCircle, HelpCircle } from 'lucide-react'
+import { AlertCircle, AlertTriangle, CheckCircle, HelpCircle, Info } from 'lucide-react'
 
 type AsideVariant = 'info' | 'warning' | 'error' | 'success' | 'tip'
 

@@ -1,7 +1,7 @@
+import type { Project as ProjectType } from '@/lib/data/projects'
 import GithubIcon from '@/ui/icons/GithubIcon'
 import LinkIcon from '@/ui/icons/LinkIcon'
 import Image from 'next/image'
-import type { Project as ProjectType } from '@/lib/data/projects'
 
 const Project = ({
   project,

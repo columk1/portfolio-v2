@@ -1,5 +1,5 @@
-import { createHighlighter, type ThemeRegistrationResolved } from 'shiki'
-import { latte, frappe } from '@catppuccin/vscode'
+import { frappe, latte } from '@catppuccin/vscode'
+import { type ThemeRegistrationResolved, createHighlighter } from 'shiki'
 
 export const themes = {
   light: 'catppuccin-latte',
