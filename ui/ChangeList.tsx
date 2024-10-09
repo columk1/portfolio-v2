@@ -19,8 +19,8 @@ export default function ChangesList({ title, changes }: ChangesListProps) {
         {changes.map((change) => (
           <Fragment key={change.prev}>
             <div className='font-medium text-text-secondary line-through'>{change.prev}</div>
-            <ArrowRight className='h-6 w-20 text-yellow-400' />
-            <div className='font-medium text-blue-400'>{change.next}</div>
+            <ArrowRight className='h-6 w-20 text-accent-2' />
+            <div className='font-medium text-text-secondary'>{change.next}</div>
           </Fragment>
         ))}
       </div>

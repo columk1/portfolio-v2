@@ -70,7 +70,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted Author
         dangerouslySetInnerHTML={{ __html: jsonLd }}
       />
-      <h2 className={'mx-0 my-4 text-4xl'}>{metadata.title}</h2>
+      <h1 className={'mx-0 my-4 text-4xl leading-snug'}>{metadata.title}</h1>
       <div className='flex flex-col gap-2'>
         <div className='flex flex-col gap-1 text-text-secondary'>
           <p className={'font-detail text-xs'}>{formatDateString(metadata.date)}</p>

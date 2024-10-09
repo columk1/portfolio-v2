@@ -38,6 +38,7 @@ const config: Config = {
         link: 'var(--link)',
         'link-hover': 'var(--link-hover)',
         'link-visited': 'var(--link-visited)',
+        'accent-2': 'var(--accent-2)',
       },
       animation: {
         spin: 'spin 2s linear infinite',
@@ -48,12 +49,13 @@ const config: Config = {
     plugin(({ addUtilities }) => {
       const newUtilities = {
         '.text-stroke-1': {
-          '-webkit-text-stroke': '0.5px currentColor', // 1px stroke with the current text color
+          '-webkit-text-stroke': '0.5px currentColor',
         },
       }
       addUtilities(newUtilities)
     }),
   ],
+  safelist: ['underline', 'no-underline'],
 }
 
 export default config

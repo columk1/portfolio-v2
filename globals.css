@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --base-font: calc(12px + 0.3vw);
+    --base-font: calc(13px + 0.2vw);
     --frame: 2rem;
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
     --bgLight: 226, 226, 226;
@@ -13,7 +13,6 @@
     /* Global Colors */
     --accent: #834bdb;
     --bg-dark: #181818;
-    --link-visited: #834bdb;
   }
 
   /* Light Theme Colors */
@@ -25,20 +24,21 @@
     --bg-light: #e2e2e2;
     --pre-bg: #e6e9ef;
     --code-bg: var(--pre-bg);
-    --info-bg: #e0e7ff;
-    --info-icon: #4f46e5;
-    --info-text: #111827;
+    --info-bg: #e0e3f2;
+    --info-icon: var(--link);
+    --info-text: var(--text-secondary);
     --pre-border: none;
     --text-primary: #444;
     --text-secondary: #4b5563;
     --border: #b5b5b5;
     --border-light: #d5d5d5;
     --link: var(--accent);
-    /* --link: #b94afe; */
-    --link-hover: #c792ea;
+    --link-hover: var(--link);
+    --link-visited: #663bac;
     --inline-code: var(--accent);
     --hover-shadow: rgba(131, 75, 219, 0.1);
     --scrollbar: #444;
+    --accent-2: #4f46e5;
   }
 
   /* Dark Theme Colors */
@@ -50,7 +50,7 @@
     --pre-bg: #24273a;
     --code-bg: var(--bg-offset);
     --info-bg: #1e1b4b;
-    --info-icon: #818cf8;
+    --info-icon: var(--link);
     --info-text: #bfc4cc;
     --pre-border: 1px solid var(--border);
     --text-primary: #b5b5b5;
@@ -58,8 +58,10 @@
     --border: #555;
     --border-light: #333;
     --link: #c792ea;
-    --linkHover: #e0abff;
+    --linkHover: var(--link);
+    --link-visited: #834bdb;
     --inline-code: #9ece6a;
+    --accent-2: #facc15;
     --hoverShadow: rgba(131, 75, 219, 0.75);
   }
 
@@ -120,7 +122,7 @@ blockquote {
 }
 
 pre {
-  @apply mb-6 rounded-lg overflow-x-auto py-2 px-3 text-sm;
+  @apply mb-6 rounded-lg overflow-x-auto pt-4 p-4 text-sm;
   border: var(--pre-border);
   background-color: var(--pre-bg);
   scrollbar-color: var(--border-light) transparent;
@@ -157,10 +159,6 @@ code span {
   color: var(--inline-code);
 }
 
-pre:has(code) {
-  /* @apply relative; */
-}
-
 /* Copy button in codeblock elements */
 
 .code-wrapper:hover button.copy,
@@ -178,10 +176,10 @@ button.copy {
   position: absolute;
   /* top: anchor(start); */
   /* right: anchor(end); */
-  top: 10px;
-  right: 10px;
-  height: 28px;
-  width: 28px;
+  top: 12px;
+  right: 12px;
+  height: 24px;
+  width: 24px;
   padding: 0;
   display: flex;
   opacity: 0;

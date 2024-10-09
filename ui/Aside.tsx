@@ -28,7 +28,7 @@ const variantIcons: Record<AsideVariant, React.ReactNode> = {
 
 export default function Aside({ variant, title, children }: AsideProps) {
   const baseStyles =
-    'border-[1px] border-l-4 p-4 shadow-sm text-md [&_p]:text-info-text [&_p]:mb-1 [&_p]:font-light'
+    'border-[1px] border-l-4 p-4 shadow-sm text-sm [&_p]:text-info-text [&_p]:mb-1 [&_p]:font-normal'
   const styles = `${baseStyles} ${variantStyles[variant]}`
 
   return (

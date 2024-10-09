@@ -20,7 +20,7 @@ const components: MDXComponents = {
     <h1 className='fade-in mb-0 pt-12 font-light font-sans text-4xl' {...props} />
   ),
   h2: (props: HeadingProps) => (
-    <h2 className='mt-8 mb-3 font-light text-3xl text-link' {...props} />
+    <h2 className='mt-8 mb-5 font-normal text-3xl text-link' {...props} />
   ),
   h3: (props: HeadingProps) => <h3 className='mt-8 mb-3 font-medium text-xl' {...props} />,
   h4: (props: HeadingProps) => <h4 className='font-normal' {...props} />,
@@ -33,7 +33,8 @@ const components: MDXComponents = {
     <strong className='font-medium' {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className = 'text-link hover:text-link-hover visited:text-link-visited'
+    const className =
+      'text-link font-normal underline hover:no-underline hover:text-link-hover visited:text-link-visited'
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
