@@ -23,7 +23,7 @@ const Project = ({
             width={800}
             height={600}
             alt={title}
-            className='block outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in'
+            className='block max-h-[600px] object-contain outline outline-1 outline-transparent hover:shadow-[0_0_6px_1px_var(--hoverShadow)] hover:outline-accent hover:transition-all hover:duration-200 hover:ease-in'
             priority={preloadImage}
             loading={preloadImage ? 'eager' : 'lazy'}
           />
@@ -44,7 +44,7 @@ const Project = ({
             ))}
           </ul>
         </div>
-        <div className='links flex items-center justify-end gap-2'>
+        <div className='links flex items-center justify-end gap-4'>
           <a
             href={liveUrl}
             target='_blank'
