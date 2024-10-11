@@ -241,30 +241,32 @@ button.copy {
 
 /* Scroll Animations (Projects Page) */
 
-.img-container {
-  animation: from-left var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 5vh 25vh;
+@supports (animation-timeline: view()) {
+  .animation-container {
+    animation: trigger steps(1) forwards;
+    animation-timeline: view();
+    animation-range-end: 0%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @container style(--animate: true) {
+      .animation-container img {
+        animation: from-bottom 300ms var(--easeOut) forwards;
+      }
+      .project-title {
+        animation: from-right 300ms var(--easeOut) forwards;
+      }
+      .animation-container > div {
+        animation: from-bottom 300ms var(--easeOut) forwards;
+      }
+    }
+  }
 }
-.project-title {
-  animation: from-right var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 15vh;
-}
-.project-description {
-  animation: from-bottom var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 10vh;
-}
-.tags {
-  animation: from-bottom var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 6vh;
-}
-.links {
-  animation: from-bottom var(--easeOut) both;
-  animation-timeline: view();
-  animation-range: 0vh 10vh;
+
+@keyframes trigger {
+  to {
+    --animate: true;
+  }
 }
 
 @keyframes from-left {
