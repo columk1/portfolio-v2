@@ -5,13 +5,13 @@ import { formatDateString } from '@/lib/utils/formatDateString'
 import { Link } from 'next-view-transitions'
 import { useState } from 'react'
 
-const tags = ['JavaScript', 'HTML', 'CSS', 'React', 'NodeJS', 'Typescript', 'All']
+const tags = ['JavaScript', 'CSS', 'React', 'Node.js', 'Next.js', 'Typescript', 'All']
 
 const Posts = ({ posts }: { posts: BlogPostData[] }) => {
   const [filter, setFilter] = useState('All')
   return (
     <>
-      <div className='-left-1.5 -rotate-90 absolute bottom-9 max-w-[60vh] origin-bottom-left font-mono text-xs'>
+      <div className='sm:-left-1.5 -left-[1px] sm:-rotate-90 absolute top-full translate-y-1 font-mono text-xs sm:top-auto sm:bottom-9 sm:max-w-[60vh] sm:origin-bottom-left sm:translate-y-0'>
         <ul className='flex flex-wrap gap-x-3 gap-y-1'>
           {tags.map((tag) => (
             <button

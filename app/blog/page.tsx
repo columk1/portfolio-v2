@@ -9,7 +9,7 @@ export default async function BlogPosts() {
   return (
     <div
       id='blog-posts-container'
-      className='flex min-h-[65vh] min-w-[min(80vw,970px)] flex-col justify-between border border-accent font-mono font-thin text-sm leading-8'
+      className='relative flex min-h-[65vh] min-w-[min(80vw,970px)] flex-col justify-between border border-accent font-mono font-thin text-sm leading-8'
     >
       <Posts posts={posts} />
       <div className='h-9 border-t border-t-accent' />
