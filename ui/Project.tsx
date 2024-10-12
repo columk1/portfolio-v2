@@ -49,15 +49,17 @@ const Project = ({
               </ul>
             </div>
             <div className='links flex items-center justify-end gap-4'>
-              <a
-                href={liveUrl}
-                target='_blank'
-                rel='noreferrer'
-                aria-label='Live Website Link'
-                className='hover:scale-105'
-              >
-                <LinkIcon styles={iconStyles} />
-              </a>
+              {liveUrl && (
+                <a
+                  href={liveUrl}
+                  target='_blank'
+                  rel='noreferrer'
+                  aria-label='Live Website Link'
+                  className='hover:scale-105'
+                >
+                  <LinkIcon styles={iconStyles} />
+                </a>
+              )}
               <a
                 href={githubUrl}
                 target='_blank'

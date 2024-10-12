@@ -3,7 +3,7 @@ export type Project = {
   description: string
   image: string
   tags: string[]
-  liveUrl: string
+  liveUrl?: string
   githubUrl: string
 }
 
@@ -14,7 +14,7 @@ const projects: Project[] = [
       'A cloud storage application for file management and sharing. Built with Typescript, Express, EJS and Web Components. Features a modular architecture with various performance and security optimizations.',
     image: '/images/file-uploader.png',
     tags: ['Typescript', 'Node', 'Express', 'EJS', 'PostgreSQL', 'Docker'],
-    liveUrl: 'https://columk-file-uploader.adaptable.app/',
+    liveUrl: 'https://columk-file-uploader.up.railway.app/',
     githubUrl: 'https://github.com/columk1/file-uploader',
   },
   {
@@ -32,7 +32,6 @@ const projects: Project[] = [
       'A REST API for my personal blog using Node, Express and MongoDB. I built a simple CMS to interact with the API using React and Tailwind. It includes a markdown previewer with syntax highlighting. Authentication is handled using JWTs via access and refresh tokens stored in HTTP-only cookies.',
     image: '/images/blog-api.png',
     tags: ['Node', 'Express', 'MongoDB', 'React', 'Tailwind'],
-    liveUrl: 'https://github.com/columk1/blog-cms',
     githubUrl: 'https://github.com/columk1/blog-api',
   },
   {
