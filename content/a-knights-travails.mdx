@@ -9,7 +9,7 @@ export const metadata = {
 
 ## Introduction
 
-The knight's travails problem is a classic interview question where you must find the shortest path for a knight to travel from one square of a chessboard to another. I came across it while working my way through The Odin Project's JavaScript curriculum and really enjoyed the challenge it provided at the time.
+The knight's travails problem is a classic interview question where you must find the shortest path for a knight to travel from one square of a chessboard to another. I came across it while working my way through The Odin Project's JavaScript curriculum and really enjoyed the challenge it provided.
 
 ### The Problem
 
@@ -126,10 +126,8 @@ const printResult = (path) => {
 
 The time complexity of this algorithm is O(V + E), where V is the number of vertices and E is the number of edges. In this case, V is the number of squares on the board (64), and E is the sum total of possible knight moves from each square (up to a maximum of 8 per square), which is 336.
 
-While this algorithm is efficient for small chessboards, it quickly becomes impractical for larger boards. One improvement would be to use a bidirectional search, where we simultaneously search from the source and destination vertices. This would significantly reduce the search space and improve the algorithm's time complexity.
+While this algorithm is efficient for small chessboards, it quickly becomes impractical for larger boards. One improvement would be to use a bidirectional search to simultaneously search from the source and destination vertices. This would significantly reduce the search space and improve the algorithm's time complexity.
 
-## Conclusion
+## Takeaway
 
-I'm sure there are better ways to implement this, but I'm confident that using a graph data structure and a breadth-first search algorithm can be an effective way to solve this problem. With some improvements, this algorithm can be scaled to solve larger chessboards.
-
-Give it a try and see how quickly you can solve the knight's travails problem on your own!
+I'm sure there are better ways to implement this, but I'm happy with this solution. I learned a lot about graph traversal. With some improvements, this algorithm can be scaled to solve larger chessboards.
