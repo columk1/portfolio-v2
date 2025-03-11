@@ -9,6 +9,15 @@ export type Project = {
 
 const projects: Project[] = [
   {
+    title: 'Threads Clone',
+    description:
+      'A pixel-perfect clone of the Threads social media app. Includes a suite of automated end-to-end and integration tests, custom auth with email verification, and AI content moderation. Built with Next.js 15, React 19, Drizzle, and SQLite.',
+    image: '/images/threads-clone.webp',
+    tags: ['NextJS', 'Drizzle', 'SQLite', 'Vitest', 'Playwright'],
+    liveUrl: 'https://threads-clone-omega-bay.vercel.app/',
+    githubUrl: 'https://github.com/columk1/threads-clone',
+  },
+  {
     title: 'File Uploader',
     description:
       'A cloud storage application for file management and sharing. Built with Typescript, Express, EJS and Web Components. Features a modular architecture with various performance and security optimizations.',
@@ -20,7 +29,7 @@ const projects: Project[] = [
   {
     title: 'Messaging App',
     description:
-      'A real-time messaging app built with Next.js using React, Tailwind, Prisma, Postgres, NextAuth and Pusher. Although initially modelled on a tutorial with a slightly different stack, I spent a few weeks addressing issues, improving privacy, security and performance, replacing dependencies and adding new features of my own.',
+      'A real-time messaging app built with Next.js using React, Tailwind, Prisma, Postgres, NextAuth, and Pusher. Although initially modelled on a tutorial with a slightly different stack, I spent a few weeks addressing issues, improving privacy, security, and performance, replacing dependencies, and adding new features of my own.',
     image: '/images/messaging-app.png',
     tags: ['NextJS', 'Typescript', 'Prisma', 'Postgres', 'Tailwind'],
     liveUrl: 'https://messaging-app-azure.vercel.app/',
@@ -29,7 +38,7 @@ const projects: Project[] = [
   {
     title: 'Blog API',
     description:
-      'A REST API for my personal blog using Node, Express and MongoDB. I built a simple CMS to interact with the API using React and Tailwind. It includes a markdown previewer with syntax highlighting. Authentication is handled using JWTs via access and refresh tokens stored in HTTP-only cookies.',
+      'A REST API for my personal blog using Node, Express, and MongoDB. I built a simple CMS to interact with the API using React and Tailwind. It includes a markdown previewer with syntax highlighting. Authentication is handled using JWTs via access and refresh tokens stored in HTTP-only cookies.',
     image: '/images/blog-api.png',
     tags: ['Node', 'Express', 'MongoDB', 'React', 'Tailwind'],
     githubUrl: 'https://github.com/columk1/blog-api',
@@ -37,7 +46,7 @@ const projects: Project[] = [
   {
     title: 'Paragliding Dashboard',
     description:
-      'A weather dashboard for local paragliding pilots. Features a scrollable dynamic wind graph, displays for multiple weather APIs, an interactive UI for viewing windgrams and a live camera feed of the local mountain.',
+      'A weather dashboard for local paragliding pilots. Features a scrollable dynamic wind graph, displays for multiple weather APIs, an interactive UI for viewing windgrams, and a live camera feed of the local mountain.',
     image: '/images/paragliding-dashboard.png',
     tags: ['Typescript', 'React', 'NextJS', 'Recharts'],
     liveUrl: 'https://chieflap.vercel.app/',
