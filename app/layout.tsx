@@ -29,6 +29,13 @@ export const metadata: Metadata = {
     template: '%s | Colum Kelly',
   },
   description: 'Web designer and developer',
+  openGraph: {
+    title: 'Colum Kelly',
+    description: 'Web designer and developer',
+    images: [
+      { url: `${baseUrl}/api/og?title=Colum Kelly`, },
+    ],
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

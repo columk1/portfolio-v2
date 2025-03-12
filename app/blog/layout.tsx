@@ -1,7 +1,15 @@
+import { baseUrl } from '@/lib/config'
 import type { ReactNode } from 'react'
 
 export const metadata = {
   title: 'Blog',
+  openGraph: {
+    title: 'Blog | Colum Kelly',
+    description: 'Web designer and developer',
+    images: [
+      { url: `${baseUrl}/api/og?title=Blog | Colum Kelly`, },
+    ],
+  },
 }
 
 export default function BlogLayout({ children }: { children: ReactNode }) {
