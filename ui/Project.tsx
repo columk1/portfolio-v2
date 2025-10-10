@@ -37,7 +37,7 @@ const Project = ({
         </div>
         <div className='animation-container'>
           <div className='flex flex-col gap-4'>
-            <p className='project-description font-light text-sm'>{description}</p>
+            <p className='project-description whitespace-pre-line font-light text-sm'>{description}</p>
             <div className='tags'>
               <ul className='tags flex flex-wrap justify-end gap-4'>
                 {tags.map((tag) => (
