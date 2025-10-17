@@ -114,10 +114,10 @@ blockquote {
   & p {
     quotes: initial;
     &::after {
-      content: '”';
+      content: "”";
     }
     &::before {
-      content: '“';
+      content: "“";
     }
   }
 }
@@ -195,7 +195,7 @@ button.copy {
   }
 
   &:before {
-    content: 'Copied!';
+    content: "Copied!";
     position: absolute;
     left: -70px; /* Adjust as needed to position text properly */
     top: 50%;
@@ -249,7 +249,7 @@ button.copy {
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    @container style(--animate: true) {
+    @container style (--animate: true) {
       .animation-container img {
         animation: from-bottom 300ms var(--easeOut) forwards;
       }

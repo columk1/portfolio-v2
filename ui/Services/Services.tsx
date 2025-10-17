@@ -1,0 +1,37 @@
+import type { Service } from '@/lib/data/services'
+
+const Services = ({ services }: { services: Service[] }) => {
+  return (
+    <section id='services' className='mt-11 px-[6vw] py-12'>
+      <div className='flex max-w-[970px] flex-col justify-between'>
+        <h2 className='mx-6 mt-4 font-light font-sans text-4xl'>Services</h2>
+        <div className='mx-6 mt-8 grid grid-cols-1 gap-6 md:grid-cols-2'>
+          {services.map((service) => (
+            <div
+              key={service.title}
+              className='border border-accent bg-bg p-8 transition-colors duration-200 hover:bg-bg-offset'
+            >
+              <h3 className='mb-4 font-light text-text-primary text-xl'>{service.title}</h3>
+              <p className='text-text-secondary leading-relaxed'>{service.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className='mx-6 mt-16 text-center'>
+          <h2 className='pb-3 font-light font-sans text-2xl text-text-primary'>Ready to start?</h2>
+          <p className='font-light text-md text-text-secondary'>
+            Reach out to discuss your project or to request a quote.
+          </p>
+          <a
+            href='mailto:columk1+website@gmail.com'
+            className='mt-6 inline-block border border-accent px-8 py-3 font-light transition-colors duration-200 hover:bg-bg-offset'
+          >
+            Get in Touch
+          </a>
+        </div>
+        <div className='h-9' />
+      </div>
+    </section>
+  )
+}
+
+export default Services

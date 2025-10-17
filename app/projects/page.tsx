@@ -7,9 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Projects | Colum Kelly',
     description: 'Web designer and developer',
-    images: [
-      { url: `${baseUrl}/api/og?title=Projects | Colum Kelly`, },
-    ],
+    images: [{ url: `${baseUrl}/api/og?title=Projects | Colum Kelly`, }],
   },
 }
 

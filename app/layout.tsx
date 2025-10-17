@@ -32,9 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Colum Kelly',
     description: 'Web designer and developer',
-    images: [
-      { url: `${baseUrl}/api/og?title=Colum Kelly`, },
-    ],
+    images: [{ url: `${baseUrl}/api/og?title=Colum Kelly` }],
   },
 }
 
@@ -62,6 +60,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border has-[.markdown]:border-0 has-[.markdown]:sm:border-[1px]'>
             <Header
               links={[
+                { title: 'Work', route: '/work' },
+                { title: 'Services', route: '/services' },
                 { title: 'Projects', route: '/projects' },
                 { title: 'Blog', route: '/blog' },
               ]}
