@@ -6,15 +6,21 @@ const Services = ({ services }: { services: Service[] }) => {
       <div className='flex max-w-[970px] flex-col justify-between'>
         <h2 className='mx-6 mt-4 font-light font-sans text-4xl'>Services</h2>
         <div className='mx-6 mt-8 grid grid-cols-1 gap-6 md:grid-cols-2'>
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className='border border-accent bg-bg p-8 transition-colors duration-200 hover:bg-bg-offset'
-            >
-              <h3 className='mb-4 font-light text-text-primary text-xl'>{service.title}</h3>
-              <p className='text-text-secondary leading-relaxed'>{service.description}</p>
-            </div>
-          ))}
+          {services.map((service) => {
+            const Icon = service.icon
+            return (
+              <div
+                key={service.title}
+                className='border border-accent bg-bg p-8 transition-colors duration-200 hover:bg-bg-offset'
+              >
+                <div className='mb-4'>
+                  <Icon styles={{ width: '3rem', color: 'var(--text-primary)' }} />
+                </div>
+                <h3 className='mb-4 font-light text-text-primary text-xl'>{service.title}</h3>
+                <p className='text-text-secondary leading-relaxed'>{service.description}</p>
+              </div>
+            )
+          })}
         </div>
         <div className='mx-6 mt-16 text-center'>
           <h2 className='pb-3 font-light font-sans text-2xl text-text-primary'>Ready to start?</h2>
