@@ -11,13 +11,15 @@ const Services = ({ services }: { services: Service[] }) => {
             return (
               <div
                 key={service.title}
-                className='border border-accent bg-bg p-8 transition-colors duration-200 hover:bg-bg-offset'
+                className='flex border border-accent bg-bg transition-colors duration-200 hover:bg-bg-offset'
               >
-                <div className='mb-4'>
-                  <Icon styles={{ width: '3rem', color: 'var(--text-primary)' }} />
+                <div className='flex w-[20%] items-center justify-center border-accent border-r p-6'>
+                  <Icon styles={{ width: '2.5rem', color: 'var(--text-primary)' }} />
                 </div>
-                <h3 className='mb-4 font-light text-text-primary text-xl'>{service.title}</h3>
-                <p className='text-text-secondary leading-relaxed'>{service.description}</p>
+                <div className='flex-1 p-8'>
+                  <h3 className='mb-4 font-light text-text-primary text-xl'>{service.title}</h3>
+                  <p className='text-text-secondary leading-relaxed'>{service.description}</p>
+                </div>
               </div>
             )
           })}
