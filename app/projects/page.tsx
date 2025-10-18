@@ -12,5 +12,15 @@ export const metadata = {
 }
 
 export default function Page() {
-  return <Projects projects={projects} />
+  return (
+    <section className='mt-11 px-5 py-12 sm:px-[10vw]'>
+      <div
+        id='projects-container'
+        className='relative flex min-h-[65vh] min-w-[min(80vw,970px)] flex-col justify-between border border-accent font-mono font-thin text-sm leading-8'
+      >
+        <Projects projects={projects} />
+        <div className='h-9 border-t border-t-accent' />
+      </div>
+    </section>
+  )
 }
