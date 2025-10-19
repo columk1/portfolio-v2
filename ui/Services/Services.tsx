@@ -30,7 +30,7 @@ const Services = ({ services }: { services: Service[] }) => {
             Reach out to discuss your project or to request a quote.
           </p>
           <a
-            href='mailto:columk1+website@gmail.com'
+            href='mailto:hello@columkelly.com'
             className='mt-6 inline-block border border-accent px-8 py-3 font-light transition-colors duration-200 hover:bg-bg-offset'
           >
             Get in Touch

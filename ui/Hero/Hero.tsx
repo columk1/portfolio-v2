@@ -62,7 +62,7 @@ const Hero = () => {
             Github
           </a>
           <a
-            href='mailto:"columk1+website@gmail.com'
+            href='mailto:"hello@columkelly.com"'
             target='_blank'
             rel='noreferrer'
             className='hover:font-light'

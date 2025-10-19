@@ -61,6 +61,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               links={[
                 { title: 'Services', route: '/services' },
                 { title: 'Projects', route: '/projects' },
+                { title: 'Contact', route: '/contact' },
                 { title: 'Blog', route: '/blog' },
               ]}
             />
