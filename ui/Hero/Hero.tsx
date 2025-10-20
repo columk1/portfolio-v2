@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import ArrowIcon from '@/ui/icons/ArrowIcon'
 import AsteriskIcon from '@/ui/icons/AsteriskIcon'
 import CirclesIcon from '@/ui/icons/CirclesIcon'
@@ -14,6 +17,44 @@ const svgContainerXLClasses =
   'w-full aspect-[1/2] grid place-content-center border-t border-l border-r border-accent'
 
 const Hero = () => {
+  const pointerRef = useRef<HTMLDivElement>(null)
+  const linkRef = useRef<HTMLAnchorElement>(null)
+  const [animationReady, setAnimationReady] = useState(false)
+
+  useEffect(() => {
+    const updateAnimation = () => {
+      if (pointerRef.current && linkRef.current) {
+        const pointerRect = pointerRef.current.getBoundingClientRect()
+        const linkRect = linkRef.current.getBoundingClientRect()
+
+        // Calculate the center of the link
+        const linkCenterX = linkRect.left + linkRect.width / 2
+        const linkCenterY = linkRect.top + linkRect.height / 2
+
+        // The pointer's tip is at its top-left corner, not its center
+        const pointerTipX = pointerRect.left
+        const pointerTipY = pointerRect.top
+
+        // Calculate the distance to move (from pointer tip to link center)
+        const deltaX = linkCenterX - pointerTipX
+        const deltaY = linkCenterY - pointerTipY
+
+        // Set CSS custom properties
+        pointerRef.current.style.setProperty('--move-x', `${deltaX}px`)
+        pointerRef.current.style.setProperty('--move-y', `${deltaY}px`)
+
+        setAnimationReady(true)
+      }
+    }
+
+    // Initial calculation
+    updateAnimation()
+
+    // Recalculate on resize
+    window.addEventListener('resize', updateAnimation)
+    return () => window.removeEventListener('resize', updateAnimation)
+  }, [])
+
   return (
     <section className='flex min-h-full items-center justify-center bg-bg font-light font-sans'>
       <div className='grid max-w-[970px] grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-10 text-text-primary'>
@@ -47,18 +88,28 @@ const Hero = () => {
           {/* <TextType text='I&apos;m a full stack developer based in Squamish, British Columbia.' reserveSpace={true} variableSpeed={{ min: 15, max: 40 }} /> */}
         </div>
         <div className='height-full relative col-start-2 row-start-6 flex items-center border-accent border-t border-r border-b'>
-          <PointerIcon
-            styles={{
-              width: '2.75rem',
-              color: 'var(--text-primary)',
-              additionalStyles: { position: 'absolute', bottom: '35%', right: '15%' },
-            }}
-          />
+          <div
+            ref={pointerRef}
+            className={animationReady ? 'animate-pointer-path' : ''}
+            style={{ position: 'absolute', bottom: '35%', right: '15%' }}
+          >
+            <div className={animationReady ? 'animate-pointer-curve' : ''}>
+              <div className={animationReady ? 'animate-pointer-click' : ''}>
+                <PointerIcon
+                  styles={{
+                    width: '2.75rem',
+                    color: 'var(--text-primary)',
+                  }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <div className='col-span-2 flex justify-between gap-3 py-1 font-mono font-thin'>
           <Link
+            ref={linkRef}
             href='/projects'
-            className='text-text-primary hover:font-light'
+            className={`text-text-primary ${animationReady ? 'animate-link-hover' : ''} hover:!font-light`}
           >
             [see some examples of my work]
           </Link>
