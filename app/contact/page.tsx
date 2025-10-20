@@ -20,6 +20,8 @@ export default function Page() {
             <span className='font-medium'>EMAIL</span>
             <a
               href='mailto:hello@columkelly.com'
+              target='_blank'
+              rel='noopener noreferrer'
               className='flex items-center gap-2 font-thin text-text-primary hover:font-light'
             >
               <ExternalLink size={16} />

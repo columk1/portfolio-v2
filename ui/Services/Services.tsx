@@ -31,6 +31,8 @@ const Services = ({ services }: { services: Service[] }) => {
           </p>
           <a
             href='mailto:hello@columkelly.com'
+            target='_blank'
+            rel='noopener noreferrer'
             className='mt-6 inline-block border border-accent bg-accent px-8 py-3 font-light text-bg-light opacity-90 outline outline-accent outline-offset-2 hover:font-medium hover:opacity-100 active:opacity-90'
           >
             Get in Touch
