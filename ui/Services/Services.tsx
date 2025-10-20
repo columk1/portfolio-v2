@@ -4,8 +4,8 @@ const Services = ({ services }: { services: Service[] }) => {
   return (
     <section id='services' className='mt-11 px-[6vw] py-12'>
       <div className='flex max-w-[970px] flex-col justify-between'>
-        <h2 className='mx-6 mt-4 font-light font-sans text-4xl'>Services</h2>
-        <div className='mx-6 mt-8 grid grid-cols-1 gap-6 md:grid-cols-2'>
+        <h2 className='mx-6 mt-4 mb-6 font-light font-sans text-4xl'>Services</h2>
+        <div className='mx-6 grid grid-cols-1 gap-6 md:grid-cols-2'>
           {services.map((service) => {
             const Icon = service.icon
             return (

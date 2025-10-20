@@ -111,7 +111,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               className='flex items-center gap-2 hover:scale-105'
             >
               <LinkIcon styles={iconStyles} />
-              <span className='text-sm'>View Live</span>
+              <span className='text-sm'>Visit Site</span>
             </a>
           )}
           <a

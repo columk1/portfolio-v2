@@ -61,7 +61,6 @@ const Projects = ({ projects }: { projects: Project[] }) => {
         </ul>
       </div>
       <div className='px-6 py-4'>
-        <h2 className='mb-4 font-light font-sans text-4xl'>Projects</h2>
 
         {featuredProjects.length > 0 && (
           <div className='mb-8'>

@@ -1,4 +1,5 @@
 import { baseUrl } from '@/lib/config'
+import { ExternalLink } from 'lucide-react'
 
 export const metadata = {
   title: 'Contact',
@@ -12,15 +13,16 @@ export const metadata = {
 export default function Page() {
   return (
     <section id='contact' className='mt-11 px-[6vw] py-12'>
-      <div className='min-w-[min(80vw,970px)] px-6'>
-        <h2 className='mt-4 font-light font-sans text-4xl'>Contact</h2>
-        <div className='mt-8 flex flex-wrap justify-between'>
+      <div className='min-w-[min(80vw,970px)] px-3'>
+        <h2 className='mt-4 mb-6 font-light font-sans text-4xl'>Contact</h2>
+        <div className='flex flex-wrap justify-between'>
           <div className='flex items-center gap-8'>
             <span className='font-medium'>EMAIL</span>
             <a
               href='mailto:hello@columkelly.com'
-              className='text-text-secondary transition-colors hover:text-text-primary'
+              className='flex items-center gap-2 text-text-secondary transition-colors hover:text-text-primary'
             >
+              <ExternalLink size={16} />
               hello@columkelly.com
             </a>
           </div>
@@ -30,8 +32,9 @@ export default function Page() {
               href='https://bsky.app/profile/columk.bsky.social'
               target='_blank'
               rel='noopener noreferrer'
-              className='text-text-secondary transition-colors hover:text-text-primary'
+              className='flex items-center gap-2 text-text-secondary transition-colors hover:text-text-primary'
             >
+              <ExternalLink size={16} />
               @columk.bsky.social
             </a>
           </div>

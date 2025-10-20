@@ -33,7 +33,7 @@ const Posts = ({ posts }: { posts: BlogPostData[] }) => {
         </ul>
       </div>
       <div className='px-6 py-4'>
-        <h2 className='mb-4 font-light font-sans text-4xl'>Blog</h2>
+
         <ul className='flex flex-col gap-2'>
           {posts
             .filter(({ metadata }) => filter === 'All' || metadata.tags.includes(filter))
