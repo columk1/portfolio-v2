@@ -4,6 +4,8 @@ import CirclesIcon from '@/ui/icons/CirclesIcon'
 import GlobeIcon from '@/ui/icons/GlobeIcon'
 import PointerIcon from '@/ui/icons/PointerIcon'
 import SquaresIcon from '@/ui/icons/SquaresIcon'
+import Link from 'next/link'
+// import TextType from './TextType/TextType'
 
 const iconStyles = { width: '2.25rem', color: 'var(--text-primary)' }
 const svgContainerClasses =
@@ -41,9 +43,10 @@ const Hero = () => {
         </div>
 
         <div className='height-full col-start-2 row-start-1 row-end-6 grid place-content-center border-accent border-t border-r p-[min(6rem,6vw)] text-3xl'>
-          <p>Hi, I&apos;m a full stack developer based in Squamish, British Columbia.</p>
+          <span>Hi, I'm a full stack developer based in Squamish, British Columbia.</span>
+          {/* <TextType text='I&apos;m a full stack developer based in Squamish, British Columbia.' reserveSpace={true} variableSpeed={{ min: 15, max: 40 }} /> */}
         </div>
-        <div className='height-full relative col-start-2 row-start-6 border-accent border-t border-r border-b'>
+        <div className='height-full relative col-start-2 row-start-6 flex items-center border-accent border-t border-r border-b'>
           <PointerIcon
             styles={{
               width: '2.75rem',
@@ -52,23 +55,31 @@ const Hero = () => {
             }}
           />
         </div>
-        <div className='col-span-2 flex justify-end gap-3 py-1 font-mono font-thin'>
-          <a
-            href='https://github.com/columk1'
-            target='_blank'
-            rel='noreferrer'
-            className='hover:font-light'
+        <div className='col-span-2 flex justify-between gap-3 py-1 font-mono font-thin'>
+          <Link
+            href='/projects'
+            className='text-text-primary hover:font-light'
           >
-            Github
-          </a>
-          <a
-            href='mailto:"hello@columkelly.com"'
-            target='_blank'
-            rel='noreferrer'
-            className='hover:font-light'
-          >
-            Email
-          </a>
+            [see some examples of my work]
+          </Link>
+          <div className='flex gap-3'>
+            <a
+              href='https://github.com/columk1'
+              target='_blank'
+              rel='noreferrer'
+              className='hover:font-light'
+            >
+              Github
+            </a>
+            <a
+              href='mailto:"hello@columkelly.com"'
+              target='_blank'
+              rel='noreferrer'
+              className='hover:font-light'
+            >
+              Email
+            </a>
+          </div>
         </div>
       </div>
     </section>

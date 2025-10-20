@@ -17,8 +17,8 @@ const Services = ({ services }: { services: Service[] }) => {
                   <Icon styles={{ width: '2.5rem', color: 'var(--text-primary)' }} />
                 </div>
                 <div className='flex-1 p-8'>
-                  <h3 className='mb-4 font-light text-text-primary text-xl'>{service.title}</h3>
-                  <p className='text-text-secondary leading-relaxed'>{service.description}</p>
+                  <h3 className='mb-4 border-text-primary border-b-4 font-light text-text-primary text-xl'>{service.title}</h3>
+                  <p className='font-thin leading-relaxed'>{service.description}</p>
                 </div>
               </div>
             )
@@ -26,12 +26,12 @@ const Services = ({ services }: { services: Service[] }) => {
         </div>
         <div className='mx-6 mt-16 text-center'>
           <h2 className='pb-3 font-light font-sans text-2xl text-text-primary'>Ready to start?</h2>
-          <p className='font-light text-md text-text-secondary'>
+          <p className='font-thin text-md'>
             Reach out to discuss your project or to request a quote.
           </p>
           <a
             href='mailto:hello@columkelly.com'
-            className='mt-6 inline-block border border-accent px-8 py-3 font-light transition-colors duration-200 hover:bg-bg-offset'
+            className='mt-6 inline-block border border-accent bg-accent px-8 py-3 font-light text-bg-light opacity-90 outline outline-accent outline-offset-2 hover:font-medium hover:opacity-100 active:opacity-90'
           >
             Get in Touch
           </a>

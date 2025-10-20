@@ -19,7 +19,7 @@ export default async function BlogPosts() {
   const posts = await getBlogPostsData()
 
   return (
-    <section id='blog' className='mt-11 px-5 py-12 sm:px-[10vw]'>
+    <>
       <h2 className='mx-3 mt-4 mb-6 font-light font-sans text-4xl'>Blog</h2>
       <div
         id='blog-posts-container'
@@ -28,6 +28,6 @@ export default async function BlogPosts() {
         <Posts posts={posts} />
         <div className='h-9 border-t border-t-accent' />
       </div>
-    </section>
+    </>
   )
 }

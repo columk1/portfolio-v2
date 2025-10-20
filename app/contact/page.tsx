@@ -20,7 +20,7 @@ export default function Page() {
             <span className='font-medium'>EMAIL</span>
             <a
               href='mailto:hello@columkelly.com'
-              className='flex items-center gap-2 text-text-secondary transition-colors hover:text-text-primary'
+              className='flex items-center gap-2 font-thin text-text-primary hover:font-light'
             >
               <ExternalLink size={16} />
               hello@columkelly.com
@@ -32,7 +32,7 @@ export default function Page() {
               href='https://bsky.app/profile/columk.bsky.social'
               target='_blank'
               rel='noopener noreferrer'
-              className='flex items-center gap-2 text-text-secondary transition-colors hover:text-text-primary'
+              className='flex items-center gap-2 font-thin text-text-primary hover:font-light'
             >
               <ExternalLink size={16} />
               @columk.bsky.social

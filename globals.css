@@ -13,12 +13,14 @@
 
     /* Global Colors */
     --accent: #834bdb;
+    --accentRGB: 131 75 219;
     --bg-dark: #181818;
+    --bg-light: #e2e2e2;
   }
 
   /* Light Theme Colors */
   html {
-    --bg: #e2e2e2;
+    --bg: #d9d9d9;
     --bgRGB: 226, 226, 226;
     --bgAlpha: rgba(var(--bgRGB), 0.75);
     --bg-offset: #dadada;
