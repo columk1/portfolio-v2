@@ -1,0 +1,66 @@
+/* Pointer Click Animation - Smooth curved motion using layered animations */
+
+/* Main path animation - straight line to target and back */
+@keyframes pointer-path {
+  0%, 31%, 85%, 100% {
+    transform: translate(0, 0);
+  }
+  55%, 72% {
+    transform: translate(var(--move-x, 0), var(--move-y, 0));
+  }
+}
+
+/* Vertical curve offset - creates the arc effect */
+@keyframes pointer-curve {
+  0%, 31%, 85%, 100% {
+    transform: translateY(0);
+  }
+  43% {
+    transform: translateY(-50px);
+  }
+  55%, 72% {
+    transform: translateY(0);
+  }
+  78% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Click scale animation */
+@keyframes pointer-click {
+  55%, 59% {
+    transform: scale(1);
+  }
+  57% {
+    transform: scale(0.9);
+  }
+}
+
+/* Link hover effect - syncs with pointer */
+@keyframes link-hover-effect {
+  0%, 31%, 50% {
+    font-weight: inherit;
+  }
+  51%, 74% {
+    font-weight: 300;
+  }
+  75% {
+    font-weight: inherit;
+  }
+}
+
+.animate-pointer-path {
+  animation: pointer-path 6.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.animate-pointer-curve {
+  animation: pointer-curve 6.5s ease-in-out forwards;
+}
+
+.animate-pointer-click {
+  animation: pointer-click 6.5s ease-in-out forwards;
+}
+
+.animate-link-hover {
+  animation: link-hover-effect 6.5s ease-in-out forwards;
+}

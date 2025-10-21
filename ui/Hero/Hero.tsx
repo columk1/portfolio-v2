@@ -8,7 +8,8 @@ import GlobeIcon from '@/ui/icons/GlobeIcon'
 import PointerIcon from '@/ui/icons/PointerIcon'
 import SquaresIcon from '@/ui/icons/SquaresIcon'
 import Link from 'next/link'
-// import TextType from './TextType/TextType'
+import TextType from './TextType/TextType'
+import './Hero.css'
 
 const iconStyles = { width: '2.25rem', color: 'var(--text-primary)' }
 const svgContainerClasses =
@@ -43,7 +44,9 @@ const Hero = () => {
         pointerRef.current.style.setProperty('--move-x', `${deltaX}px`)
         pointerRef.current.style.setProperty('--move-y', `${deltaY}px`)
 
-        setAnimationReady(true)
+        setTimeout(() => {
+          setAnimationReady(true)
+        }, 3000)
       }
     }
 
@@ -84,8 +87,8 @@ const Hero = () => {
         </div>
 
         <div className='height-full col-start-2 row-start-1 row-end-6 grid place-content-center border-accent border-t border-r p-[min(6rem,6vw)] text-3xl'>
-          <span>Hi, I'm a full stack developer based in Squamish, British Columbia.</span>
-          {/* <TextType text='I&apos;m a full stack developer based in Squamish, British Columbia.' reserveSpace={true} variableSpeed={{ min: 15, max: 40 }} /> */}
+          {/* <span>Hi, I'm a full stack developer based in Squamish, British Columbia.</span> */}
+          <TextType leadingText="Hi, I'm a " trailingText=" based in Squamish, British Columbia." text='developer' pauseDuration={3000} skipInitialTyping replacementText={['designer']} reserveSpace={true} variableSpeed={{ min: 15, max: 40 }} />
         </div>
         <div className='height-full relative col-start-2 row-start-6 flex items-center border-accent border-t border-r border-b'>
           <div
@@ -111,7 +114,7 @@ const Hero = () => {
             href='/projects'
             className={`text-text-primary ${animationReady ? 'animate-link-hover' : ''} hover:!font-light`}
           >
-            [see some examples of my work]
+            [see my work]
           </Link>
           <div className='flex gap-3'>
             <a
