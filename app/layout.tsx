@@ -42,6 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <html
         lang='en'
         className={`text-base ${montserrat.variable} ${workSans.variable} ${roboto.variable} ${ibmPlexMono.variable}`}
+        suppressHydrationWarning
       >
         <head>
           <script
