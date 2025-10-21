@@ -28,10 +28,10 @@
 
 /* Click scale animation */
 @keyframes pointer-click {
-  55%, 59% {
+  58%, 62% {
     transform: scale(1);
   }
-  57% {
+  60% {
     transform: scale(0.9);
   }
 }
@@ -50,17 +50,17 @@
 }
 
 .animate-pointer-path {
-  animation: pointer-path 6.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  animation: pointer-path 6s cubic-bezier(0.6, 0, 0.3, 1) forwards;
 }
 
 .animate-pointer-curve {
-  animation: pointer-curve 6.5s ease-in-out forwards;
+  animation: pointer-curve 6s ease-in-out forwards;
 }
 
 .animate-pointer-click {
-  animation: pointer-click 6.5s ease-in-out forwards;
+  animation: pointer-click 6s ease-in-out forwards;
 }
 
 .animate-link-hover {
-  animation: link-hover-effect 6.5s ease-in-out forwards;
+  animation: link-hover-effect 6s ease-in-out forwards;
 }
