@@ -1,4 +1,4 @@
-import type { ShikiTransformerContextSource } from '@shikijs/types'
+import type { ShikiTransformerContextSource } from 'shiki'
 import type { Parent } from 'hast'
 
 export function stripInlineStyles() {
