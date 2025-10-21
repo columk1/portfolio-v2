@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </head>
         <body
           className={
-            'mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary transition-colors duration-[1500]'
+            'noise mx-auto min-w-full bg-bg p-[1px] font-mono text-text-primary transition-colors duration-[1500]'
           }
         >
           <div className='m-frame flex h-[calc(100svh-calc(var(--frame)*2)-2px)] flex-col items-center justify-between overflow-hidden border-[1px] border-border has-[.markdown]:border-0 has-[.markdown]:sm:border-[1px]'>
