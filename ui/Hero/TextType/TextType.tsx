@@ -185,7 +185,9 @@ const TextType = ({
         setHasStartedTyping(true);
       }, pauseDuration + initialDelay);
     } else if (currentCharIndex === 0 && !isDeleting && displayedText === '') {
-      timeout = setTimeout(executeTypingAnimation, initialDelay);
+      // Add small pause after deletion before starting to type again for natural feel
+      const delay = hasStartedTyping ? 100 : initialDelay;
+      timeout = setTimeout(executeTypingAnimation, delay);
     } else {
       executeTypingAnimation();
     }

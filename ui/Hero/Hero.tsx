@@ -88,7 +88,7 @@ const Hero = () => {
 
         <div className='height-full col-start-2 row-start-1 row-end-6 grid place-content-center border-accent border-t border-r p-[min(6rem,6vw)] text-3xl'>
           {/* <span>Hi, I'm a full stack developer based in Squamish, British Columbia.</span> */}
-          <TextType leadingText="Hi, I'm a " trailingText=" based in Squamish, British Columbia." text='developer' pauseDuration={3000} skipInitialTyping replacementText={['designer']} reserveSpace={true} variableSpeed={{ min: 15, max: 40 }} />
+          <TextType leadingText="Hi, I'm a " trailingText=" based in Squamish, British Columbia." text='developer' pauseDuration={2500} skipInitialTyping replacementText={['designer']} reserveSpace={true} variableSpeed={{ min: 15, max: 40 }} deletingSpeed={80} />
         </div>
         <div className='height-full relative col-start-2 row-start-6 flex items-center border-accent border-t border-r border-b'>
           <div
