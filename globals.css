@@ -92,10 +92,7 @@
 .noise::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
@@ -218,7 +215,7 @@ button.copy {
     position: absolute;
     left: -70px; /* Adjust as needed to position text properly */
     top: 50%;
-    transform: translateY(-50%);
+    translate: 0 -50%;
     background-color: var(--bg-offset); /* Background color for the message */
     color: inherit; /* Text color */
     padding: 4px 40px 4px 8px;
@@ -233,7 +230,7 @@ button.copy {
     background-image: url(/icons/copy.svg);
     transition: transform 0.1s ease;
     &:hover {
-      transform: scale(1.05);
+      scale: 1.05;
     }
   }
 
@@ -308,7 +305,7 @@ button.copy {
 @keyframes from-bottom {
   from {
     opacity: 0;
-    transform: translateY(30rem);
+    translate: 0 30rem;
     filter: blur(75px);
   }
 }

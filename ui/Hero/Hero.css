@@ -3,36 +3,36 @@
 /* Main path animation - straight line to target and back */
 @keyframes pointer-path {
   0%, 31%, 85%, 100% {
-    transform: translate(0, 0);
+    translate: 0 0;
   }
   55%, 72% {
-    transform: translate(var(--move-x, 0), var(--move-y, 0));
+    translate: var(--move-x, 0) var(--move-y, 0);
   }
 }
 
 /* Vertical curve offset - creates the arc effect */
 @keyframes pointer-curve {
   0%, 31%, 85%, 100% {
-    transform: translateY(0);
+    translate: 0 0;
   }
   43% {
-    transform: translateY(-50px);
+    translate: 0 -50px;
   }
   55%, 72% {
-    transform: translateY(0);
+    translate: 0 0;
   }
   78% {
-    transform: translateY(-10px);
+    translate: 0 -10px;
   }
 }
 
 /* Click scale animation */
 @keyframes pointer-click {
   58%, 62% {
-    transform: scale(1);
+    scale: 1;
   }
   60% {
-    transform: scale(0.9);
+    scale: 0.9;
   }
 }
 
