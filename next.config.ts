@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
     mdxRs: true,
     optimizePackageImports: ['lucide-react'],
   },
-  devIndicators: {
-    appIsrStatus: false,
-  },
   images: {
     remotePatterns: [
       {

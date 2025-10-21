@@ -7,7 +7,7 @@ import SquaresIcon from '@/ui/icons/SquaresIcon'
 import type { Metadata } from 'next/types'
 import { cache } from 'react'
 
-type BlogPageProps = { params: { slug: string } }
+type BlogPageProps = { params: Promise<{ slug: string }> }
 
 const getCachedBlogPostContent = cache(async function getCachedBlogPostContent(
   slug: string
@@ -16,7 +16,8 @@ const getCachedBlogPostContent = cache(async function getCachedBlogPostContent(
 })
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const { metadata } = await getCachedBlogPostContent(params.slug)
+  const { slug } = await params
+  const { metadata } = await getCachedBlogPostContent(slug)
   const { title, description, date } = metadata
   const ogUrl = `${baseUrl}/api/og?title=${encodeURIComponent(title)}`
 
@@ -58,9 +59,10 @@ function generateJsonLd(metadata: PostMetadata, slug: string) {
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  // const BlogMarkdown = dynamic(() => import(`@/content/${params.slug}.mdx`))
-  const { metadata, BlogMarkdown } = await getCachedBlogPostContent(params.slug)
-  const jsonLd = generateJsonLd(metadata, params.slug)
+  const { slug } = await params
+  // const BlogMarkdown = dynamic(() => import(`@/content/${slug}.mdx`))
+  const { metadata, BlogMarkdown } = await getCachedBlogPostContent(slug)
+  const jsonLd = generateJsonLd(metadata, slug)
 
   return (
     <>

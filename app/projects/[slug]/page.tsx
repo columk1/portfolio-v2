@@ -7,14 +7,15 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { cache } from 'react'
 
-type ProjectPageProps = { params: { slug: string } }
+type ProjectPageProps = { params: Promise<{ slug: string }> }
 
 const getCachedProject = cache(function getCachedProject(slug: string) {
   return getProjectBySlug(slug)
 })
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = getCachedProject(params.slug)
+  const { slug } = await params
+  const project = getCachedProject(slug)
 
   if (!project) {
     return {
@@ -42,8 +43,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getCachedProject(params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  const project = getCachedProject(slug)
 
   if (!project) {
     notFound()
