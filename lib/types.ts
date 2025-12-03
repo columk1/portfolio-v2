@@ -25,6 +25,6 @@ export type BlogPostData = {
 }
 
 export type BlogPostContent = {
-  BlogMarkdown: () => JSX.Element
+  BlogMarkdown: () => React.JSX.Element
   metadata: PostMetadata
 }
