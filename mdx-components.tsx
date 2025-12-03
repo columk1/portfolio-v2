@@ -2,7 +2,7 @@ import Aside from '@/ui/Aside'
 import type { MDXComponents } from 'mdx/types'
 import { Link } from 'next-view-transitions'
 import NextImage from 'next/image'
-import { Children, type ComponentPropsWithoutRef, isValidElement, useCallback } from 'react'
+import { Children, type ComponentPropsWithoutRef, isValidElement, type ReactElement, type ReactNode } from 'react'
 import highlighter, { themes } from './lib/highlighter/highlighter'
 import { addCopyButton } from './lib/utils/addCopyButton'
 import { stripCodeTags } from './lib/utils/stripCodeTags'
@@ -15,6 +15,10 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>
 type AnchorProps = ComponentPropsWithoutRef<'a'>
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>
 type ImageProps = ComponentPropsWithoutRef<'img'> & { caption?: string }
+
+function isCodeElement(child: ReactNode): child is ReactElement<ComponentPropsWithoutRef<'code'>> {
+  return isValidElement(child) && typeof child.type === 'function' && child.type.name === 'code'
+}
 
 const components: MDXComponents = {
   h1: (props: HeadingProps) => (
@@ -67,10 +71,6 @@ const components: MDXComponents = {
     return <code dangerouslySetInnerHTML={{ __html: stripCodeTags(codeHTML) }} {...props} />
   },
   pre: async ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => {
-    const isCodeElement = useCallback((child: React.ReactNode): child is React.ReactElement => {
-      return isValidElement(child) && typeof child.type === 'function' && child.type.name === 'code'
-    }, [])
-
     // Select the <code> element inside the <pre>
     const codeElement = Children.toArray(children)[0]
 
