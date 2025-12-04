@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@catppuccin/vscode": "^3.18.1",
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@codesandbox/sandpack-themes": "^2.0.21",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^15.5.7",
@@ -46,5 +48,9 @@
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1"
   },
-  "onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "sharp"]
+  "onlyBuiltDependencies": [
+    "@biomejs/biome",
+    "esbuild",
+    "sharp"
+  ]
 }
