@@ -42,6 +42,7 @@
     --hover-shadow: rgba(131, 75, 219, 0.1);
     --scrollbar: #444;
     --accent-2: #4f46e5;
+    --contrast: #000
   }
 
   /* Dark Theme Colors */
@@ -65,6 +66,7 @@
     --link-visited: #834bdb;
     --inline-code: #9ece6a;
     --accent-2: #facc15;
+    --contrast: #fff;
     --hoverShadow: rgba(131, 75, 219, 0.75);
   }
 

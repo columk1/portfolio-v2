@@ -40,6 +40,7 @@ const config: Config = {
         'link-hover': 'var(--link-hover)',
         'link-visited': 'var(--link-visited)',
         'accent-2': 'var(--accent-2)',
+        contrast: 'var(--contrast)',
       },
       animation: {
         spin: 'spin 2s linear infinite',

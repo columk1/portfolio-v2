@@ -93,7 +93,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </div>
       <div
         className={
-          'markdown m-auto max-w-prose font-light font-sans text-base text-text-secondary leading-7'
+          'markdown m-auto max-w-prose font-normal font-sans text-lg text-text-secondary leading-7'
         }
       >
         <BlogMarkdown />
