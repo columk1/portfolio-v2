@@ -217,6 +217,12 @@ export default function Playground({ title, preset, files }: { title: string, pr
         template={preset || 'react'}
         theme={theme}
         files={files}
+        customSetup={{
+          dependencies: {
+            "react": "latest",
+            "react-dom": "latest"
+          }
+        }}
       >
         <CustomSandpack title={title} onReset={handleReset} />
       </SandpackProvider>
