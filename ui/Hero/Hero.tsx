@@ -59,7 +59,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className='flex min-h-full items-center justify-center bg-bg font-light font-sans'>
+    <section className='flex min-h-full items-center justify-center font-light font-sans'>
       <div className='grid max-w-[970px] grid-cols-[4rem_1fr] grid-rows-[repeat(6,4rem)] p-10 text-text-primary'>
         <div className='col-start-1 row-span-full'>
           <div className={svgContainerClasses}>
