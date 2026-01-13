@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './ui/**/*.{js,ts,jsx,tsx,mdx}',
@@ -17,6 +18,7 @@ const config: Config = {
       },
       fontSize: {
         base: 'var(--base-font)',
+        md: 'var(--md-font)',
       },
       spacing: {
         frame: 'var(--frame)',
@@ -33,6 +35,7 @@ const config: Config = {
         border: 'var(--border)',
         'text-primary': 'var(--text-primary)',
         'text-secondary': 'var(--text-secondary)',
+        'text-prose': 'rgb(from var(--text-prose) r g b / <alpha-value>)',
         accent: 'var(--accent)',
         hoverShadow: 'var(--hover-shadow)',
         'bg-light': 'var(--bg-light)',

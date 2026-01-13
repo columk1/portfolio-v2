@@ -25,7 +25,7 @@ const components: MDXComponents = {
     <h1 className='fade-in mb-0 pt-12 font-light font-sans text-4xl' {...props} />
   ),
   h2: (props: HeadingProps) => (
-    <h2 className='mt-8 mb-5 font-normal text-3xl text-link' {...props} />
+    <h2 className='mt-8 mb-5 font-normal text-3xl text-text-primary dark:text-link' {...props} />
   ),
   h3: (props: HeadingProps) => <h3 className='mt-8 mb-3 font-medium text-xl text-contrast' {...props} />,
   h4: (props: HeadingProps) => <h4 className='font-normal text-contrast' {...props} />,
@@ -115,7 +115,7 @@ const components: MDXComponents = {
     </table>
   ),
   blockquote: (props: BlockquoteProps) => (
-    <blockquote className='ml-2 border-l-4 bg-neutral-800 pl-5 font-normal italic' {...props} />
+    <blockquote className='ml-2 px-5 py-1 mb-2 [&>p]:mb-0 border-l-2 border-text-primary text-md leading-7 text-text-prose/70' {...props} />
   ),
   img: (props: ImageProps) => Image(props),
 }

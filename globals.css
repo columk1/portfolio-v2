@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --base-font: calc(13px + 0.2vw);
+    --md-font: calc(14px + 0.2vw);
     --frame: 2rem;
     --header: 2.75rem;
     --easeOut: cubic-bezier(0, 0, 0.185, 0.995);
@@ -26,23 +27,24 @@
     --bg-offset: #dadada;
     --bg-light: #e2e2e2;
     --pre-bg: #e6e9ef;
-    --code-bg: var(--pre-bg);
+    --code-bg: #e4e6e7;
     --info-bg: #e0e3f2;
     --info-icon: var(--link);
     --info-text: var(--text-secondary);
     --pre-border: none;
     --text-primary: #444;
     --text-secondary: #4b5563;
+    --text-prose: rgb(30, 38, 49);
     --border: #b5b5b5;
     --border-light: #d5d5d5;
     --link: var(--accent);
     --link-hover: var(--link);
     --link-visited: #663bac;
-    --inline-code: var(--accent);
+    --inline-code: var(--text-prose);
     --hover-shadow: rgba(131, 75, 219, 0.1);
     --scrollbar: #444;
     --accent-2: #4f46e5;
-    --contrast: #000
+    --contrast: #040404
   }
 
   /* Dark Theme Colors */
@@ -59,12 +61,13 @@
     --pre-border: 1px solid var(--border);
     --text-primary: #b5b5b5;
     --text-secondary: #9ca3af;
+    --text-prose: rgb(199, 201, 220);
     --border: #555;
     --border-light: #333;
     --link: #c792ea;
     --linkHover: var(--link);
     --link-visited: #834bdb;
-    --inline-code: #9ece6a;
+    --inline-code: var(--text-prose);
     --accent-2: #facc15;
     --contrast: #fff;
     --hoverShadow: rgba(131, 75, 219, 0.75);
@@ -97,12 +100,13 @@
   inset: 0;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.6;
   z-index: 50;
 }
 
 html.dark .noise::before {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+  opacity: 0.2;
 }
 
 header {
@@ -129,7 +133,7 @@ a {
   color: inherit;
 }
 
-blockquote {
+/* blockquote {
   & p {
     quotes: initial;
     &::after {
@@ -139,7 +143,7 @@ blockquote {
       content: "“";
     }
   }
-}
+} */
 
 pre {
   @apply mb-6 rounded-lg overflow-x-auto pt-4 p-4 text-sm;
