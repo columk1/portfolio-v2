@@ -10,7 +10,7 @@ const Header = ({ links }: { links: NavItem[] }) => {
   const pathname = usePathname()
   return (
     <>
-      <header className='fixed z-10 mt-1 flex min-h-11 w-[calc(100%-calc(4px+var(--frame)*2))] items-baseline justify-between border-b-[1px] border-b-border bg-bg px-5 pt-2 sm:border-border has-[.markdown]:sm:w-[calc(100%-calc(4px+var(--frame)*2))] xl:border-none xl:bg-transparent xl:backdrop-blur-none'>
+      <header className='fixed z-10 flex min-h-11 w-[calc(100%-calc(4px+var(--frame)*2))] items-baseline justify-between border-b-[1px] border-b-border bg-bg px-5 pt-3 sm:border-border has-[.markdown]:sm:w-[calc(100%-calc(4px+var(--frame)*2))] 2xl:border-none 2xl:bg-transparent 2xl:backdrop-blur-none'>
         <Link
           href='/'
           className={'font-thin hover:font-light'}
