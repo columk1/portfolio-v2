@@ -211,7 +211,7 @@ export default function Playground({ title, preset, files }: { title: string, pr
   }
 
   return (
-    <div className="my-8 mx-[-1rem] relative z-50">
+    <div className="my-8 mx-[-1rem] relative">
       <SandpackProvider
         key={key}
         template={preset || 'react'}
