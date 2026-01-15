@@ -17,6 +17,7 @@ export type PostMetadata = Metadata & {
   date: string
   tags: string[]
   readingLength?: string
+  bluesky?: string
 }
 
 export type BlogPostData = {

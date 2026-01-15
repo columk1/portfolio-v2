@@ -2,6 +2,7 @@ import { baseUrl } from '@/lib/config'
 import { getBlogPostContent } from '@/lib/getBlogPostContent'
 import { getBlogPostsData } from '@/lib/getBlogPostsData'
 import type { BlogPostContent, PostMetadata } from '@/lib/types'
+import BlueskyComments from '@/ui/BlueskyComments'
 import { formatDateString } from '@/lib/utils/formatDateString'
 import SquaresIcon from '@/ui/icons/SquaresIcon'
 import type { Metadata } from 'next/types'
@@ -93,11 +94,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </div>
       <div
         className={
-          'markdown m-auto max-w-[70ch] mb-96 font-[350] font-sans text-md text-text-prose leading-8'
+          'markdown m-auto max-w-[70ch] font-[350] font-sans text-md text-text-prose leading-8'
         }
       >
         <BlogMarkdown />
       </div>
+      <div className='h-px w-full mt-16 bg-border' />
+      {metadata.bluesky && <BlueskyComments url={metadata.bluesky} />}
+      <div className='h-36' />
     </>
   )
 }
