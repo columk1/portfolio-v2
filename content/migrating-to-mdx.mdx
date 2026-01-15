@@ -15,19 +15,19 @@ When I created my original blog, the intention was to practice API development. 
 API and two React frontends: a CMS for CRUD operations and the blog itself.
 
 It was a nice exercise, but it didn't
-really make sense for my personal blog to have this level of complexity. When Adaptable.io, (where my Express
+really make sense for my personal blog to have this complexity. When Adaptable.io, (where my Express
 server was hosted) announced the end of their free tier, I decided to scrap the API entirely and migrate
 to NextJS.
 
 <Aside variant='info' title='Note'>
   I considered refactoring to deploy the backend on a Cloudflare Worker, but decided against it.
-  Removing the API would simplify the development process and enable static generation at build
+  Removing the API would simplify development and enable static generation at build
   time.
 </Aside>
 
 ## The Stack
 
-I kept the original look and feel of the site but changed many parts of the stack during the migration. Here are a few of those changes:
+I kept the original look and feel of the site but changed many parts of the stack during the migration. Here are the main changes:
 
 <ChangeList
   changes={[
@@ -43,13 +43,13 @@ I kept the original look and feel of the site but changed many parts of the stac
 
 ### Next.js
 
-I really like Next.js (and Vercel). It allows a mix of server-components and statically generated pages which has given the site a huge boost in performance.
+I really like Next.js (and Vercel). It allows SSG using server components which has given the site a huge boost in performance.
 
 There are many other nice features, such as API routes, server functions and the built-in Image component that can optimize and cache images from external sources.
 
 ### React 19
 
-I'm not using any features from the release candidate yet on this site, but I _have_ benefited from the improved hydration errors...
+I'm not using any features from the release candidate yet on this site, but I have benefited from the improved hydration errors...
 
 ### Typescript
 
