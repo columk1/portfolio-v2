@@ -176,7 +176,7 @@ code span {
 
 :not(pre) > code {
   bottom: 0.5px;
-  padding: 1px 3px;
+  padding: 0px 3px 2px;
   margin: 0 -1px;
   border-radius: 4px;
   background-color: var(--code-bg);
