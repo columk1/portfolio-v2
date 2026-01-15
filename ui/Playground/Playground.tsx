@@ -150,7 +150,7 @@ function CustomSandpack({ onReset, title }: { onReset: () => void, title: string
           style={{ height: '400px' }}
         />
 
-        <div className="flex flex-col h-[400px] bg-[var(--sp-bg-tabs)] border-l border-[var(--sp-border)] w-full relative">
+        <div className="flex flex-col h-[400px] bg-[var(--sp-bg-tabs)] border-[var(--sp-border)] w-full relative">
           {/* Tabs Header */}
           <div className="flex items-center justify-between border-b border-[var(--sp-border)] px-2">
             <div className="flex">
