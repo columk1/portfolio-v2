@@ -25,10 +25,10 @@ const components: MDXComponents = {
     <h1 className='fade-in mb-0 pt-12 font-light font-sans text-4xl' {...props} />
   ),
   h2: (props: HeadingProps) => (
-    <h2 className='mt-8 mb-5 font-normal text-3xl text-text-primary dark:text-link' {...props} />
+    <h2 className='mt-8 mb-5 font-medium text-3xl text-text-primary dark:text-link' {...props} />
   ),
   h3: (props: HeadingProps) => <h3 className='mt-8 mb-3 font-medium text-xl text-contrast' {...props} />,
-  h4: (props: HeadingProps) => <h4 className='font-normal text-contrast' {...props} />,
+  h4: (props: HeadingProps) => <h4 className='mt-8 mb-3 font-medium text-contrast text-lg' {...props} />,
   p: (props: ParagraphProps) => <p className='mb-4' {...props} />,
   ol: (props: ListProps) => <ol className='list-decimal space-y-1 pl-5' {...props} />,
   ul: (props: ListProps) => <ul className='list-disc space-y-0 pl-5' {...props} />,
@@ -39,7 +39,7 @@ const components: MDXComponents = {
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className =
-      'text-link font-normal underline hover:no-underline hover:text-link-hover visited:text-link-visited'
+      'text-link font-normal hover:underline hover:text-link-hover visited:text-link-visited'
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
