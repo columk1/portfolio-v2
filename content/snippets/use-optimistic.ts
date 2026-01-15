@@ -204,7 +204,7 @@ export const api = `
 let listeners = [];
 let state = {
   requests: [],
-  settings: { delay: 1000, randomize: false, error: false }
+  settings: { delay: 750, randomize: false, error: false }
 };
 
 function notify() {
