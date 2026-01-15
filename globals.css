@@ -262,6 +262,10 @@ button.copy {
   }
 }
 
+.sp-preview-container {
+  background: transparent !important;
+}
+
 /* Scroll Animations (Projects Page) */
 
 @supports (animation-timeline: view()) {
