@@ -11,6 +11,7 @@ import {
 } from '@codesandbox/sandpack-react'
 import { SkipBack, Hash, ChartNoAxesGantt, ExternalLink, RefreshCw } from 'lucide-react'
 import { useState, type CSSProperties } from 'react'
+import type { SandpackOptions } from '@codesandbox/sandpack-react'
 
 const frappe = {
   rosewater: "#f2d5cf",
@@ -77,10 +78,41 @@ const theme = {
   }
 } as const
 
-function CustomSandpack({ onReset, title }: { onReset: () => void, title: string }) {
+function TabButton({
+  isActive,
+  onClick,
+  title,
+  children,
+  className = '',
+}: {
+  isActive: boolean
+  onClick: () => void
+  title?: string
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`px-4 pt-3.5 pb-2.5 text-[13px] border-b-2 transition-colors whitespace-nowrap ${className} ${isActive
+        ? 'border-[var(--sp-accent)] text-[var(--sp-text-main)]'
+        : 'border-transparent text-[var(--sp-text-muted)] hover:text-[var(--sp-text-main)]'
+        }`}
+      title={title}
+    >
+      {children}
+    </button>
+  )
+}
+
+function CustomSandpack({ onReset, title, showTabs = false }: { onReset: () => void, title: string, showTabs?: boolean }) {
   const [activeTab, setActiveTab] = useState<'result' | 'console'>('result')
   const [showLineNumbers, setShowLineNumbers] = useState(true)
   const { sandpack } = useSandpack()
+
+  const fileTabs = showTabs ? sandpack.visibleFiles : []
+  const activeFile = sandpack.activeFile
 
   // Mock format function for now
   const handleFormat = () => {
@@ -141,37 +173,59 @@ function CustomSandpack({ onReset, title }: { onReset: () => void, title: string
 
       {/* Main Content */}
       <SandpackLayout className="!rounded-none !border-none">
-        <SandpackCodeEditor
-          showTabs={false}
-          showLineNumbers={showLineNumbers}
-          showInlineErrors={true}
-          wrapContent
-          closableTabs={false}
-          style={{ height: '400px' }}
-        />
+        <div className="flex flex-col h-[400px] w-full min-w-0 bg-[var(--sp-bg-tabs)] border-r border-[var(--sp-border)]">
+          {showTabs ? (
+            <div className="flex w-full min-w-0 items-center justify-between border-b border-[var(--sp-border)] px-2">
+              <div className="flex min-w-0 overflow-x-auto">
+                {fileTabs.map((path) => {
+                  const label = path.split('/').filter(Boolean).pop() ?? path
+
+                  return (
+                    <TabButton
+                      key={path}
+                      isActive={activeFile === path}
+                      onClick={() => sandpack.setActiveFile(path)}
+                      title={path}
+                    >
+                      {label}
+                    </TabButton>
+                  )
+                })}
+              </div>
+              <div className="w-6" />
+            </div>
+          ) : null}
+
+          <div className="flex-1 min-h-0">
+            <SandpackCodeEditor
+              showTabs={false}
+              showLineNumbers={showLineNumbers}
+              showInlineErrors={true}
+              wrapContent
+              closableTabs={false}
+              style={{ height: '100%' }}
+            />
+          </div>
+        </div>
 
         <div className="flex flex-col h-[400px] bg-[var(--sp-bg-tabs)] border-[var(--sp-border)] w-full relative">
           {/* Tabs Header */}
           <div className="flex items-center justify-between border-b border-[var(--sp-border)] px-2">
             <div className="flex">
-              <button
+              <TabButton
+                isActive={activeTab === 'result'}
                 onClick={() => setActiveTab('result')}
-                className={`px-4 py-2 text-sm font-medium border-b-4 transition-colors ${activeTab === 'result'
-                  ? 'border-[var(--sp-accent)] text-[var(--sp-text-main)]'
-                  : 'border-transparent text-[var(--sp-text-muted)] hover:text-[var(--sp-text-main)]'
-                  }`}
+                className="font-medium"
               >
                 Result
-              </button>
-              <button
+              </TabButton>
+              <TabButton
+                isActive={activeTab === 'console'}
                 onClick={() => setActiveTab('console')}
-                className={`px-4 py-2 text-sm font-medium border-b-4 transition-colors ${activeTab === 'console'
-                  ? 'border-[var(--sp-accent)] text-[var(--sp-text-main)]'
-                  : 'border-transparent text-[var(--sp-text-muted)] hover:text-[var(--sp-text-main)]'
-                  }`}
+                className="font-medium"
               >
                 Console
-              </button>
+              </TabButton>
             </div>
             <button
               onClick={() => sandpack.runSandpack()}
@@ -203,11 +257,16 @@ function CustomSandpack({ onReset, title }: { onReset: () => void, title: string
   )
 }
 
-export default function Playground({ title, preset, files }: { title: string, preset: 'react', files?: Record<string, string> }) {
+export default function Playground({ title, preset, files, showTabs, options }: { title: string, preset: 'react', files?: Record<string, string>, showTabs: boolean, options?: SandpackOptions }) {
   const [key, setKey] = useState(0)
 
   const handleReset = () => {
     setKey(prev => prev + 1)
+  }
+
+  const optionsWithDefaults: SandpackOptions = {
+    initMode: 'immediate',
+    ...options
   }
 
   return (
@@ -217,6 +276,7 @@ export default function Playground({ title, preset, files }: { title: string, pr
         template={preset || 'react'}
         theme={theme}
         files={files}
+        options={optionsWithDefaults}
         customSetup={{
           dependencies: {
             "react": "latest",
@@ -224,7 +284,7 @@ export default function Playground({ title, preset, files }: { title: string, pr
           }
         }}
       >
-        <CustomSandpack title={title} onReset={handleReset} />
+        <CustomSandpack title={title} onReset={handleReset} showTabs={showTabs} />
       </SandpackProvider>
     </div>
   )
