@@ -54,7 +54,8 @@ export default function App() {
         // 3. Sync
         // Overwrite local state with server's state
         setLiked(updated); // Try commenting this line out
-      } catch (e) {
+
+      } catch (_) {
         // Revert on error - Causes sync issues
         setLiked(!nextLiked);
       }
@@ -132,7 +133,7 @@ export default function App() {
         setServerLiked(updated);
         setOptimisticLiked(updated);
       }
-    } catch (e) {
+    } catch (_) {
       // Revert
       if (callIdRef.current === callId) {
         setOptimisticLiked(serverLiked);
@@ -184,77 +185,83 @@ What happens when the update happens in a transition? Concurrent React uses tran
 <Playground 
   title='Optimistic Update Within a Transition'
   preset='react'
+  showTabs={true}
+  options={{
+    visibleFiles: ['/App.js', '/TodoList.js'],
+    activeFile: '/App.js',
+  }}
   files={{
     '/App.js': `import { useState } from 'react';
-import { updateTodo } from './api';
 import { TodoList } from './TodoList';
+import { updateTodo } from './api';
 import './styles.css';
 
-const initialTodos = [
-    { id: '1', title: 'Walk the dog', completed: false },
-];
+const initialTodos = {
+    1: { id: 1, title: "Walk the dog", completed: false },
+};
 
 export default function App() {
     const [todos, setTodos] = useState(initialTodos);
 
-    async function toggleTodo(formData) {
-      const id = formData.get('id');
-      const todo = todos.find(t => t.id === id);
-      const nextTodo = { ...todo, completed: !todo.completed };
-      
+    async function toggleTodo(todo) {
       // 1. Optimistic Update
       // Now this doesn't work because we're in a transition
-      setTodos(prev => prev.map(t => 
-        t.id === id ? nextTodo : t
-      ));
+      setTodos((prev) => ({ ...prev, [todo.id]: todo }));
 
       try {
         // 2. Server Request
-        const updated = await updateTodo(id, nextTodo);
-        
+        const updated = await updateTodo(todo.id, todo);
+
         // 3. Sync
         // This is the only update that we'll see
-        setTodos(prev => prev.map(t => 
-          t.id === id ? updated : t
-        ));
+        setTodos((prev) => ({ ...prev, [todo.id]: updated }));
+        
       } catch (e) {
         // Revert on error
-        setTodos(prev => prev.map(t => 
-          t.id === id ? todo : t
-        ));
+        setTodos((prev) => ({
+          ...prev,
+          [todo.id]: { ...todo, completed: !todo.completed },
+        }));
       }
     }
 
-    return (
-      <TodoList todos={todos} toggleTodoAction={toggleTodo} />
-    );
+    return <TodoList todos={todos} toggleTodoAction={toggleTodo} />;
 }`,
     '/TodoList.js': `import { Check } from 'lucide-react';
 import { NetworkPanel } from './NetworkPanel';
 
+export function Todo({ todo, action }) {
+    async function toggleAction() {
+      await action({ ...todo, completed: !todo.completed });
+    }
+
+    return (
+      <form action={toggleAction} className="todo-item">
+        <span className="todo-title">{todo.title}</span>
+        <button
+          type="submit"
+          className={\`toggle-btn \${todo.completed && "checked"}\`}
+        >
+          {todo.completed && <Check size={16} />}
+        </button>
+      </form>
+    );
+}
+
 export function TodoList({ todos, toggleTodoAction }) {
-  return (
-    <div className="app-container">
-      <div className="card">
-        <h3>Todos</h3>
-        <div className="todo-list">
-          {todos.map((todo) => (
-            <form key={todo.id} action={toggleTodoAction} className="todo-item">
-              <input type="hidden" name="id" value={todo.id} />
-              <span className="todo-title">{todo.title}</span>
-              <button 
-                type="submit"
-                className={\`toggle-btn \${todo.completed ? 'completed' : ''}\`}
-              >
-                {todo.completed && <Check size={16} />}
-              </button>
-            </form>
-          ))}
+    return (
+      <div className="app-container">
+        <div className="card">
+          <h3>Todos</h3>
+          <div className="todo-list">
+            {Object.values(todos).map((todo) => (
+              <Todo key={todo.id} todo={todo} action={toggleTodoAction} />
+            ))}
+          </div>
         </div>
+        <NetworkPanel />
       </div>
-      <NetworkPanel />
-    </div>
-  );
+    );
 }`,
     '/NetworkPanel.js': NetworkPanel,
     '/api.js': api,
@@ -275,79 +282,81 @@ It doesn't work. When the state updater function is called from within a transit
 <Playground 
   title='useOptimistic'
   preset='react'
+  showTabs={true}
+  options={{
+    visibleFiles: ['/App.js', '/TodoList.js'],
+    activeFile: '/App.js',
+  }}
   files={{
     '/App.js': `import { useState, useOptimistic, startTransition } from "react";
 import { updateTodo } from './api';
 import { TodoList } from './TodoList';
 import './styles.css';
 
-const initialTodos = [
-    { id: '1', title: 'Walk the dog', completed: false },
-];
+const initialTodos = {
+    1: { id: '1', title: 'Walk the dog', completed: false },
+};
 
 export default function App() {
     const [todos, setTodos] = useState(initialTodos);
-    const [optimisticTodos, toggleOptimisticTodo] = useOptimistic(
-      todos,
-      (currentTodos, id) => {
-        return currentTodos.map((t) =>
-          t.id === id ? { ...t, completed: !t.completed } : t
-        );
-      }
-    );
     
-    async function toggleTodo(formData) {
-      const id = formData.get('id');
-      const todo = optimisticTodos.find(t => t.id === id);
-      const nextTodo = { ...todo, completed: !todo.completed };
-      
-      // 1. Optimistic Update
-      toggleOptimisticTodo(id);
-
-      // 2. Server Request
+    async function toggleTodo(todo) {
       try {
-        const updated = await updateTodo(id, nextTodo);
+        // 1. Server Request
+        const updated = await updateTodo(todo.id, todo);
       
-        // 3. Sync
+        // 2. Update state in another transition
         startTransition(() => {
-          setTodos((prev) => prev.map((t) => (t.id === id ? updated : t)));
+          setTodos((prev) => ({ ...prev, [todo.id]: updated }));
         });
-      } catch(e) {
+
+      } catch(_) {
         // No need to revert on error, this happens automatically
       }
-
     }
-
     return (
-      <TodoList todos={optimisticTodos} toggleTodoAction={toggleTodo} />
+      <TodoList todos={todos} toggleTodoAction={toggleTodo} />
     );
 }`,
     '/TodoList.js': `import { Check } from 'lucide-react';
 import { NetworkPanel } from './NetworkPanel';
+import { useOptimistic } from 'react';
+
+export function Todo({ todo, action }) {
+    const [checked, setChecked] = useOptimistic(todo.completed);
+
+    async function toggleAction() {
+      setChecked(!checked);
+      await action({ ...todo, completed: !checked });
+    }
+
+    return (
+      <form action={toggleAction} className="todo-item">
+        <span className="todo-title">{todo.title}</span>
+        <button
+          type="submit"
+          className={\`toggle-btn \${checked ? "checked" : ""}\`}
+        >
+          {checked && <Check size={16} />}
+        </button>
+      </form>
+    );
+}
 
 export function TodoList({ todos, toggleTodoAction }) {
-  return (
-    <div className="app-container">
-      <div className="card">
-        <h3>Todos</h3>
-        <div className="todo-list">
-          {todos.map((todo) => (
-            <form key={todo.id} action={toggleTodoAction} className="todo-item">
-              <input type="hidden" name="id" value={todo.id} />
-              <span className="todo-title">{todo.title}</span>
-              <button 
-                type="submit"
-                className={\`toggle-btn \${todo.completed ? 'completed' : ''}\`}
-              >
-                {todo.completed && <Check size={16} />}
-              </button>
-            </form>
-          ))}
+    return (
+      <div className="app-container">
+        <div className="card">
+          <h3>Todos</h3>
+          <div className="todo-list">
+            {Object.values(todos).map((todo) => (
+              <Todo key={todo.id} todo={todo} action={toggleTodoAction} />
+            ))}
+          </div>
         </div>
+        <NetworkPanel />
       </div>
-      <NetworkPanel />
-    </div>
-  );
+    );
 }`,
     '/NetworkPanel.js': NetworkPanel,
     '/api.js': api,
@@ -362,7 +371,9 @@ export function TodoList({ todos, toggleTodoAction }) {
   }} 
 />
 
-It appears to work. It's slightly simpler than the earlier example with the `callIds` ref, but it's still a bit verbose. The other issue is that using a transition doesn't prevent race conditions. It's possible to get the UI out of sync by spamming the checkbox with the latency randomized. The React docs have a note on this: 
+It appears to work. We've gotten rid of a few of those `setTodos` calls and wrapped the remaining one in a transition. We've also created a new state variable in the Todo component to track the optimistic state. 
+
+It's simpler than the earlier example with the `callIds` ref, but it's a little less explicit. The other issue is that using a transition doesn't prevent race conditions. It's possible to get the UI out of sync by spamming the checkbox with the latency randomized. The React docs have a note on this: 
 > This is because the updates are scheduled asynchronously, and React loses context of the order across the async boundary. 
 
 Okay, so we're failing to handle race conditions again. There's more:
@@ -373,90 +384,89 @@ In other words, "We have an API for that too."
 
 ### Example 5. Just for Kicks
 
-Here's one last example using `useActionState` and `useOptimistic` together. I wouldn't want to do this for one checkbox, but it does solve the issue of race conditions. Take a guess how React gets the execution order correct and then try it.
+Here's one last example using `useActionState` and `useOptimistic` together. I originally had some spaghetti code here, but Ricky [pointed out](https://bsky.app/profile/ricky.fm/post/3mciteprjzc2q) some issues with it and we cleaned it up. It does solve the issue of race conditions and ends up being quite lean.
+
+Take a guess how React gets the execution order correct and then try it.
 
 <Playground 
   title='useOptimistic + useActionState'
   preset='react'
+  showTabs={true}
+  options={{
+    visibleFiles: ['/App.js', '/TodoList.js'],
+    activeFile: '/App.js',
+  }}
   files={{
     '/App.js': `import { useState, useOptimistic, useActionState, startTransition } from "react";
-import { updateTodo } from './api';
-import { TodoList } from './TodoList';
-import './styles.css';
+import { TodoList } from "./TodoList";
+import { updateTodo } from "./api";
+import "./styles.css";
 
-const initialTodos = [
-    { id: '1', title: 'Walk the dog', completed: false },
-];
+const initialTodos = {
+    1: { id: "1", title: "Walk the dog", completed: false },
+};
 
 export default function App() {
-    const [todos, setTodos] = useState(initialTodos);
-    const [optimisticTodos, toggleOptimisticTodo] = useOptimistic(
-      todos,
-      (currentTodos, id) => {
-        return currentTodos.map((t) =>
-          t.id === id ? { ...t, completed: !t.completed } : t
-        );
+    // Wrap the todos in action state - think of this as an async state updater
+    const [todos, toggleTodoAction] = useActionState(async (todos, newTodo) => {
+      try {
+        // 1. Server request
+        const updated = await updateTodo(newTodo.id, newTodo);
+
+        // 2. Return the new state
+        return { ...todos, [updated.id]: updated };
+
+      } catch (_) {
+        // Return the previous state (or an error state)
+        return todos;
       }
-    );
-    
-    // useActionState ensures execution order
-    const [state, formAction] = useActionState(
-      async (prevState, formData) => {
-        const id = formData.get('id');
-        const todo = optimisticTodos.find(t => t.id === id);
-        const nextTodo = { ...todo, completed: !todo.completed };
+    }, initialTodos);
 
-        try {
-          const updated = await updateTodo(id, nextTodo);
-        
-          // Sync with server state
-          startTransition(() => {
-            setTodos((prev) => prev.map((t) => (t.id === id ? updated : t)));
-          });
-          
-          return updated;
-        } catch(e) {
-          // No need to revert on error, this happens automatically
-        }
-      },
-      null
-    );
+    return <TodoList todos={todos} toggleTodoAction={toggleTodoAction} />;
+}`,
+    '/TodoList.js': `import { Check } from "lucide-react";
+import { useOptimistic } from "react";
+import { NetworkPanel } from "./NetworkPanel";
 
-    async function toggleTodoAction(formData) {
-      toggleOptimisticTodo(formData.get('id'));
-      await formAction(formData);
+function Todo({ todo, action }) {
+    // Wrap an existing value in an optimisitic value
+    const [checked, setChecked] = useOptimistic(todo.completed);
+
+    async function toggleAction() {
+      // Set optimistic state
+      setChecked(!checked);
+
+      // Perform action
+      await action({ ...todo, completed: !checked });
     }
 
     return (
-      <TodoList todos={optimisticTodos} toggleTodoAction={toggleTodoAction} />
+      <form key={todo.id} action={toggleAction} className="todo-item">
+        <span className="todo-title">{todo.title}</span>
+        <button
+          type="submit"
+          className={\`toggle-btn \${checked && "checked"}\`}
+        >
+          {checked && <Check size={16} />}
+        </button>
+      </form>
     );
-}`,
-    '/TodoList.js': `import { Check } from 'lucide-react';
-import { NetworkPanel } from './NetworkPanel';
+}
 
 export function TodoList({ todos, toggleTodoAction }) {
-  return (
-    <div className="app-container">
-      <div className="card">
-        <h3>Todos</h3>
-        <div className="todo-list">
-          {todos.map((todo) => (
-            <form key={todo.id} action={toggleTodoAction} className="todo-item">
-              <input type="hidden" name="id" value={todo.id} />
-              <span className="todo-title">{todo.title}</span>
-              <button 
-                type="submit"
-                className={\`toggle-btn \${todo.completed ? 'completed' : ''}\`}
-              >
-                {todo.completed && <Check size={16} />}
-              </button>
-            </form>
-          ))}
+    return (
+      <div className="app-container">
+        <div className="card">
+          <h3>Todos</h3>
+          <div className="todo-list">
+            {Object.values(todos).map((todo) => (
+              <Todo key={todo.id} todo={todo} action={toggleTodoAction} />
+            ))}
+          </div>
         </div>
+        <NetworkPanel />
       </div>
-      <NetworkPanel />
-    </div>
-  );
+    );
 }`,
     '/NetworkPanel.js': NetworkPanel,
     '/api.js': api,
@@ -475,9 +485,11 @@ The requests are queued and processed sequentially, with only one request made a
 
 ## So Where Do We Land?
 
-The fact is that these new APIs don't make these situations any easier to handle than before. `useOptimistic` is useful but it doesn't simplify optimistic UI and doesn't solve the issue of race conditions.
+The fact is that these new APIs don't make these situations any easier to handle than before. `useOptimistic` is useful but it doesn't simplify optimistic UI and doesn't solve the issue of race conditions on its own. 
 
-I wanted to write about this hook because I spent a lot of time trying to understand it myself. You won't believe how many Medium articles there are about `useOptimistic` that don't even mention transitions.
+You really need to understand transitions, actions, and hooks like `useTransition` and `useActionsState` to use it correctly.
+
+I wanted to write about this because I spent a lot of time trying to understand it myself. You won't believe how many Medium articles there are about `useOptimistic` that don't even mention transitions.
 
 Frankly, we should leave these APIs to the library and framework authors. I recommend you watch Ricky Hanlon's talk [Async React](https://www.youtube.com/watch?v=tSO_tdnYprM) from React Conf. After an underwhelming demo with a string of mistakes, Ricky says:
 

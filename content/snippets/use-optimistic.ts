@@ -68,7 +68,7 @@ h3 { margin: 0 0 16px 0; font-weight: 600; font-size: 18px; }
 
 .toggle-btn:hover { border-color: #71717a; color: #a1a1aa; }
 
-.toggle-btn.completed {
+.toggle-btn.checked {
   background: rgba(16, 185, 129, 0.2);
   border-color: #10b981;
   color: #10b981;
