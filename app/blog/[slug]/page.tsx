@@ -19,7 +19,7 @@ const getCachedBlogPostContent = cache(async function getCachedBlogPostContent(
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params
   const { metadata } = await getCachedBlogPostContent(slug)
-  const { title, description, date } = metadata
+  const { title, description, date, updated } = metadata
   const ogUrl = `${baseUrl}/api/og?title=${encodeURIComponent(title)}`
 
   return {
@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       description,
       type: 'article',
       publishedTime: date,
+      modifiedTime: updated ?? date,
       authors: ['Colum'],
       images: [{ url: ogUrl }],
     },
@@ -48,7 +49,7 @@ function generateJsonLd(metadata: PostMetadata, slug: string) {
     '@type': 'BlogPosting',
     headline: metadata.title,
     datePublished: metadata.date,
-    dateModified: metadata.date,
+    dateModified: metadata.updated ?? metadata.date,
     description: metadata.description,
     image: `/og?title=${encodeURIComponent(metadata.title)}`,
     url: `${baseUrl}/blog/${slug}`,
@@ -99,7 +100,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
       >
         <BlogMarkdown />
       </div>
-      <div className='h-px w-full mt-16 bg-border' />
+      <div className='h-px w-full mt-20 bg-border' />
+      {metadata.updated && (
+        <p className={'py-4 font-mono text-xs text-text-secondary'}>{`Updated on ${formatDateString(metadata.updated)}`}</p>
+      )}
       {metadata.bluesky && <BlueskyComments url={metadata.bluesky} />}
       <div className='h-36' />
     </>
