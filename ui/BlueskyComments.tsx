@@ -1,38 +1,31 @@
 'use client'
 
-import { Heart, MessageSquare, Repeat2 } from 'lucide-react'
+import type { AppBskyFeedDefs, AppBskyFeedPost } from '@atproto/api'
+import { Heart, MessageSquare, Repeat } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+
+import { formatTimeAgo } from '@/lib/utils/timeAgo'
 
 type BlueskyCommentsProps = {
   url: string
 }
 
-type ThreadViewPost = {
-  post?: {
-    uri?: string
-    cid?: string
-    author?: {
-      did?: string
-      handle?: string
-      displayName?: string
-      avatar?: string
-    }
-    replyCount?: number
-    repostCount?: number
-    likeCount?: number
-    record?: {
-      text?: string
-      createdAt?: string
-    }
-  }
-  replies?: ThreadViewPost[]
-}
-
-type GetPostThreadResponse = {
-  thread?: ThreadViewPost
-}
+type ThreadNode = NonNullable<AppBskyFeedDefs.ThreadViewPost['replies']>[number]
+type ThreadViewPost = Extract<ThreadNode, { post: AppBskyFeedDefs.PostView }>
 
 const MAX_DEPTH = 5
+
+type UnknownRecord = Record<string, unknown>
+
+function isObject(value: unknown): value is UnknownRecord {
+  return !!value && typeof value === 'object'
+}
+
+function getRecordString(record: unknown, key: string): string | null {
+  if (!isObject(record)) return null
+  const value = record[key]
+  return typeof value === 'string' ? value : null
+}
 
 function atUriToBskyUrl(uri?: string) {
   if (!uri) return null
@@ -47,33 +40,96 @@ function atUriToBskyUrl(uri?: string) {
 function formatCreatedAt(createdAt?: string) {
   if (!createdAt) return null
   try {
-    return new Date(createdAt).toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
+    return formatTimeAgo(createdAt, Date.now(), { format: 'short' })
   } catch {
     return null
   }
 }
 
-function countReplies(thread?: ThreadViewPost): number {
-  if (!thread?.replies?.length) return 0
-  return thread.replies.reduce((acc, r) => acc + 1 + countReplies(r), 0)
+function isThreadViewPost(
+  thread: ThreadNode | undefined | null
+): thread is ThreadViewPost {
+  return !!thread && typeof thread === 'object' && 'post' in thread
+}
+
+function getPostText(post?: AppBskyFeedDefs.PostView): string {
+  return getRecordString(post?.record, 'text') ?? ''
+}
+
+function getPostCreatedAtFormatted(post?: AppBskyFeedDefs.PostView): string | null {
+  const createdAt = getRecordString(post?.record, 'createdAt')
+  return createdAt ? formatCreatedAt(createdAt) : null
+}
+
+function getAuthorProfileUrl(author?: AppBskyFeedDefs.PostView['author']): string | null {
+  const handle = author?.handle
+  const did = author?.did
+  return handle ? `https://bsky.app/profile/${handle}` : did ? `https://bsky.app/profile/${did}` : null
+}
+
+function parseBlueskyPostUrl(inputUrl: string): { profile: string; rkey: string; url: string } | null {
+  try {
+    const u = new URL(inputUrl)
+    const segments = u.pathname.split('/').filter(Boolean)
+    if (u.hostname !== 'bsky.app' || segments.length < 4) return null
+    if (segments[0] !== 'profile' || segments[2] !== 'post') return null
+
+    const profile = segments[1]
+    const rkey = segments[3]
+    if (!profile || !rkey) return null
+
+    return { profile, rkey, url: u.toString() }
+  } catch {
+    return null
+  }
+}
+
+async function resolveHandleToDid(handleOrDid: string): Promise<string> {
+  if (handleOrDid.startsWith('did:')) return handleOrDid
+
+  const resolveUrl = new URL('https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle')
+  resolveUrl.searchParams.set('handle', handleOrDid)
+
+  const resolveRes = await fetch(resolveUrl.toString())
+  if (!resolveRes.ok) {
+    throw new Error(`Unable to resolve Bluesky handle`)
+  }
+
+  const resolveData: unknown = await resolveRes.json()
+  if (!isObject(resolveData) || typeof resolveData.did !== 'string') {
+    throw new Error('Unable to resolve Bluesky handle')
+  }
+
+  return resolveData.did
+}
+
+async function fetchThreadByAtUri(atUri: string): Promise<ThreadViewPost | null> {
+  const url = new URL('https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread')
+  url.searchParams.set('uri', atUri)
+
+  const res = await fetch(url.toString())
+  if (!res.ok) {
+    throw new Error(`Unable to fetch Bluesky thread`)
+  }
+
+  const data: unknown = await res.json()
+  if (!isObject(data) || !('thread' in data)) return null
+  const thread = (data as { thread?: unknown }).thread
+  return isThreadViewPost(thread as ThreadNode) ? (thread as ThreadViewPost) : null
+}
+
+function countReplies(thread?: ThreadNode): number {
+  if (!isThreadViewPost(thread) || !thread.replies?.length) return 0
+  return thread.replies.filter(isThreadViewPost).length
 }
 
 function BlueskyReply({ thread, depth }: { thread: ThreadViewPost; depth: number }) {
   const authorName = thread.post?.author?.displayName || thread.post?.author?.handle || 'Unknown'
   const authorHandle = thread.post?.author?.handle
-  const authorDid = thread.post?.author?.did
   const postUrl = atUriToBskyUrl(thread.post?.uri)
-  const authorProfileUrl = authorHandle
-    ? `https://bsky.app/profile/${authorHandle}`
-    : authorDid
-      ? `https://bsky.app/profile/${authorDid}`
-      : null
-  const createdAt = formatCreatedAt(thread.post?.record?.createdAt)
-  const text = thread.post?.record?.text || ''
+  const authorProfileUrl = getAuthorProfileUrl(thread.post?.author)
+  const createdAt = getPostCreatedAtFormatted(thread.post)
+  const text = getPostText(thread.post)
   const replyCount = thread.post?.replyCount ?? 0
   const repostCount = thread.post?.repostCount ?? 0
   const likeCount = thread.post?.likeCount ?? 0
@@ -124,7 +180,7 @@ function BlueskyReply({ thread, depth }: { thread: ThreadViewPost; depth: number
           <span>{replyCount ? replyCount : ''}</span>
         </div>
         <div className='flex items-center gap-1'>
-          <Repeat2 size={14} />
+          <Repeat size={14} />
           <span>{repostCount ? repostCount : ''}</span>
         </div>
         <div className='flex items-center gap-1'>
@@ -134,13 +190,15 @@ function BlueskyReply({ thread, depth }: { thread: ThreadViewPost; depth: number
       </div>
       {depth < MAX_DEPTH && thread.replies?.length ? (
         <div className='flex flex-col gap-2 pt-1'>
-          {thread.replies.map((reply, index) => (
-            <BlueskyReply
-              key={reply.post?.uri ?? reply.post?.cid ?? `${depth + 1}-${index}`}
-              thread={reply}
-              depth={depth + 1}
-            />
-          ))}
+          {thread.replies
+            .filter(isThreadViewPost)
+            .map((reply, index) => (
+              <BlueskyReply
+                key={reply.post?.uri ?? reply.post?.cid ?? `${depth + 1}-${index}`}
+                thread={reply}
+                depth={depth + 1}
+              />
+            ))}
         </div>
       ) : null}
     </div>
@@ -153,20 +211,7 @@ export default function BlueskyComments({ url }: BlueskyCommentsProps) {
   const [loading, setLoading] = useState(true)
 
   const parsed = useMemo(() => {
-    try {
-      const u = new URL(url)
-      const segments = u.pathname.split('/').filter(Boolean)
-      if (u.hostname !== 'bsky.app' || segments.length < 4) return null
-      if (segments[0] !== 'profile' || segments[2] !== 'post') return null
-
-      const profile = segments[1]
-      const rkey = segments[3]
-      if (!profile || !rkey) return null
-
-      return { profile, rkey, url: u.toString() }
-    } catch {
-      return null
-    }
+    return parseBlueskyPostUrl(url)
   }, [url])
 
   const bskyWebUrl = useMemo(() => parsed?.url ?? url, [parsed, url])
@@ -186,38 +231,10 @@ export default function BlueskyComments({ url }: BlueskyCommentsProps) {
       }
 
       try {
-        const did = parsed.profile.startsWith('did:')
-          ? parsed.profile
-          : await (async () => {
-            const resolveUrl = new URL(
-              'https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle'
-            )
-            resolveUrl.searchParams.set('handle', parsed.profile)
-
-            const resolveRes = await fetch(resolveUrl.toString())
-            if (!resolveRes.ok) {
-              throw new Error(`Unable to resolve Bluesky handle (${resolveRes.status})`)
-            }
-
-            const resolveData = (await resolveRes.json()) as { did?: string }
-            if (!resolveData.did) {
-              throw new Error('Unable to resolve Bluesky handle')
-            }
-
-            return resolveData.did
-          })()
-
+        const did = await resolveHandleToDid(parsed.profile)
         const atUri = `at://${did}/app.bsky.feed.post/${parsed.rkey}`
-        const url = new URL('https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread')
-        url.searchParams.set('uri', atUri)
-
-        const res = await fetch(url.toString())
-        if (!res.ok) {
-          throw new Error(`Unable to fetch Bluesky thread (${res.status})`)
-        }
-
-        const data = (await res.json()) as GetPostThreadResponse
-        if (!cancelled) setThread(data.thread ?? null)
+        const fetchedThread = await fetchThreadByAtUri(atUri)
+        if (!cancelled) setThread(fetchedThread)
       } catch (e) {
         if (!cancelled) {
           setThread(null)
@@ -256,9 +273,6 @@ export default function BlueskyComments({ url }: BlueskyCommentsProps) {
       {!loading && error ? (
         <p className='text-sm text-text-secondary'>
           {error}.{' '}
-          <a className='text-accent hover:underline' href={bskyWebUrl} target='_blank' rel='noreferrer'>
-            View on Bluesky
-          </a>
         </p>
       ) : null}
 
@@ -273,13 +287,15 @@ export default function BlueskyComments({ url }: BlueskyCommentsProps) {
           ) : null}
           {thread.replies?.length ? (
             <div className='flex flex-col gap-3'>
-              {thread.replies.map((reply, index) => (
-                <BlueskyReply
-                  key={reply.post?.uri ?? reply.post?.cid ?? `0-${index}`}
-                  thread={reply}
-                  depth={0}
-                />
-              ))}
+              {thread.replies
+                .filter(isThreadViewPost)
+                .map((reply, index) => (
+                  <BlueskyReply
+                    key={reply.post?.uri ?? reply.post?.cid ?? `0-${index}`}
+                    thread={reply}
+                    depth={0}
+                  />
+                ))}
             </div>
           ) : (
             <p className='text-sm text-text-secondary'>No comments yet.</p>

@@ -26,6 +26,7 @@
     "react-dom": "^19.2.1"
   },
   "devDependencies": {
+    "@atproto/api": "^0.18.16",
     "@biomejs/biome": "^2.3.8",
     "@next/bundle-analyzer": "^14.2.33",
     "@testing-library/dom": "^10.4.1",
