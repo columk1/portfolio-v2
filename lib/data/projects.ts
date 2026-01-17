@@ -11,6 +11,7 @@ export type Category = (typeof CATEGORIES)[number]
 
 export type Project = {
   title: string
+  slug: string
   description: string
   image: string
   tags: string[]
@@ -24,6 +25,7 @@ export type Project = {
 const projects: Project[] = [
   {
     title: 'Threads Clone',
+    slug: 'threads-clone',
     description:
       'A pixel-perfect clone of the Threads social media app. Includes a suite of automated end-to-end and integration tests, custom auth with email verification, and AI content moderation. Built with Next.js 15, React 19, Drizzle, and SQLite.',
     image: '/images/threads-clone.webp',
@@ -35,6 +37,7 @@ const projects: Project[] = [
   },
   {
     title: 'BizPortraits',
+    slug: 'bizportraits',
     description:
       'An AI-powered headshot generator that transforms selfies into studio-quality portraits in seconds, with Stripe integration for secure payments.',
     image: '/images/bizportraits.webp',
@@ -47,6 +50,7 @@ const projects: Project[] = [
   },
   {
     title: 'Paragliding Dashboard',
+    slug: 'paragliding-dashboard',
     description:
       'A weather dashboard for local paragliding pilots. Features a scrollable dynamic wind graph, displays for multiple weather APIs, an interactive UI for viewing windgrams, and a live camera feed of the local mountain.',
     image: '/images/paragliding-dashboard.png',
@@ -59,6 +63,7 @@ const projects: Project[] = [
   },
   {
     title: 'File Uploader',
+    slug: 'file-uploader',
     description:
       'A cloud storage application for file management and sharing. Built with Typescript, Express, EJS and Web Components. Features a modular architecture with various performance and security optimizations.',
     image: '/images/file-uploader.png',
@@ -70,6 +75,7 @@ const projects: Project[] = [
   },
   {
     title: 'Messaging App',
+    slug: 'messaging-app',
     description:
       'A real-time messaging app built with Next.js using React, Tailwind, Prisma, Postgres, NextAuth, and Pusher.',
     image: '/images/messaging-app.png',
@@ -81,6 +87,7 @@ const projects: Project[] = [
   },
   {
     title: 'Blog API',
+    slug: 'blog-api',
     description:
       'A REST API for my personal blog using Node, Express, and MongoDB. I built a simple CMS to interact with the API using React and Tailwind. It includes a markdown previewer with syntax highlighting. Authentication is handled using JWTs via access and refresh tokens stored in HTTP-only cookies.',
     image: '/images/blog-api.png',
@@ -91,6 +98,7 @@ const projects: Project[] = [
   },
   {
     title: "Where's Alex Honnold?",
+    slug: 'wheres-alex-honnold',
     description:
       "A hidden object puzzle for climbers. (Think Where's Wally on El Cap). Players are timed as they search a draggable high-resolution image for famous rock features.",
     image: '/images/wheres-alex.png',
@@ -102,6 +110,7 @@ const projects: Project[] = [
   },
   {
     title: 'CV Generator',
+    slug: 'cv-generator',
     description: 'A simple CV Generator.',
     image: '/images/cv-generator.png',
     tags: ['React', 'PostCSS', 'Vite'],
@@ -112,6 +121,7 @@ const projects: Project[] = [
   },
   {
     title: 'Battleship',
+    slug: 'battleship',
     description:
       'An MVC battleship game in Vanilla JS. The goal with this was to practice TDD. Drag and drop to position ships. Computer opponent uses a hunt and target algorithm.',
     image: '/images/battleship.png',
@@ -123,6 +133,7 @@ const projects: Project[] = [
   },
   {
     title: 'Memory Game',
+    slug: 'memory-game',
     description: 'A memory game. Players are scored based on speed and accuracy.',
     image: '/images/memory-game.jpg',
     tags: ['React', 'Vite'],
@@ -133,6 +144,7 @@ const projects: Project[] = [
   },
   {
     title: 'Pixel Pad',
+    slug: 'pixel-pad',
     description: 'A pixel art tool in vanilla JS.',
     image: '/images/pixel-pad.png',
     tags: ['Javascript', 'HTML', 'CSS'],

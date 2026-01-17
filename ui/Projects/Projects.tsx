@@ -24,7 +24,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           className='hover:font-light'
           key={project.title}
           prefetch={true}
-          href={`/projects/${project.title.toLowerCase().replace(/['\s]+/g, '-')}`}
+          href={`/projects/${project.slug}`}
         >
           <div className='flex w-full items-baseline justify-between gap-2'>
             <p className='overflow-hidden text-ellipsis whitespace-nowrap'>{`${project.title}`}</p>

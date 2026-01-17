@@ -1,16 +1,16 @@
 import { baseUrl } from '@/lib/config'
-import { getAllProjectSlugs, getProjectBySlug } from '@/lib/getProjectBySlug'
 import GithubIcon from '@/ui/icons/GithubIcon'
 import LinkIcon from '@/ui/icons/LinkIcon'
 import type { Metadata } from 'next/types'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { cache } from 'react'
+import projects from '@/lib/data/projects'
 
 type ProjectPageProps = { params: Promise<{ slug: string }> }
 
 const getCachedProject = cache(function getCachedProject(slug: string) {
-  return getProjectBySlug(slug)
+  return projects.find((project) => project.slug === slug)
 })
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
@@ -131,10 +131,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Image */}
         <div className='mx-6 mb-12'>
           <Image
+            style={{ width: 'auto' }}
             src={image}
-            width={1200}
-            height={800}
             alt={title}
+            width={900}
+            height={600}
             className='w-full object-cover outline outline-1 outline-border'
             priority
           />
@@ -145,6 +146,5 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllProjectSlugs()
-  return slugs.map((slug) => ({ slug }))
+  return projects.map((project) => ({ slug: project.slug }))
 }
