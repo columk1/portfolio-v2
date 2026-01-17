@@ -20,6 +20,7 @@ export type Project = {
   liveUrl?: string
   githubUrl: string
   featured?: boolean
+  imageVariant?: 'vertical' | 'horizontal' | 'square'
 }
 
 const projects: Project[] = [
@@ -54,6 +55,7 @@ const projects: Project[] = [
     description:
       'A weather dashboard for local paragliding pilots. Features a scrollable dynamic wind graph, displays for multiple weather APIs, an interactive UI for viewing windgrams, and a live camera feed of the local mountain.',
     image: '/images/paragliding-dashboard.png',
+    imageVariant: 'vertical',
     tags: ['Typescript', 'React', 'NextJS', 'Recharts'],
     categories: ['Web Development', 'Web Design'],
     year: '2023',

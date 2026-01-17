@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound()
   }
 
-  const { title, description, image, categories, year, tags, liveUrl, githubUrl } = project
+  const { title, description, image, categories, year, tags, liveUrl, githubUrl, imageVariant } = project
   const iconStyles = { color: 'var(--text-primary)', width: '27' }
 
   return (
@@ -131,12 +131,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Image */}
         <div className='mx-6 mb-12'>
           <Image
-            style={{ width: 'auto' }}
+            // style={{
+            //   width: imageVariant === 'vertical' ? 'auto' : '700px',
+            //   height: 'auto',
+            // }}
             src={image}
             alt={title}
-            width={900}
-            height={600}
-            className='w-full object-cover outline outline-1 outline-border'
+            width={600}
+            height={400}
+            className={`${imageVariant === 'vertical' ? 'w-auto' : 'w-[700px]'} object-contain outline outline-1 outline-border`}
             priority
           />
         </div>
