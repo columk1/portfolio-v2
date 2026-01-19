@@ -116,16 +116,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <span className='text-sm'>Visit Site</span>
             </a>
           )}
-          <a
-            href={githubUrl}
-            target='_blank'
-            rel='noreferrer'
-            aria-label='Github Repo'
-            className='flex items-center gap-2 hover:scale-105'
-          >
-            <GithubIcon styles={iconStyles} />
-            <span className='text-sm'>View Code</span>
-          </a>
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target='_blank'
+              rel='noreferrer'
+              aria-label='Github Repo'
+              className='flex items-center gap-2 hover:scale-105'
+            >
+              <GithubIcon styles={iconStyles} />
+              <span className='text-sm'>View Code</span>
+            </a>
+          )}
         </div>
 
         {/* Image */}
@@ -141,6 +143,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             height={400}
             className={`${imageVariant === 'vertical' ? 'w-auto' : 'w-[700px]'} object-contain outline outline-1 outline-border`}
             priority
+            quality={90}
           />
         </div>
       </div>

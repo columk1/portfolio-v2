@@ -18,12 +18,23 @@ export type Project = {
   categories: Category[]
   year: string
   liveUrl?: string
-  githubUrl: string
+  githubUrl?: string
   featured?: boolean
   imageVariant?: 'vertical' | 'horizontal' | 'square'
 }
 
 const projects: Project[] = [
+  {
+    title: 'Benighted',
+    slug: 'benighted',
+    description: 'An e-commerce website for a local jewellery business, designed and developed end-to-end. Features a custom-built CMS for product management, customer interaction, and order fulfilment.',
+    image: '/images/benighted.avif',
+    tags: ['NextJS', 'Payload', 'SQLite', 'Stripe',],
+    categories: ['E-commerce','Web Development', 'Web Design'],
+    year: '2025',
+    liveUrl: 'https://benightedbeads.com/',
+    featured: true,
+  },
   {
     title: 'Threads Clone',
     slug: 'threads-clone',
