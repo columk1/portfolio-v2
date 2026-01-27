@@ -4,6 +4,7 @@ import { applyThemeScript } from '@/lib/utils/applyThemeScript'
 import Footer from '@/ui/Footer'
 import Header from '@/ui/Header'
 import ThemeSelector from '@/ui/ThemeSelector'
+import { Analytics } from '@vercel/analytics/next'
 import { ViewTransitions } from 'next-view-transitions'
 import { IBM_Plex_Mono, Montserrat, Roboto, Work_Sans } from 'next/font/google'
 import type { Metadata } from 'next/types'
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Footer />
             <ThemeSelector initialValue={null} />
           </div>
+          <Analytics />
         </body>
       </html>
     </ViewTransitions>
