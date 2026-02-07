@@ -36,6 +36,27 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    title: 'Snowpatch',
+    slug: 'snowpatch',
+    description: "Naming and brand design for a local handmade clothing label. The brief called for a simple, abstract mark with a friendly, organic feel, referencing local geography while avoiding clichés. Snowpatch was chosen as its an iconic and well-loved peak, with a name that subtly hints at sewing. A soft, hand-drawn style was used to reflect the brand's nature, paired with rounded typography to reinforce approachability and craft.",
+    image: '/images/snowpatch.avif',
+    tags: ['Graphic Design', 'Branding'],
+    categories: ['Branding'],
+    year: '2025',
+    featured: true,
+  },
+  {
+    title: 'Benighted',
+    slug: 'benighted-beads',
+    description: 'Logo, business cards and packaging design for a local handmade jewellery business. The brand was designed to evoke quality and elegance while reflecting the handcrafted nature of the product and the local geography.',
+    image: '/images/benighted-beads.avif',
+    imageVariant: 'vertical',
+    tags: ['Graphic Design', 'Branding'],
+    categories: ['Branding'],
+    year: '2025',
+    featured: true,
+  },
+  {
     title: 'Threads Clone',
     slug: 'threads-clone',
     description:

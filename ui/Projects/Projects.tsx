@@ -22,7 +22,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
       {projectList.map((project) => (
         <Link
           className='hover:font-light'
-          key={project.title}
+          key={project.slug}
           prefetch={true}
           href={`/projects/${project.slug}`}
         >
