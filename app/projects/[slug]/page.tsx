@@ -99,7 +99,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Description */}
         <div className='mx-6 mb-12'>
-          <p className='max-w-3xl font-light text-base leading-relaxed sm:text-lg'>{description}</p>
+          <p className='max-w-3xl font-light text-base leading-relaxed sm:text-base'>{description}</p>
         </div>
 
         {/* Links */}
