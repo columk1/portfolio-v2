@@ -5,6 +5,7 @@ export const CATEGORIES = [
   'Web Design',
   'Branding',
   'Marketing',
+  'Graphic Design',
 ] as const
 
 export type Category = (typeof CATEGORIES)[number]
@@ -30,7 +31,7 @@ const projects: Project[] = [
     description: 'An e-commerce website for a local jewellery business, designed and developed end-to-end. Features a custom-built CMS for product management, customer interaction, and order fulfilment.',
     image: '/images/benighted.avif',
     tags: ['NextJS', 'Payload', 'SQLite', 'Stripe',],
-    categories: ['E-commerce','Web Development', 'Web Design'],
+    categories: ['E-commerce', 'Web Development', 'Web Design'],
     year: '2025',
     liveUrl: 'https://benightedbeads.com/',
     featured: true,
@@ -40,8 +41,8 @@ const projects: Project[] = [
     slug: 'snowpatch',
     description: "Naming and brand design for a local handmade clothing label. The brief called for a simple, abstract mark with a friendly, organic feel, referencing local geography while avoiding clichés. Snowpatch was chosen as its an iconic and well-loved peak, with a name that nods to sewing.",
     image: '/images/snowpatch.avif',
-    tags: ['Graphic Design', 'Branding'],
-    categories: ['Branding'],
+    tags: [],
+    categories: ['Branding', 'Graphic Design'],
     year: '2025',
     featured: true,
   },
@@ -51,8 +52,8 @@ const projects: Project[] = [
     description: 'Logo, business cards and packaging design for a local handmade jewellery business. The identity balances elegance with approachability, while referencing the local mountain landscape.',
     image: '/images/benighted-beads.avif',
     imageVariant: 'vertical',
-    tags: ['Graphic Design', 'Branding'],
-    categories: ['Branding'],
+    tags: [],
+    categories: ['Branding', 'Graphic Design'],
     year: '2025',
     featured: true,
   },

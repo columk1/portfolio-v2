@@ -43,6 +43,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
+const Tag = ({ tag }: { tag: string }) => (
+  <li key={tag} className='bg-accent px-2 py-0.5 font-bold text-[#eee] text-xs'>{tag}</li>
+)
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params
   const project = getCachedProject(slug)
@@ -51,31 +55,29 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound()
   }
 
-  const { title, description, image, categories, year, tags, liveUrl, githubUrl, imageVariant } = project
+  const { title, description, image, categories, year, tags, liveUrl, githubUrl, imageVariant, featured } = project
   const iconStyles = { color: 'var(--text-primary)', width: '27' }
 
   return (
     <section className='mt-11 px-[6vw] py-12'>
-      <div className='flex max-w-[970px] flex-col justify-between'>
+      <div className='flex max-w-[970px] flex-col justify-between gap-8'>
         {/* Title */}
         <h1 className='mx-6 mt-4 font-light font-sans text-4xl'>{title}</h1>
 
         {/* Info Grid */}
-        <div className='mx-6 mt-8 mb-12 grid grid-cols-1 gap-8 font-mono text-sm sm:grid-cols-2 lg:grid-cols-3'>
+        <div className='mx-6 grid grid-cols-2 gap-8 font-mono text-sm lg:grid-cols-3'>
           {/* Categories */}
           <div>
             <h2 className='mb-2 font-detail text-text-secondary text-xs uppercase tracking-wider'>
               Category
             </h2>
             <ul className='flex flex-col gap-1'>
-              {categories.map((category) => (
-                <li key={category}>{category}</li>
-              ))}
+              <li>{categories[0]}</li>
             </ul>
           </div>
 
           {/* Year */}
-          <div>
+          <div className='text-right sm:text-left'>
             <h2 className='mb-2 font-detail text-text-secondary text-xs uppercase tracking-wider'>
               Year
             </h2>
@@ -83,27 +85,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
 
           {/* Tags */}
-          <div className='sm:col-span-2 lg:col-span-1'>
+          <div className='col-span-2 lg:col-span-1'>
             <h2 className='mb-2 font-detail text-text-secondary text-xs uppercase tracking-wider'>
               Tags
             </h2>
             <ul className='flex flex-wrap gap-2'>
-              {tags.map((tag) => (
-                <li key={tag} className='bg-accent px-2 py-0.5 font-bold text-[#eee] text-xs'>
-                  {tag}
-                </li>
-              ))}
+              {/* Use categories for featured projects since the tech stack is irrelevant to potential clients */}
+              {featured
+                ? categories.map((e) => <Tag key={e} tag={e} />)
+                : tags.map((e) => <Tag key={e} tag={e} />)
+              }
             </ul>
           </div>
         </div>
 
         {/* Description */}
-        <div className='mx-6 mb-12'>
+        <div className='mx-6'>
           <p className='max-w-3xl font-light text-base leading-relaxed sm:text-base'>{description}</p>
         </div>
 
         {/* Links */}
-        <div className='mx-6 mb-12 flex items-center gap-4'>
+        <div className='mx-6 mb-2 flex items-center gap-4'>
           {liveUrl && (
             <a
               href={liveUrl}
